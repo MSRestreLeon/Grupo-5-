@@ -1,9 +1,5 @@
 # Grupo-5-
 
-jacb77 
-
-
-
 MISION TIC 2021 Ciclo 3 Grupo 5
 
 Reuniones: https://meet.google.com/qpa-xffy-rjo
