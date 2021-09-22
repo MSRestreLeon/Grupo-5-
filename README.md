@@ -13,4 +13,10 @@ Horarios Reuniones:
 - Jueves: 22:00 - 22:40
 - Domingo: 11: 00 - 11:40
 
-Correos integrantes: kariettp@uninorte.edu.co, gluisf@uninorte.edu.co, jacobcatano@uninorte.edu.co, msleon@uninorte.edu.co, dmayama@uninorte.edu.co
+Correos integrantes: 
+
+- kariettp@uninorte.edu.co 
+- gluisf@uninorte.edu.co
+- jacobcatano@uninorte.edu.co 
+- msleon@uninorte.edu.co 
+- dmayama@uninorte.edu.co
