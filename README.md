@@ -16,3 +16,6 @@ Correos integrantes:
 - jacobcatano@uninorte.edu.co 
 - msleon@uninorte.edu.co 
 - dmayama@uninorte.edu.co
+
+Link para editar el diagrama de clases: https://lucid.app/lucidchart/9ea1611e-6708-4634-afa7-c47c0e5f0dda/edit?existing=1&token=889cf5d50df5573e6902ab03f5e8a037b798f6df-eml%3Dmsleon%2540uninorte.edu.co%26ts%3D1632256305%26uid%3D163394921&docId=9ea1611e-6708-4634-afa7-c47c0e5f0dda&shared=true&page=HWEp-vi-RSFO#
+
