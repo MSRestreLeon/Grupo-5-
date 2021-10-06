@@ -21,3 +21,6 @@ def medico():
 @app.route("/superAdministrador")
 def superAdministrador():
     return render_template("superAdministrador.html")
+
+app.run(debug=True)
+
