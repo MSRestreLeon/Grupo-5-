@@ -17,6 +17,14 @@ def paciente():
 def medico():
     return render_template("medico.html")
 
+@app.route("/historia_clinica")
+def historia_clinica():
+    return render_template("historia_clinica.html")
+
+@app.route("/consulta_medica")
+def consulta_medica():
+    return render_template("consulta_medica.html")
+
 
 @app.route("/superAdministrador")
 def superAdministrador():

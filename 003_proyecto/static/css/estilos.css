@@ -1,4 +1,21 @@
 .franja {
     background-color: #1E43C6;
     color: #ffffff;
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    }
+.perfil {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 393px;
+    background: #C4C4C4;
+}
+.his_cli{
+    width: 100px;
+    background: white;
 }
