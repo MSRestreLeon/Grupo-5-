@@ -7,9 +7,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Administrador</title>
 </head>
+<div class="franja">Hospital Mision TIC 2020</div>
 
+<form action="">
+    <div class="cuerpoizquierdo">Consulta Historia Clinica Paciente</div>
+    
+   
+    
+ 
+    <div class="SearchDiv">
+        <form id="searchForm" action="SearchController" method="post">
+            Cedula:<input type="text" name="searchQuery" required /> 
+            
+            
+            <input
+                type="submit" name="searchBtn" title="search" value="Buscar">
+        </form>
+    </div>
+
+</form>
 <body>
+   <p>
+       <span></span>
+   </p>
+   <div>
+    <label>Edición Perfil Superadministrador</label>
+</div>
+    <form action="" method="">
+        <p style="padding-left:150px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </p>
+        <p style="padding-left:150px;">Nombre <input type="text" name="nombre" class="perfil"></p>
+            <p style="padding-left:150px;">Profesión<input type="text" name="profesion" class="perfil"></p>
+                <p style="padding-left:150px;">Fecha de nacimiento<input type="text" name="fechaDeNacimiento" class="perfil"></p>
+                    <p style="padding-left:150px;">Correo electronico <input type="text" name="correo" class="perfil"></p>
+                        <p style="padding-left:150px;">Cargo<input type="text" name="cargo" class="perfil"></p>
+                            
+  
 
+    </form>
+    <form action="" method="" style=" position: absolute; top: 390px;">
+        
+        <div></div>
+        <div></div>
+        
+        <div></div>
+        <div></div>
+        <div></div>
+      
+        <input class="btn btn-center" type="button" value="Editar"> 
+            <input class="btn btn-center" type="button" value="Guardar"> 
+        <p> 
+        
+        </p><label>INTERFAZ</label>
+        <p> 
+            <label>        Editar datos basicos  e informacion corespondiente a usuarios</label>
+        </p>
+        <input class="btn btn-space" type="button" value="Apertura de Agenda"> 
+        <input class="btn btn-space" type="button" value="Datos Medicos"> 
+        <p> 
+             <input class="btn btn-space" type="button" value="Datos Pacientes"> 
+
+        
+            <input class="btn btn-space" type="button" value="Dashboard citas"> 
+        </p>
+        
+
+    </form>
+   
+    
+    <div >
+        <img class="fotoperfil" src="static/images/person.png">
+    </div>
 </body>
 
 </html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+
