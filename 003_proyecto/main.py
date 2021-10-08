@@ -77,12 +77,12 @@ def paciente():
 
 
 @app.route("/paciente/citaMedica")
-def paciente():
+def citaMedica():
     return render_template("citaMedica.html")
 
 
 @app.route("/paciente/examenMedico")
-def paciente():
+def examenMedico():
     return render_template("examenMedico.html")
 
 
