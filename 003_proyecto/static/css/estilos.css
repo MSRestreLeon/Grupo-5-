@@ -85,3 +85,24 @@
     left: 0px;
     right: 0px;
 }
+.textoConsulta {
+    text-align: left;
+    position: absolute;
+    width: 800px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.textoAutorizaciones {
+    text-align: left;
+    position: absolute;
+    width: 500px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.datosConsulta{
+    position: absolute;
+    width: 145px;
+    height: 23px;
+    left: 300px;    
+    background: #C4C4C4; 
+}
