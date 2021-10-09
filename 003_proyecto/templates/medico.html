@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" style="position: absolute; left: 1340px;top: 10px;"></div>
+    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute; left: 1340px;top: 10px;"></div>
     <div style="position: absolute;top: 90px;">
         <label>Perfil de usuario</label></div>
     <div><img class="fotoperfil" src="static/images/person.png"></div> 
@@ -23,45 +23,38 @@
     </form>
     <form action="">
       <div style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 50px;">Consulta Historia Clinica Paciente</div>
-      <div> <input type="search" placeholder="Documento de identidad paciente " style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
-  </form>
+      <div> <input type="search"  placeholder="Documento de identidad paciente " style="position: absolute;width: 296px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
+      <div><img src="static/images/search.png" alt="" onclick="refhisPaciente()" style="position: absolute;width: 30px;height: 30px;left: 1402px;top: 70px;"></div>
+    </form>
     <form action="" style="position: absolute;top: 350px;">
       <p>A continuacion podra consultar su agenda de citas</p>
       <div>
-        <label for="">Ingrese fecha a consultar</label><input type="date">
+        <label for="">Ingrese fecha a consultar</label><input type="date"><input type="button" value="Consultar">
       </div>
       <table class="" >
-          <tr>
-            <td>Hora</td><td>Descripcion cita</td>
-          </tr>
-          <tr>
-            <td>05:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>06:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>07:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>08:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>09:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>10:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>11:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
-          <tr>
-            <td>12:00 AM</td><td><input type="button" class="his_cli">
-          </tr>
+          <tr><td>Hora</td><td>Descripcion cita</td></tr>
+          <tr><td>05:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>06:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>07:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>08:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>09:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>10:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>11:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
+          <tr><td>12:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
       </table>
     </form>
     <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
 </body>
-
+<script>
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+  function refhisPaciente() {
+    location.href="http://127.0.0.1:5000/medico/historiaClinica"
+  }
+  function refconsPaciente() {
+    location.href="http://127.0.0.1:5000/medico/consultaMedica"
+  }
+</script>
 </html>
 <link rel="stylesheet" href="/static/css/estilos.css">

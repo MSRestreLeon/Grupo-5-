@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" style="position: absolute; left: 1340px;top: 10px;"> </div>
+  <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" style="position: absolute; left: 1340px;top: 10px;" onclick="reflogin()"> </div>
     <form action="">
         <div><img src="/static/images/back.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1390px;top: 50px;" onclick="refmedico()"></div>
         <div><img src="/static/images/home.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1332px;top: 50px;" onclick="refmedico()"></div>
@@ -46,6 +46,7 @@
       <!--<div style="position:absolute;top:120px;left: 1250px;">Consumo de alcohol<input type="checkbox"></div>
       <div style="position:absolute;top:170px;left: 1250px;">Drogas<input type="checkbox"><input type="text"></div>
       <div style="position:absolute;top:220px;left: 1250px;">Infusione<input type="checkbox"><input type="text"></div>-->
+      <div><input type="button" value="Guardar consulta" style="position:absolute;top:770px;left: 650px;"></div>
     </form>
     </form>
     <form action="" style=" position: absolute; top: 726px;">
@@ -63,7 +64,10 @@
 </body>
 <script>
   function refmedico() {
-    return render_template("medico.html")
+    location.href="http://127.0.0.1:5000/medico"
+  }
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
   }
 </script>
 </html>
