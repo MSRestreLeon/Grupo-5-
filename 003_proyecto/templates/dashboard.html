@@ -23,22 +23,24 @@
     <label>Dash Board Citas</label>
 </div>
     <form action="" method="">
-        <p style="padding-left:30px;">Fecha Inicial<input type="text" name="Fechainicial" class="perfil" > </p>
-        <p style="padding-left:30px;">Hora Inicial <input type="text" name="Horainicial" class="perfil"></p>
+        <p style="padding-left:30px;">Fecha Inicial<input type="date"style="width: 125px"  name="Fechainicial" class="perfil" > </p>
+        <p style="padding-left:30px;">Fecha Final<input type="date" style="width: 125px"  name="Fechainicial" class="perfil" > </p>
+
+        <p for="choose" style="padding-left:30px;">Hora Inicial<input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
+            <p for="choose" style="padding-left:30px;">Hora Final<input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
+        
+
             <p style="padding-left:30px;">D.I. Paciente<input type="text" name="idPaciente" class="perfil"></p>
                 <p style="padding-left:30px;">D.I. Medico<input type="text" name="idMedico" class="perfil"></p>
                     <p style="padding-left:30px;">Especialidad <input type="text" name="Especialidad" class="perfil"></p> 
                     <p style="padding-left:30px;">Estado<input type="text" name="estado" class="perfil"></p>
-                        <p style="padding-left:30px;">Calificación<input type="text" name="Calificacion" class="perfil"></p> 
-
-                        <p style="position: absolute;left: 770px;top: 89px;">Fecha Inicial<input type="text" name="Fechainicial" class="perfil"></p>
-                            <p style="position: absolute;left: 770px;top: 125px;">Hora Inicial<input type="text" name="HoraInicial" class="perfil"></p> 
-                        
+                        <p style="padding-left:30px;">Calificación Promedio<input type="text" name="Calificacion" class="perfil"></p> 
 
                         
+ 
                             
                 <p>
-        <input style="left: 200px;top: 350px;width: 159px;height: 48px;"class="btn btn-topspace" type="button" value="Consultar"> 
+        <input style="left: 530px;top: 135px;width: 159px;height: 48px;"class="btn btn-topspace" type="button" value="Consultar"> 
               
         </p>
         
@@ -49,8 +51,82 @@
     <div >
        
     </div>
+    <p></p>
 </body>
+<p></p>
+<p></p>
+<br> <br>
 
+<table width="1200" cellspacing="1" cellpadding="3" border="0" bgcolor="#80A93E">
+<tr>
+   <td style="text-align-last: center;" bgcolor="#B7F259"><font size=1 face="verdana, arial, helvetica"><b>PANEL DE INFORMACION</b></font></td>
+</tr>
+<tr>
+   <td bgcolor="#F5ECB9">
+
+    <table width="95%" cellspacing="1" cellpadding="1" border="0" align="center">
+
+ <!--             columna 1             -->
+ <tr>  <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Fecha</font></td>
+    <td ><font face="verdana, arial, helvetica" size=1>
+     <td  style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Hora</font></td>
+     <td><font face="verdana, arial, helvetica" size=1>
+        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Paciente</font></td>
+        <td><font face="verdana, arial, helvetica" size=1>
+            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Paciente</font></td>
+            <td><font face="verdana, arial, helvetica" size=1>
+                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Medico</font></td>
+                <td><font face="verdana, arial, helvetica" size=1>
+                    <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Medico</font></td>
+                    <td><font face="verdana, arial, helvetica" size=1>
+                        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Especialidad</font></td>
+                        <td><font face="verdana, arial, helvetica" size=1>
+                            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Estado</font></td>
+                            <td><font face="verdana, arial, helvetica" size=1>
+                                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Calificación</font></td>
+                                <td><font face="verdana, arial, helvetica" size=1>
+        </tr>
+ <!--             columna 1             -->
+ <tr>  <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Fecha</font></td>
+    <td ><font face="verdana, arial, helvetica" size=1>
+     <td  style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Hora</font></td>
+     <td><font face="verdana, arial, helvetica" size=1>
+        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Paciente</font></td>
+        <td><font face="verdana, arial, helvetica" size=1>
+            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Paciente</font></td>
+            <td><font face="verdana, arial, helvetica" size=1>
+                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Medico</font></td>
+                <td><font face="verdana, arial, helvetica" size=1>
+                    <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Medico</font></td>
+                    <td><font face="verdana, arial, helvetica" size=1>
+                        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Especialidad</font></td>
+                        <td><font face="verdana, arial, helvetica" size=1>
+                            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Estado</font></td>
+                            <td><font face="verdana, arial, helvetica" size=1>
+                                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Calificación</font></td>
+                                <td><font face="verdana, arial, helvetica" size=1>
+        </tr>
+
+         <!--             columna 1             -->
+ <tr>  <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Fecha</font></td>
+    <td ><font face="verdana, arial, helvetica" size=1>
+     <td  style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Hora</font></td>
+     <td><font face="verdana, arial, helvetica" size=1>
+        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Paciente</font></td>
+        <td><font face="verdana, arial, helvetica" size=1>
+            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Paciente</font></td>
+            <td><font face="verdana, arial, helvetica" size=1>
+                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>ID Medico</font></td>
+                <td><font face="verdana, arial, helvetica" size=1>
+                    <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Medico</font></td>
+                    <td><font face="verdana, arial, helvetica" size=1>
+                        <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Especialidad</font></td>
+                        <td><font face="verdana, arial, helvetica" size=1>
+                            <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Estado</font></td>
+                            <td><font face="verdana, arial, helvetica" size=1>
+                                <td style="text-align: center;" valign=top><font face="verdana, arial, helvetica" size=1>Calificación</font></td>
+                                <td><font face="verdana, arial, helvetica" size=1>
+        </tr>
 </html>
 <link rel="stylesheet" href="/static/css/estilos.css">
 

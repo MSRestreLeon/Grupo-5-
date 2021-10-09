@@ -11,6 +11,15 @@
 
 <form action="">
    
+ 
+
+
+
+
+
+
+      
+
         </form>
     </div>
 
@@ -23,20 +32,42 @@
     <label>Apertura de Agendas</label>
 </div>
     <form action="" method="">
-        <p style="padding-left:30px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </p>
-        <p style="padding-left:30px;">Nombre <input type="text" name="nombre" class="perfil"></p>
-            <p style="padding-left:30px;">Mes<input type="text" name="profesion" class="perfil"></p>
-                <p style="padding-left:30px;">Hora Primera cita<input type="text" name="fechaDeNacimiento" class="perfil"></p>
-                    <p style="padding-left:30px;">Hora Ultima cita <input type="text" name="correo" class="perfil"></p>
+      <p>
 
-                        
-                            
+      </p>  <label for="choose"style="padding-left:30px;"> Documento de identidad<input type="number" class="perfil"id="choose" name="cedula" oninvalid="this.setCustomValidity('Cedula no valida')"> 
+        <p for="choose" style="padding-left:30px;">Nombre <input type="text" name="nombre" class="perfil"required></p>
+            <p for="choose" style="padding-left:30px;">Mes
+                
+
+<select name="mes"class="perfil" style="width: 125px" required>
+   <option value="1">Enero</option> 
+   <option value="2">Febrero</option> 
+   <option value="3">Marzo</option>
+   <option value="10">Abril</option> 
+   <option value="11">Mayo</option> 
+   <option value="12">Junio</option> 
+   <option value="1">Julio</option> 
+   <option value="2">Agosto</option> 
+   <option value="3">Septiembre</option>
+   <option value="10">Octubre</option> 
+   <option value="11">Noviembre</option> 
+   <option value="12">Diciembre</option> 
+</select>
+                <p for="choose" style="padding-left:30px;">Hora Primera cita<input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
+                    <p for="choose" style="padding-left:30px;">Hora Ultima cita <input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
+
+                                            
+                    <form>
+                       
+                          <button class="btn btn-topspace" style="left: 40px;">Activar</button>
+                          <button style="left: 200px;"class="btn btn-topspace" >Consultar</button>
+                          
+                          <button style="left: 400px;"class="btn btn-topspace">Reasignar medico</button>
+                          <button style="left: 640px;"class="btn btn-topspace">Cancelar Citas</button>
+
+                        </div>
+                      </form>
                 <p>
-        <input  class="btn btn-topspace" style="left: 40px;" type="button" value="Activar"> 
-        <input style="left: 200px;"class="btn btn-topspace" type="button" value="Consultar"> 
-              
-            <input style="left: 400px;"class="btn btn-topspace" type="button" value="Reasignar medico"> 
-            <input style="left: 640px;"class="btn btn-topspace" type="button" value="Cancelar Citas"> 
         </p>
         
 
