@@ -9,26 +9,57 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020</div>
-    <div>
-        <label>Perfil de pasiente</label>
+    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute; left: 1340px;top: 10px;"> </div>
+    <form action="">
+        <div><img src="/static/images/back.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1390px;top: 50px;" onclick="refmedico()"></div>
+        <div><img src="/static/images/home.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1332px;top: 50px;" onclick="refmedico()"></div>
+    </form>
+    <div style="position: absolute;top: 90px;">
+        <label>Perfil de paciente</label>
     </div>
+    <div><img class="fotoperfil" src="/static/images/person.png"></div> 
     <form action="" method="">
-        <div style=" position: absolute; top: 126px">Documento de identidad<input type="text" name="cedula" class="perfil" > </div>
-        <div style=" position: absolute; top: 166px">Nombre <input type="text" name="nombre" class="perfil"> </div>
-        <div style=" position: absolute; top: 206px">Genero<input type="text" name="genero" class="perfil"></div>
-        <div style=" position: absolute; top: 246px">Edad<input type="text" name="edad" class="perfil"></div>
-        <div style=" position: absolute; top: 286px">Correo electronico <input type="text" name="correo" class="perfil"></div>
-        <div style=" position: absolute; top: 326px">Tipo de sangre <input type="text" name="nombre" class="perfil"> </div>
-        <div style=" position: absolute; top: 366px">Numero de contacto<input type="text" name="genero" class="perfil"></div>
-        <div style=" position: absolute; top: 406px">Direccion de recidencia<input type="text" name="edad" class="perfil"></div>
+        <div style=" position: absolute; top: 126px;left: 250px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </div>
+        <div style=" position: absolute; top: 166px;left: 250px">Nombre <input type="text" name="nombre" class="perfil"> </div>
+        <div style=" position: absolute; top: 206px;left: 250px">Genero<input type="text" name="genero" class="perfil"></div>
+        <div style=" position: absolute; top: 246px;left: 250px">Edad<input type="text" name="edad" class="perfil"></div>
+        <div style=" position: absolute; top: 286px;left: 250px">Correo electronico <input type="text" name="correo" class="perfil"></div>
+        <div style=" position: absolute; top: 326px;left: 250px">Tipo de sangre <input type="text" name="nombre" class="perfil"> </div>
+        <div style=" position: absolute; top: 366px;left: 250px">Numero de contacto<input type="text" name="genero" class="perfil"></div>
+        <div style=" position: absolute; top: 406px;left: 250px">Direccion de recidencia<input type="text" name="edad" class="perfil"></div>
     </form>
     
-    <form action="">
-        <div style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 50px;">Consulta Historia Clinica Paciente</div>
-        <div > <input type="search" placeholder="Documento de identidad paciente " style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
-    </form>
+    <form action="" style="position: absolute;top: 500px;">
+        <p>A continuacion podra consultar la historia clinica del paciente</p>
+        <div>
+          <div><label for="">Ingrese rango de fechas a consultar</label></div>
+          <label for="">Ingrese fecha inicial </label><input type="date">
+          <label for="">Ingrese fecha final </label><input type="date" style="position: absolute; left: 480px;"><input type="button" value="Ver" style="position: absolute; left: 700px;">
+        </div>
+        <table class="" style="position: absolute; top: 120px;" >
+            <tr><td>Seleccionar</td><td>Fecha</td><td>Medico</td><td>Especialidad</td><td>Diagnostico principal</td><td>Comentarios</td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
+        </table>
+      </form>
+      <form action="" style="position: absolute;top: 850px;"><input type="button" value="Imprimir"><input type="button" value="Generar PDF" style="position: absolute; left: 100px;"></form>
+    <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+    
+    
 </body>
-
+<script>
+    function refmedico() {
+      location.href="http://127.0.0.1:5000/medico"
+    }
+    function reflogin() {
+      location.href="http://127.0.0.1:5000"
+    }
+  </script>
 </html>
 <link rel="stylesheet" href="/static/css/estilos.css">

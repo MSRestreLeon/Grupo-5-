@@ -1,4 +1,5 @@
 .franja {
+    position: absolute;
     background-color: #1E43C6;
     color: #ffffff;
     height: 40px;
@@ -7,16 +8,18 @@
     font-size: 25px;
     line-height: 29px;
     text-align: center;
+    left: 0px;
+    right: 0px;
 }
 .perfil {
     position: absolute;
     width: 345px;
     height: 23px;
-    left: 393px;
+    left: 250px;    
     background: #C4C4C4;
 }
 .his_cli{
-    width: 100px;
+    width: 160px;
     background: white;
 }
 .separacion{
@@ -70,3 +73,37 @@
     border-style: groove groove groove none;
     }
 
+.footer{
+    position: absolute;
+    background-color: #1E43C6;
+    color: #ffffff;
+    text-align: center;
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    left: 0px;
+    right: 0px;
+}
+.textoConsulta {
+    text-align: left;
+    position: absolute;
+    width: 800px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.textoAutorizaciones {
+    text-align: left;
+    position: absolute;
+    width: 500px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.datosConsulta{
+    position: absolute;
+    width: 145px;
+    height: 23px;
+    left: 300px;    
+    background: #C4C4C4; 
+}
