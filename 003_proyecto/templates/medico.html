@@ -15,33 +15,31 @@
     <div><img class="fotoperfil" src="static/images/person.png"></div> 
     <div style="position: absolute; left: 400px;top: 90px;">Recuerde mantener sus datos basicos actualizados</div>
     <form action="" method="">
-      <div style=" position: absolute; top: 126px;left: 250px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </div>
-      <div style=" position: absolute; top: 167px;left: 250px;">Nombre <input type="text" name="nombre" class="perfil"> </div>
-      <div style=" position: absolute; top: 208px;left: 250px;">Cargo/Especialidad<input type="text" name="cargo" class="perfil"><input type="button" value="Editar/Guardar" style="left: 700px;position: absolute;"></div>
-      <div style=" position: absolute; top: 253px;left: 250px;">Edad<input type="text" name="edad" class="perfil"></div>
-      <div style=" position: absolute; top: 300px;left: 250px;">Correo electronico <input type="text" name="correo" class="perfil"></div>
+      <div style=" position: absolute; top: 126px;left: 250px;">Documento de identidad<input id="documentoIdentidad" type="text" name="cedula" class="perfil" > </div>
+      <div style=" position: absolute; top: 167px;left: 250px;">Nombre <input id="nombre" type="text" name="nombre" class="perfil"> </div>
+      <div style=" position: absolute; top: 208px;left: 250px;">Cargo/Especialidad<input id="cargo" type="text" name="cargo" class="perfil"><input type="button" onclick="validarDatos()" value="Editar/Guardar" style="left: 700px;position: absolute;"></div>
+      <div style=" position: absolute; top: 253px;left: 250px;">Edad<input id="edad" type="text" name="edad" class="perfil"></div>
+      <div style=" position: absolute; top: 300px;left: 250px;">Correo electronico <input id="correo" type="text" name="correo" class="perfil"></div>
     </form>
     <form action="">
       <div style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 50px;">Consulta Historia Clinica Paciente</div>
-      <div> <input type="search"  placeholder="Documento de identidad paciente " style="position: absolute;width: 296px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
-      <div><img src="static/images/search.png" alt="" onclick="refhisPaciente()" style="position: absolute;width: 30px;height: 30px;left: 1402px;top: 70px;"></div>
+      <div> <input type="text" id="docPaciente" placeholder="Documento de identidad paciente " style="position: absolute;width: 296px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
+      <div><img src="static/images/search.png" alt="" onclick="refhisPaciente()" style="position: absolute;width: 30px;height: 30px;left: 1410px;top: 70px;"></div>
     </form>
     <form action="" style="position: absolute;top: 350px;">
       <p>A continuacion podra consultar su agenda de citas</p>
       <div>
-        <label for="">Ingrese fecha a consultar</label><input type="date"><menu type="toolbar"></menu>
+        <label for="">Ingrese fecha a consultar</label><input type="date">
       </div>
-      <table class="" >
-          <tr><td>Hora</td><td>Descripcion cita</td></tr>
-          <tr><td>05:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>06:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>07:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>08:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>09:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>10:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>11:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-          <tr><td>12:00 AM</td><td><input type="button" onclick="refconsPaciente()" class="his_cli"></tr>
-      </table>
+      <div>
+        <select name="">
+          <option value="1">Citas medicas</option> 
+          <option value="2">Cita 1</option> 
+          <option value="3">Cita 2</option>
+          <option value="4">Cita 3</option> 
+          <option value="5">Cita 4</option> 
+       </select>
+      </div>
     </form>
     <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
 </body>
@@ -49,8 +47,37 @@
   function reflogin() {
     location.href="http://127.0.0.1:5000"
   }
+  function validarDatos(){
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var documento = document.getElementById("documentoIdentidad").value;
+    var nombre = document.getElementById("nombre").value;
+    var cargo = document.getElementById("cargo").value;
+    var edad = document.getElementById("edad").value;
+    var correo = document.getElementById("correo").value;
+    if(isNaN(documento)==false){
+      if(isNaN(nombre)){
+        if(isNaN(cargo)){
+          if(isNaN(edad)==false){
+            if(!expr.exec(correo)==false){
+              alert('datos guardados');
+              //actualizar base de datos
+            }
+          }
+        }
+      }
+    }else{
+      alert('datos no guardados');
+    }
+  }
   function refhisPaciente() {
-    location.href="http://127.0.0.1:5000/medico/historiaClinica"
+    var docPaciente = document.getElementById("docPaciente").value;
+    if (isNaN(docPaciente)){
+      // Si no se cumple la condicion...
+      alert('[ERROR] Debe de ingresar el documento de identidad correctamente ');
+      return false;
+    }else{
+      location.href="http://127.0.0.1:5000/medico/historiaClinica"
+    }
   }
   function refconsPaciente() {
     location.href="http://127.0.0.1:5000/medico/consultaMedica"
