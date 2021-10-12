@@ -86,4 +86,9 @@ def examenMedico():
     return render_template("examenMedico.html")
 
 
+@app.route("/paciente/historiaClinica")
+def pacienteHistoriaClinica():
+    return render_template("pacienteHistoriaClinica.html")
+
+
 app.run(debug=True)

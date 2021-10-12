@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas Médicas</title>
+</head>
+
+<body>
+    <div class="franja">Hospital Mision TIC 2020</div>
+    <div class="container-end">
+        <div class="icon">
+            <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
+        </div>
+        <div class="icon">
+            <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
+        </div>
+    </div>
+    <div class="border">
+        Agendamiento de Cita
+    </div>
+    <div class="container">
+        <label for="">Especialidad</label>
+        <select name="select">
+            <option value="value1">Especialidad 1</option>
+            <option value="value2">Especialidad 2</option>
+            <option value="value3">Especialidad 3</option>
+        </select>
+        <label for="">Medico</label>
+        <select name="select">
+            <option value="value1">Medico 1</option>
+            <option value="value2">Medico 2</option>
+            <option value="value3">Medico 3</option>
+        </select>
+        <label for="">Fecha</label>
+        <input type="date">
+        <label for="">Hora</label>
+        <input type="time">
+    </div>
+    <div>
+        <form>
+            <div class="button"><button type="button">Listar citas</button></div>
+        </form>
+    </div>
+    <div>
+        <form>
+            <textarea name="" id="" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
+            </textarea>
+        </form>
+    </div>
+    <div>
+        <form>
+            <div class="button"><button type="button">Solicitar cita</button></div>
+        </form>
+    </div>
+    <div class="border">
+        Citas pendientes
+    </div>
+    <div>
+        <form>
+            <div class="button"><button type="button">Listar citas pendientes</button></div>
+        </form>
+    </div>
+    <div>
+        <form>
+            <textarea name="" id="" cols="3" rows="30">Aquí obtenemos la lista de citas disponibles
+            </textarea>
+        </form>
+    </div>
+    <div class="border">
+        Citas pasadas
+    </div>
+    <div>
+        <form class="form-inline" action="">
+            <div class="box"><button type="button" style="margin-top: 0px;">Ver</button></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
+                    type="date"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
+                    type="date"></div>
+        </form>
+    </div>
+    <div>
+        <form>
+            <textarea name="" id="" cols="5" rows="30">Aquí obtenemos la lista de citas pasadas donde la primera columna es el id de la cita
+            </textarea>
+        </form>
+    </div>
+    <div class="border">
+        Calificar citas pasadas
+    </div>
+    <div>
+        <form class="form-inline" action="">
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Id cita</label><input
+                    type="number"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Calificación cita</label>
+                <select name="" id="">
+                    <option value="value1">1</option>
+                    <option value="value2">2</option>
+                    <option value="value3">3</option>
+                    <option value="value3">4</option>
+                    <option value="value3">5</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div>
+        <form>
+            <div class="button"><button type="button">Calificar cita</button></div>
+        </form>
+    </div>
+</body>
+
+</html>
+<link rel="stylesheet" href="/static/css/citaMedica.css">
