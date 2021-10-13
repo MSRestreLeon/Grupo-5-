@@ -15,7 +15,7 @@ def registrarse():
     return render_template("registrarse.html")
 
 
-@app.route("/recuperarContrasena")
+@app.route("/recuperarContrasena", methods=["GET", "POST"])
 def recuperarContrasena():
     return render_template("recuperarContrasena.html")
 
