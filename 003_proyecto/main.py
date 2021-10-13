@@ -10,7 +10,7 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/registrarse")
+@app.route("/registrarse", methods=["GET", "POST"])
 def registrarse():
     return render_template("registrarse.html")
 

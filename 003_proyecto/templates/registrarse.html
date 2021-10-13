@@ -10,7 +10,7 @@
 
 <body>
     <div class="franja">Hospital Mision TIC 2020</div>
-    <form>
+    <form method="POST">
         <div class="container">
             <div class="box">Nombres</div>
             <div class="box"><input type="text"></div>
@@ -21,11 +21,25 @@
             <div class="box">Número de identificación</div>
             <div class="box"><input type="number"></div>
             <div class="box">Contraseña</div>
-            <div class="box"><input type="password"></div>
+            <div class="box"><input type="password" id="contrasena1" name="contrasena1"></div>
+            <div class="box">Confirmar contraseña</div>
+            <div class="box"><input type="password" id="contrasena2" name="contrasena2"></div>
             <div class="box"></div>
-            <div class="box"><button type="submit">Registrarse</button></div>
+            <div class="box"><button type="submit" onclick="validarContrasenas()">Registrarse</button></div>
         </div>
 </body>
 
 </html>
+<script>
+    function validarContrasenas() {
+        var contrasena1 = document.getElementById("contrasena1").value;
+        var contrasena2 = document.getElementById("contrasena2").value;
+        if (contrasena1 == contrasena2) {
+            alert('Cambio exitoso');
+        } else {
+            alert('[ERROR] Las contraseñas ingresadas no coinciden ');
+            return false;
+        }
+    }
+</script>
 <link rel="stylesheet" href="/static/css/registrarse.css">
