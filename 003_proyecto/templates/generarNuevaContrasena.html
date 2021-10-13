@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class = "franja"> Hospital Mision TIC 2020</div>
+    <div>
+        <label   style=" position: absolute; top: 126px;left: 550px;">Nueva contraseña</label><input style=" position: absolute; top: 126px;left: 800px;" type="password" id="contrasena1" name="id" >
+    </div>
+    <div>
+        <label  style=" position: absolute; top: 167px;left: 550px;">Confirmar contraseña</label><input style=" position: absolute; top: 167px;left: 800px;" type="password" id="contrasena2" name="password">
+    </div>
+    <div style=" position: absolute; top: 270px; left: 700px;">
+        <input  type="button" value="Guardar" onclick="validarContrasenas()">
+        
+    </div>
+    
+</body>
+
+<script>
+    function validarContrasenas() {
+    var contrasena1 = document.getElementById("contrasena1").value;
+    var contrasena2 = document.getElementById("contrasena2").value;
+    if (contrasena1==contrasena2){
+      alert('Cambio exitoso');
+    }else{
+      alert('[ERROR] Las contraseñas ingresadas no coinciden ');
+      return false;
+    }
+  }
+    function reflogin() {
+      location.href="http://127.0.0.1:5000"
+    }
+    function refRecuperarContrasena() {
+      location.href="http://127.0.0.1:5000/recuperarContrasena"
+    }
+    function refRegistrarse() {
+      location.href="http://127.0.0.1:5000/registrarse"
+    }
+  </script>
+</html>
+<link rel="stylesheet" href="/static/css/login.css">

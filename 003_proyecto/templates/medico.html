@@ -54,26 +54,29 @@
     var cargo = document.getElementById("cargo").value;
     var edad = document.getElementById("edad").value;
     var correo = document.getElementById("correo").value;
-    if(isNaN(documento)==false){
-      if(isNaN(nombre)){
-        if(isNaN(cargo)){
-          if(isNaN(edad)==false){
-            if(!expr.exec(correo)==false){
-              alert('datos guardados');
+    if(isNaN(documento)==false && (documento=="")==false){
+      if((!/^[A-Z]+$/i.test(nombre))==false && (nombre=="")==false){
+        if((!/^[A-Z]+$/i.test(cargo)) == false && (cargo=="")==false){
+          if(isNaN(edad)==false && (edad=="")==false){
+            if(!expr.exec(correo)==false && (correo=="")==false){
+              alert('Datos guardados');
               //actualizar base de datos
-            }
-          }
-        }
-      }
-    }else{
-      alert('datos no guardados');
-    }
+            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
+          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
+        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
+      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
+    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
   }
   function refhisPaciente() {
     var docPaciente = document.getElementById("docPaciente").value;
-    if (isNaN(docPaciente)){
+    if (docPaciente==""){
+      if(isNaN(docPaciente)){
+        // Si no se cumple la condicion...
+        alert('[ERROR] Debe de ingresar el documento de identidad del paciente correctamente ');
+        return false;
+      }
       // Si no se cumple la condicion...
-      alert('[ERROR] Debe de ingresar el documento de identidad correctamente ');
+      alert('[ERROR] Debe de ingresar el documento de identidad del paciente correctamente ');
       return false;
     }else{
       location.href="http://127.0.0.1:5000/medico/historiaClinica"
