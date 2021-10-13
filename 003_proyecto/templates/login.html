@@ -11,20 +11,48 @@
 <body>
     <div class = "franja"> Hospital Mision TIC 2020</div>
     <div>
-        <label for="id" style=" position: absolute; top: 126px;left: 550px;">Documento de identidad</label><input style=" position: absolute; top: 126px;left: 800px;" type="number" id="id" name="id" >
+        <label  style=" position: absolute; top: 126px;left: 550px;">Documento de identidad</label><input style=" position: absolute; top: 126px;left: 800px;" type="number" id="cedula"  >
     </div>
     <div>
-        <label for="password" style=" position: absolute; top: 167px;left: 550px;">Contraseña</label><input style=" position: absolute; top: 167px;left: 800px;" type="password" id="password" name="password">
+        <label  style=" position: absolute; top: 167px;left: 550px;">Contraseña</label><input style=" position: absolute; top: 167px;left: 800px;" type="password" id="contraseña" >
     </div>
+    <div>
+      <label style=" position: absolute; top: 207px;left: 550px;"></label><select style=" position: absolute; top: 207px;left: 800px;" id="cargo" name="">
+        <option value="1">Cargo/perfil</option> 
+        <option value="2">Paciente</option> 
+        <option value="3">Medico</option>
+        <option value="4">Super administrador</option> 
+     </select>
+  </div>
     <div style=" position: absolute; top: 270px; left: 600px;">
-        <input  type="submit" value="Ingresar" >
+        <input  type="submit" value="Ingresar" onclick="ingresar()">
         <input  type="button" value="Recuperar contraseña" onclick="refRecuperarContrasena()">
-        <input type="button" value="Registrarse">
+        <input type="button" value="Registrarse" onclick="refRegistrarse()">
     </div>
-    
+    <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
 </body>
 
 <script>
+    function ingresar() {
+      var cedula = document.getElementById("cedula").value;
+      var contraseña = document.getElementById("contraseña").value;
+      var perfil = document.getElementById("cargo").value;
+      if ((cedula=="")==false&&(contraseña=="")==false) {
+        if(perfil=="1"){
+          alert('[ERROR] Elija un cargo');
+        }
+        if(perfil=="2"){
+          location.href="http://127.0.0.1:5000/paciente"
+        }
+        if(perfil=="3") {
+          location.href="http://127.0.0.1:5000/medico"
+        }
+        if(perfil=="4") {
+          location.href="http://127.0.0.1:5000/superAdministrador"
+        } 
+      }else{alert('[ERROR] Favor diligencie los campos requeridos');}
+      
+    }
     function reflogin() {
       location.href="http://127.0.0.1:5000"
     }
@@ -37,3 +65,4 @@
   </script>
 </html>
 <link rel="stylesheet" href="/static/css/login.css">
+<link rel="stylesheet" href="/static/css/estilos.css">

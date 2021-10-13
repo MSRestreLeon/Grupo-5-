@@ -100,6 +100,14 @@
     height: 70px;   
     background: #C4C4C4;
 }
+.textoHistoriaClinica {
+    text-align: left;
+    position: absolute;
+    width: 1350px;
+    height: 200px;
+    top:120px;   
+    background: #C4C4C4;
+}
 .datosConsulta{
     position: absolute;
     width: 145px;

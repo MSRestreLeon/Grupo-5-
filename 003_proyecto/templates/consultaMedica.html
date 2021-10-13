@@ -16,7 +16,7 @@
         <div><img src="/static/images/home.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1332px;top: 50px;" onclick="refmedico()"></div>
     </form>
     <div style="position: absolute;top: 80px;">
-      <div><input type="checkbox"><label>Consulta Medica</label></div>
+      <div><label>Consulta Medica</label></div>
     </div> 
     <div style="position: absolute;top: 90px;left: 260px;">Datos paciente</div>
     <form action="" method="">
@@ -25,44 +25,117 @@
         <div style=" position: absolute; top: 206px;">Genero<input type="text" name="genero" class="perfil"></div>
         <div style=" position: absolute; top: 246px;">Edad<input type="text" name="edad" class="perfil"></div>
         <div style=" position: absolute; top: 286px;">Tipo de sangre <input type="text" name="nombre" class="perfil"> </div>
-        <div style=" position: absolute; top: 326px;">Sintomas<div><textarea name="" id="" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 426px;">Antecedentes familiares<div><textarea name="" id="" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 526px;">Cirugias<div><textarea name="" id="" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 626px;">Diagnostico<div><textarea name="" id="" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+        <div style=" position: absolute; top: 326px;">Sintomas<div><textarea name="" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+        <div style=" position: absolute; top: 426px;">Antecedentes familiares<div><textarea name="" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+        <div style=" position: absolute; top: 526px;">Cirugias<div><textarea name="" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+        <div style=" position: absolute; top: 626px;">Diagnostico<div><textarea name="" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     </form>
     <form action="" >
-      <div style="position:absolute;top:120px;left: 850px;">Peso<input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:170px;left: 850px;">Altura<input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:220px;left: 850px;">Precion arterial<input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:270px;left: 850px;">Temperatura<input type="text" class="datosConsulta"> </div>
-      <div style="position:absolute;top:320px;left: 850px;">Farmacologia consumo medicamentos <input type="checkbox"><input type="text"class="datosConsulta"></div>
-      <div style="position:absolute;top:370px;left: 850px;">Parejas<input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:420px;left: 850px;">Embarazos<input type="checkbox"> <input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:470px;left: 850px;">Nacidos vivos<input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:520px;left: 850px;">Parto Natural<input type="checkbox"><input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:570px;left: 850px;">Metodo Anticonceptivo<input type="checkbox"><input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:620px;left: 850px;">Cirugias<input type="checkbox"><input type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:670px;left: 850px;">Tabaco<input type="checkbox"><input type="text" class="datosConsulta"></div>
-      <!--<div style="position:absolute;top:120px;left: 1250px;">Consumo de alcohol<input type="checkbox"></div>
-      <div style="position:absolute;top:170px;left: 1250px;">Drogas<input type="checkbox"><input type="text"></div>
-      <div style="position:absolute;top:220px;left: 1250px;">Infusione<input type="checkbox"><input type="text"></div>-->
-      <div><input type="button" value="Guardar consulta" style="position:absolute;top:770px;left: 650px;"></div>
+      <div style="position:absolute;top:120px;left: 850px;">Peso<input id="peso" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:170px;left: 850px;">Altura<input id="altura" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:220px;left: 850px;">Precion arterial<input id="precion" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:270px;left: 850px;">Temperatura<input id="temperatura" type="text" class="datosConsulta"> </div>
+      <div style="position:absolute;top:320px;left: 850px;">Farmacologia consumo medicamentos <input id="farmacologiaCheck" type="checkbox"><input id="farmacologia" type="text"class="datosConsulta"></div>
+      <div style="position:absolute;top:370px;left: 850px;">Parejas<input id="parejas" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:420px;left: 850px;">Embarazos<input id="embarazosCheck" type="checkbox"> <input id="embarazos" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:470px;left: 850px;">Nacidos vivos<input id="nacidosVivos" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:520px;left: 850px;">Parto Natural<input id="partoNaturalCheck" type="checkbox"><input id="partoNatural" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:570px;left: 850px;">Metodo Anticonceptivo<input id="metodoAnticonceptivoCheck" type="checkbox"><input id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
+      <div style="position:absolute;top:620px;left: 850px;">Drogas<input id="drogasCheck" type="checkbox"><input id="drogas" type="text" class="datosConsulta"></div>
+      <div><input onclick="validarConsulta()" type="button" value="Guardar consulta" style="position:absolute;top:770px;left: 650px;"></div>
     </form>
     </form>
     <form action="" style=" position: absolute; top: 726px;">
-      <div><input type="checkbox"><label>Autorizacion de examenes medicos</label></div>
-      <div><textarea name="" id="" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
+      <div><label>Autorizacion de examenes medicos</label></div>
+      <div><textarea name="" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
     </form>
-    <form action="" style="position: absolute;top: 850px;"><input type="button" value="Imprimir"><input type="button" value="Guardar autorizaciones" style="position: absolute; left: 100px;"></form>
+    <form action="" style="position: absolute;top: 850px;"><input onclick="validarAutorizacionExamenesImprimir()" type="button" value="Imprimir"><input onclick="validarAutorizacionExamenes()" type="button" value="Guardar autorizaciones" style="position: absolute; left: 100px;"></form>
     <form action="" style=" position: absolute; top: 726px;left: 920px;">
-      <div><input type="checkbox"><label>Ordenes medicamentos - formulas</label></div>
-      <div><textarea name="" id="" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
+      <div><label>Ordenes medicamentos - formulas</label></div>
+      <div><textarea name="" id="medicamentos" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
     </form>
-    <form action="" style="position: absolute;top: 850px;left: 1000px;"><input type="button" value="Imprimir"><input type="button" value="Guardar ordenes medicamentos - Formula" style="position: absolute; left: 100px;"></form>
+    <form action="" style="position: absolute;top: 850px;left: 1000px;"><input onclick="validarOrdenesMedicamentosImprimir()" type="button" value="Imprimir"><input onclick="validarOrdenesMedicamentos()" type="button" value="Guardar ordenes medicamentos - Formula" style="position: absolute; left: 100px;"></form>
     <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>
+  function validarConsulta(){
+    var peso = document.getElementById("peso").value;
+    var altura = document.getElementById("altura").value;
+    var precion = document.getElementById("precion").value;
+    var temperatura = document.getElementById("temperatura").value;
+    var farmacologia = document.getElementById("farmacologia").value;
+    var farmacologiaCheck = document.getElementById("farmacologiaCheck").checked;
+    var parejas = document.getElementById("parejas").value;
+    var embarazos = document.getElementById("embarazos").value;
+    var embarazosCheck = document.getElementById("embarazosCheck").checked;
+    var nacidosVivos = document.getElementById("nacidosVivos").value;
+    var partoNatural = document.getElementById("partoNatural").value;
+    var partoNaturalCheck = document.getElementById("partoNaturalCheck").checked;
+    var metodoAnticonceptivo = document.getElementById("metodoAnticonceptivo").value;
+    var metodoAnticonceptivoCheck = document.getElementById("metodoAnticonceptivoCheck").checked;
+    var drogas = document.getElementById("drogas").value;
+    var drogasCheck = document.getElementById("drogasCheck").checked;
+    var sintomas = document.getElementById("sintomas").value;
+    var cirugias = document.getElementById("cirugias").value;
+    var antecedentes = document.getElementById("antecedentes").value;
+    var diagnostico = document.getElementById("diagnostico").value;
+    if(isNaN(peso)==false && (peso=="")==false){
+      if(isNaN(altura)==false && (altura=="")==false){
+        if(isNaN(precion)==false && (precion=="")==false){
+          if(isNaN(temperatura)==false && (temperatura=="")==false){
+            if((/^[A-ZÁÉÍÓÚÑ ]+$/i.test(farmacologia) && (farmacologia=="")==false)||(farmacologiaCheck==false)){
+              if (isNaN(parejas)==false && (parejas=="")==false) {
+                if ((isNaN(embarazos)==false && (embarazos=="")==false)||(embarazosCheck==false)) {
+                  if (isNaN(nacidosVivos)==false && (nacidosVivos=="")==false) {
+                    if ((isNaN(partoNatural)==false && (partoNatural=="")==false)||(partoNaturalCheck==false)) {
+                      if ((/^[A-ZÁÉÍÓÚÑ ]+$/i.test(metodoAnticonceptivo) && (metodoAnticonceptivo=="")==false)||(metodoAnticonceptivoCheck==false)) {
+                        if ((cirugias=="")==false) {
+                          if ((/^[A-ZÁÉÍÓÚÑ ]+$/i.test(drogas) && (drogas=="")==false)||(drogasCheck==false)) {
+                            if ((sintomas=="")==false) {
+                              if ((antecedentes=="")==false) {
+                                if ((diagnostico=="")==false) {
+                                  alert('Datos guardados');
+                                }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en diagnostico');}
+                              }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en antecedentes');}
+                            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en sintomas');}
+                          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en drogas');}
+                        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en cirugias');}
+                      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en metodo anticonceptivo');}
+                    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en parto natural');}
+                  }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en nacidos vivos');}
+                }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en embarazos');}
+              }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en parejas');}
+            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en farmacologia');}
+          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en temperatura');}
+        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en precion');}
+      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en altura');}
+    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en peso');}
+  }
+  function validarAutorizacionExamenes() {
+    var examenes = document.getElementById("examenes").value;
+    if (examenes=="") {
+      alert('[ERROR] Favor ingresar examenes medicos a cargar');
+    }else{alert('Examenes medicos cargados');}
+  }
+  function validarAutorizacionExamenesImprimir() {
+    var examenes = document.getElementById("examenes").value;
+    if (examenes=="") {
+      alert('[ERROR] Favor ingresar examenes medicos a imprimir');
+    }else{alert('Imprimiendo medicos cargados....');}
+  }
+  function validarOrdenesMedicamentos() {
+    var medicamentos = document.getElementById("medicamentos").value;
+    if (medicamentos=="") {
+      alert('[ERROR] Favor ingresar Ordenes de medicamentos a cargar');
+    }else{alert('Ordenes de medicamentos cargadas');}
+  }
+  function validarOrdenesMedicamentosImprimir() {
+    var medicamentos = document.getElementById("medicamentos").value;
+    if (medicamentos=="") {
+      alert('[ERROR] Favor ingresar Ordenes de medicamentos a imprimir');
+    }else{alert('Imprimiendo ordenes de medicamentos....');}
+  }
   function refmedico() {
     location.href="http://127.0.0.1:5000/medico"
   }

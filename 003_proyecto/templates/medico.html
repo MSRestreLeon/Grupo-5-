@@ -29,22 +29,19 @@
     <form action="" style="position: absolute;top: 350px;">
       <p>A continuacion podra consultar su agenda de citas</p>
       <div>
-        <label for="">Ingrese fecha a consultar</label><input type="date">
+        <label for="">Ingrese fecha a consultar</label><input id="fecha" type="date"><input type="button" value="Consultar agenda medica" onclick="validarFechaAgenda()">
       </div>
-      <div>
-        <select name="">
-          <option value="1">Citas medicas</option> 
-          <option value="2">Cita 1</option> 
-          <option value="3">Cita 2</option>
-          <option value="4">Cita 3</option> 
-          <option value="5">Cita 4</option> 
-       </select>
-      </div>
+      <textarea name="" id="" cols="30" rows="10" class="textoHistoriaClinica"></textarea>
+      <div style="position: absolute;top: 350px;left: 550px;">Ingrese Id de cita <input id="idCita" type="text"><input type="button" value="Ir a cita Medica" onclick="refConsPaciente()" style="position: absolute;left: 250px;"></div>
     </form>
     <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
 </body>
 <script>
   function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+  function idcita() {
+    
     location.href="http://127.0.0.1:5000"
   }
   function validarDatos(){
@@ -55,35 +52,44 @@
     var edad = document.getElementById("edad").value;
     var correo = document.getElementById("correo").value;
     if(isNaN(documento)==false && (documento=="")==false){
-      if((!/^[A-Z]+$/i.test(nombre))==false && (nombre=="")==false){
-        if((!/^[A-Z]+$/i.test(cargo)) == false && (cargo=="")==false){
-          if(isNaN(edad)==false && (edad=="")==false){
+      if(/^[A-ZÁÉÍÓÚÑ ]+$/i.test(nombre) && (nombre=="")==false){
+        if(/^[A-ZÁÉÍÓÚÑ ]+$/i.test(cargo) && (cargo=="")==false){
+          if(isNaN(edad)== false && (edad=="")==false){
             if(!expr.exec(correo)==false && (correo=="")==false){
               alert('Datos guardados');
               //actualizar base de datos
-            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
-          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
-        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
-      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
-    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados');}
+            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en correo');}
+          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en edad');}
+        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en cargo');}
+      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en nombre');}
+    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en documento');}
   }
   function refhisPaciente() {
     var docPaciente = document.getElementById("docPaciente").value;
     if (docPaciente==""){
+      alert('[ERROR] Debe de ingresar el documento del paciente ');
+      return false;
+    }else{
       if(isNaN(docPaciente)){
-        // Si no se cumple la condicion...
-        alert('[ERROR] Debe de ingresar el documento de identidad del paciente correctamente ');
-        return false;
-      }
       // Si no se cumple la condicion...
       alert('[ERROR] Debe de ingresar el documento de identidad del paciente correctamente ');
       return false;
-    }else{
-      location.href="http://127.0.0.1:5000/medico/historiaClinica"
+      }else{location.href="http://127.0.0.1:5000/medico/historiaClinica"}
     }
+    
   }
-  function refconsPaciente() {
-    location.href="http://127.0.0.1:5000/medico/consultaMedica"
+  function validarFechaAgenda() {
+    var fecha = document.getElementById("fecha").value;
+    if (fecha=="") {
+      alert('[ERROR] Debe de ingresar la fecha del dia de agenda a consultar');
+    }else{alert('Cargando agenda medica')}
+    
+  }
+  function refConsPaciente() {
+    var idCita = document.getElementById("idCita").value;
+    if (isNaN(idCita)== false && (idCita=="")==false) {
+      location.href="http://127.0.0.1:5000/medico/consultaMedica"
+    }else{alert('[ERROR] Debe de ingresar el id de la cita existente');}
   }
 </script>
 </html>
