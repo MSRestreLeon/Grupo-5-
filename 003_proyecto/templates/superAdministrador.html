@@ -39,12 +39,8 @@
 
 </form>
 <body>
-   <p>
-       <span></span>
-   </p>
-   <div>
-    <label>Edición Perfil Superadministrador</label>
-</div>
+  
+   <div style="text-align: center" >Edición Perfil Superadministrador</div>
 
 <form>
     <div class="container">
@@ -60,42 +56,22 @@
         <div class="box"><input type="text"></div>
         <div class="box">Fecha de Nacimiento</div>
         <div class="box"><input type="date"></div>
-
-
-    </form>
-    <form action="" method="" style=" position: absolute; top: 390px;">
-        
+        <div><input  class="btn btn-center" type="button" value="Editar"> </div>
+        <div><input class="btn btn-center" type="button" value="Guardar"> </div>
+        <div><label>INTERFAZ</label></div>
         <div></div>
-        <div></div>
-        
-        <div></div>
-        <div></div>
-        <div></div>
-      
-        <input class="container;btn btn-center" type="button" value="Editar"> 
-            <input class="btn btn-center" type="button" value="Guardar"> 
-        <p> 
-        
-        </p><label>INTERFAZ</label>
-        <p> 
-            <label>        Editar datos basicos  e informacion corespondiente a usuarios</label>
-        </p>
-        <input  class="container; btn btn-space" type="button" value="Apertura de Agenda"> 
-        <input class="btn btn-space" type="button" value="Datos Medicos"> 
-        <p> 
-             <input class="btn btn-space" type="button" value="Datos Pacientes"> 
-
-        
-            <input class="btn btn-space" type="button" value="Dashboard citas"onclick="refdashboard()"> 
-        </p>
-        
-
-    </form>
-   
-    
-    <div >
-        <img class="fotoperfil" src="static/images/person.png">
     </div>
+
+    <div class="container2">
+        <div><label>Editar datos basicos  e informacion corespondiente a usuarios</label></div>
+        <div></div>
+        <div><input  type="button" value="Apertura de Agenda"onclick="location.href='http://127.0.0.1:5000/superAdministrador/aperturaAgenda'"> </div>
+        <div><input  type="button" value="Datos Medicos"onclick="location.href='http://127.0.0.1:5000/medico'"> </div>
+        <div><input  type="button" value="Datos Pacientes"onclick="location.href='http://127.0.0.1:5000/paciente/historiaClinica'"> </div>
+        <div><input class="btn btn-space" type="button" value="Dashboard citas"onclick="location.href='http://127.0.0.1:5000/superAdministrador/dashboard'"> </div></div>
+    </div>
+    </form>
+    
 </body>
 
 
