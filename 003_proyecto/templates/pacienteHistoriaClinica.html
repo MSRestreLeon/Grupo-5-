@@ -34,25 +34,31 @@
     </div>
     <div>
         <form class="form-inline" action="">
-            <div class="box"><button type="button">Ver</button></div>
+            <div class="box"><button type="button" onclick="validarDatosHistClin()">Ver</button></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
+                    type="date" id="fechaInicialHistClin" name="fechaInicialHistClin"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
+                    type="date" id="fechaFinalHistClin" name="fechaFinalHistClin"></div>
         </form>
     </div>
     <div>
-        <form>
-            <textarea name="" id="" cols="5" rows="30">
+        <textarea name="" id="" cols="5" rows="30">
             </textarea>
-        </form>
     </div>
     <div>
-        <form>
-            <div class="button"><button type="button">Descargar</button></div>
-        </form>
+        <div class="button"><button type="button" onclick="validarDatosHistClin()">Descargar</button></div>
     </div>
 </body>
 
 </html>
 <link rel="stylesheet" href="/static/css/pacienteHistoriaClinica.css">
+<script>
+    function validarDatosHistClin() {
+        let fechaInicialHistClin = document.getElementById("fechaInicialHistClin").value;
+        let fechaFinalHistClin = document.getElementById("fechaFinalHistClin").value;
+
+        if (fechaInicialHistClin === '' || fechaFinalHistClin === '' || fechaInicialHistClin > fechaFinalHistClin) {
+            alert('Para ver y descargar los exámenes pendientes es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
+        }
+    }
+</script>

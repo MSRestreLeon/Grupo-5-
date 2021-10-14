@@ -10,22 +10,53 @@
 
 <body>
     <div class="franja">Hospital Mision TIC 2020</div>
-    <form>
+    <form method="POST">
         <div class="container">
             <div class="box">Nombres</div>
-            <div class="box"><input type="text"></div>
+            <div class="box"><input type="text" id="nombres" name="nombres"></div>
             <div class="box">Apellidos</div>
-            <div class="box"><input type="text"></div>
+            <div class="box"><input type="text" id="apellidos" name="apellidos"></div>
             <div class="box">Correo electrónico</div>
-            <div class="box"><input type="email"></div>
+            <div class="box"><input id="email" name="email" type="text"></div>
             <div class="box">Número de identificación</div>
-            <div class="box"><input type="number"></div>
+            <div class="box"><input type="number" id="id" name="id"></div>
             <div class="box">Contraseña</div>
-            <div class="box"><input type="password"></div>
+            <div class="box"><input type="password" id="contrasena1" name="contrasena1"></div>
+            <div class="box">Confirmar contraseña</div>
+            <div class="box"><input type="password" id="contrasena2" name="contrasena2"></div>
             <div class="box"></div>
-            <div class="box"><button type="submit">Registrarse</button></div>
+            <div class="box"><button type="submit" onclick="validarDatos()">Registrarse</button></div>
         </div>
 </body>
 
 </html>
+<script>
+    function validarDatos() {
+        let nombres = document.getElementById("nombres").value;
+        let apellidos = document.getElementById("apellidos").value;
+        let email = document.getElementById("email").value;
+        let id = document.getElementById("id").value;
+        let contrasena1 = document.getElementById("contrasena1").value;
+        let contrasena2 = document.getElementById("contrasena2").value;
+
+        if (nombres === '' || apellidos === ''
+            || email === '' || id === ''
+            || contrasena1 === '' || contrasena2 === '') {
+            alert('Existen campos en blanco')
+        }
+
+        if (!email.includes("@")) {
+            alert("Debe ingresar un correo válido que contenga @")
+        }
+
+        if (contrasena1 != contrasena2) {
+            alert('[ERROR] Las contraseñas ingresadas no coinciden');
+        }
+
+        if (contrasena1.length < 8 || contrasena2.length < 8) {
+            alert('[ERROR] La contraseña debe ser de mínimo 8 caracteres');
+        }
+
+    }
+</script>
 <link rel="stylesheet" href="/static/css/registrarse.css">

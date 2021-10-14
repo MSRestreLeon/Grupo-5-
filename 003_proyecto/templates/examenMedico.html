@@ -23,11 +23,11 @@
     </div>
     <div>
         <form class="form-inline" action="">
-            <div class="box"><button type="button">Ver</button></div>
+            <div class="box"><button type="button" onclick="validarDatosExamMedRealizado()">Ver</button></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
+                    type="date" id="fechaInicialExamMedRealizado" name="fechaInicialExamMedRealizado"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
+                    type="date" id="fechaFinalExamMedRealizado" name="fechaFinalExamMedRealizado"></div>
         </form>
     </div>
     <div>
@@ -38,7 +38,7 @@
     </div>
     <div>
         <form>
-            <div class="button"><button type="button">Descargar</button></div>
+            <div class="button"><button type="button" onclick="validarDatosExamMedRealizado()">Descargar</button></div>
         </form>
     </div>
     <div class="border">
@@ -46,11 +46,11 @@
     </div>
     <div>
         <form class="form-inline" action="">
-            <div class="box"><button type="button">Ver</button></div>
+            <div class="box"><button type="button" onclick="validarDatosExamMedPend()">Ver</button></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
+                    type="date" id="fechaInicialExamMedPend" name="fechaInicialExamMedPend"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
+                    type="date" id="fechaFinalExamMedPend" name="fechaFinalFinalExamMedPend"></div>
         </form>
     </div>
     <div>
@@ -61,10 +61,29 @@
     </div>
     <div>
         <form>
-            <div class="button"><button type="button">Descargar</button></div>
+            <div class="button"><button type="button" onclick="validarDatosExamMedPend()">Descargar</button></div>
         </form>
     </div>
 </body>
 
 </html>
 <link rel="stylesheet" href="/static/css/examenMedico.css">
+<script>
+    function validarDatosExamMedRealizado() {
+        let fechaInicialExamMedRealizado = document.getElementById("fechaInicialExamMedRealizado").value;
+        let fechaFinalExamMedRealizado = document.getElementById("fechaFinalExamMedRealizado").value;
+
+        if (fechaInicialExamMedRealizado === '' || fechaFinalExamMedRealizado === '' || fechaInicialExamMedRealizado > fechaFinalExamMedRealizado) {
+            alert('Para ver y descargar los exámenes realizados es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
+        }
+    }
+
+    function validarDatosExamMedPend() {
+        let fechaInicialExamMedPend = document.getElementById("fechaInicialExamMedPend").value;
+        let fechaFinalExamMedPend = document.getElementById("fechaFinalExamMedPend").value;
+
+        if (fechaInicialExamMedPend === '' || fechaFinalExamMedPend === '' || fechaInicialExamMedPend > fechaFinalExamMedPend) {
+            alert('Para ver y descargar los exámenes pendientes es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
+        }
+    }
+</script>

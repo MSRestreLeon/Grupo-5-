@@ -21,71 +21,62 @@
     <div class="border">
         Agendamiento de Cita
     </div>
-    <div class="container">
-        <label for="">Especialidad</label>
-        <select name="select">
-            <option value="value1">Especialidad 1</option>
-            <option value="value2">Especialidad 2</option>
-            <option value="value3">Especialidad 3</option>
-        </select>
-        <label for="">Medico</label>
-        <select name="select">
-            <option value="value1">Medico 1</option>
-            <option value="value2">Medico 2</option>
-            <option value="value3">Medico 3</option>
-        </select>
-        <label for="">Fecha</label>
-        <input type="date">
-        <label for="">Hora</label>
-        <input type="time">
+    <form action="" , method="post">
+        <div class="container">
+            <label for="">Especialidad</label>
+            <select name="select" id="especialidad" name=especialidad>
+                <option value="value1">Especialidad 1</option>
+                <option value="value2">Especialidad 2</option>
+                <option value="value3">Especialidad 3</option>
+            </select>
+            <label for="">Medico</label>
+            <select name="select" id="especialidad" name="especialidad">
+                <option value="value1">Medico 1</option>
+                <option value="value2">Medico 2</option>
+                <option value="value3">Medico 3</option>
+            </select>
+            <label for="">Fecha</label>
+            <input type="date" id="fechaAgendaCita" name="fechaAgendaCita">
+            <label for="">Hora</label>
+            <input type="time" id="horaAgendaCita" name="horaAgendaCita">
+        </div>
+    </form>
+    <div>
+        <div class="button"><button type="submit" onclick="validarDatosAgendaCita()">Listar citas</button></div>
     </div>
     <div>
-        <form>
-            <div class="button"><button type="button">Listar citas</button></div>
-        </form>
-    </div>
-    <div>
-        <form>
-            <textarea name="" id="" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
+        <textarea name="" id="" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
             </textarea>
-        </form>
     </div>
     <div>
-        <form>
-            <div class="button"><button type="button">Solicitar cita</button></div>
-        </form>
+        <div class="button"><button type="submit" onclick="validarDatosAgendaCita()">Solicitar cita</button></div>
     </div>
     <div class="border">
         Citas pendientes
     </div>
     <div>
-        <form>
-            <div class="button"><button type="button">Listar citas pendientes</button></div>
-        </form>
+        <div class="button"><button type="button">Listar citas pendientes</button></div>
     </div>
     <div>
-        <form>
-            <textarea name="" id="" cols="3" rows="30">Aquí obtenemos la lista de citas disponibles
+        <textarea name="" id="" cols="3" rows="30">Aquí obtenemos la lista de citas disponibles
             </textarea>
-        </form>
     </div>
     <div class="border">
         Citas pasadas
     </div>
     <div>
         <form class="form-inline" action="">
-            <div class="box"><button type="button" style="margin-top: 0px;">Ver</button></div>
+            <div class="box"><button type="button" style="margin-top: 0px;"
+                    onclick="validarDatosCitasPasadas()">Ver</button></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date"></div>
+                    type="date" id="fechaInicialCitaPasada" name="fechaInicialCitaPasada"></div>
+            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
+                    type="date" id="fechaFinalCitaPasada" name="fechaFinalCitaPasada"></div>
         </form>
     </div>
     <div>
-        <form>
-            <textarea name="" id="" cols="5" rows="30">Aquí obtenemos la lista de citas pasadas donde la primera columna es el id de la cita
+        <textarea name="" id="" cols="5" rows="30">Aquí obtenemos la lista de citas pasadas donde la primera columna es el id de la cita
             </textarea>
-        </form>
     </div>
     <div class="border">
         Calificar citas pasadas
@@ -106,11 +97,28 @@
         </form>
     </div>
     <div>
-        <form>
-            <div class="button"><button type="button">Calificar cita</button></div>
-        </form>
+        <div class="button"><button type="button">Calificar cita</button></div>
     </div>
 </body>
 
 </html>
 <link rel="stylesheet" href="/static/css/citaMedica.css">
+<script>
+    function validarDatosAgendaCita() {
+        let fechaAgendaCita = document.getElementById("fechaAgendaCita").value;
+        let horaAgendaCita = document.getElementById("horaAgendaCita").value;
+
+        if (fechaAgendaCita === '' || horaAgendaCita === '') {
+            alert('Para listar las citas disponibles y solicitar una cita es necesario no dejar campos en blanco')
+        }
+    }
+
+    function validarDatosCitasPasadas() {
+        let fechaInicialCitaPasada = document.getElementById("fechaInicialCitaPasada").value;
+        let fechaFinalCitaPasada = document.getElementById("fechaFinalCitaPasada").value;
+
+        if (fechaInicialCitaPasada === '' || fechaFinalCitaPasada === '' || fechaInicialCitaPasada > fechaFinalCitaPasada) {
+            alert('Para ver las citas pasadas es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
+        }
+    }
+</script>

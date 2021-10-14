@@ -30,39 +30,34 @@
     </form>
     
     <form action="" style="position: absolute;top: 500px;">
-        <p>A continuacion podra consultar la historia clinica del paciente</p>
-        <div>
-          <div><label for="">Ingrese rango de fechas a consultar</label></div>
-          <label for="">Ingrese fecha inicial </label><input id="fecha1" type="date">
-          <label for="">Ingrese fecha final </label><input id="fecha2" type="date" style="position: absolute; left: 480px;"><input onclick="validarFechas()" type="button" value="Ver" style="position: absolute; left: 700px;">
-        </div>
-        <table class="" style="position: absolute; top: 120px;" >
-            <tr><td>Seleccionar</td><td>Fecha</td><td>Medico</td><td>Especialidad</td><td>Diagnostico principal</td><td>Comentarios</td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-            <tr><td><input type="checkbox"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td><td><input type="text" class="his_cli"></td></tr>
-        </table>
-      </form>
-      <form action="" style="position: absolute;top: 850px;"><input type="button" value="Imprimir"><input type="button" value="Generar PDF" style="position: absolute; left: 100px;"></form>
+      <p>A continuacion podra consultar la historia clinica del paciente</p>
+      <div>
+        <div><label for="">Ingrese rango de fechas a consultar</label></div>
+        <label for="">Ingrese fecha inicial </label><input id="fecha1" type="date">
+        <label for="">Ingrese fecha final </label><input id="fecha2" type="date" style="position: absolute; left: 480px;"><input onclick="validarFechas()" type="button" value="Ver" style="position: absolute; left: 700px;">
+      </div>
+      <div><textarea name="" id="historia" cols="30" rows="10" class="textoHistoriaClinica"></textarea></div>  
+    </form>
+    <form action="" style="position: absolute;top: 850px;"><input type="button" value="Imprimir" onclick="validarImprimir()"></form>
     <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
     
 </body>
 <script>
   function validarFechas() {
-    var date_regex = /^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[0-9])$/;
     var fecha1 = document.getElementById("fecha1").value;
     var fecha2 = document.getElementById("fecha2").value;
-    if (date_regex.test(fecha1)) {
-      if (date_regex.test(fecha2)) {
+    if ((fecha1=="")==false) {
+      if ((fecha2=="")==false) {
         alert ('fechas validadas')
-      }else{alert ('fechas no validas')}
-    }else{alert ('fechas no validas')}
+      }else{alert ('Fecha final sin diligenciar')}
+    }else{alert ('Fecha inicial sin diligenciar')}
+  }
+  function validarImprimir() {
+    var historia = document.getElementById("historia").value;
+    if (historia=="") {
+      alert ('Favor genere la historia clinica a imprimir')
+    }else{alert ('Imprimiendo......')}
   }
   function refmedico() {
     location.href="http://127.0.0.1:5000/medico"
