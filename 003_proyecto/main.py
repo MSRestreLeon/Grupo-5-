@@ -76,7 +76,7 @@ def paciente():
     return render_template("paciente.html")
 
 
-@app.route("/paciente/citaMedica")
+@app.route("/paciente/citaMedica", methods=["GET", "POST"])
 def citaMedica():
     return render_template("citaMedica.html")
 
