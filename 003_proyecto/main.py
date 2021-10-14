@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Login
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def login():
     return render_template("login.html")
 
@@ -15,7 +15,7 @@ def registrarse():
     return render_template("registrarse.html")
 
 
-@app.route("/recuperarContrasena")
+@app.route("/recuperarContrasena", methods=["GET", "POST"])
 def recuperarContrasena():
     return render_template("recuperarContrasena.html")
 
@@ -76,7 +76,7 @@ def paciente():
     return render_template("paciente.html")
 
 
-@app.route("/paciente/citaMedica")
+@app.route("/paciente/citaMedica", methods=["GET", "POST"])
 def citaMedica():
     return render_template("citaMedica.html")
 

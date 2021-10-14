@@ -17,7 +17,7 @@
             <div class="box">Apellidos</div>
             <div class="box"><input type="text" id="apellidos" name="apellidos"></div>
             <div class="box">Correo electrónico</div>
-            <div class="box"><input id="email" name="email" type="email"></div>
+            <div class="box"><input id="email" name="email" type="text"></div>
             <div class="box">Número de identificación</div>
             <div class="box"><input type="number" id="id" name="id"></div>
             <div class="box">Contraseña</div>
@@ -32,19 +32,29 @@
 </html>
 <script>
     function validarDatos() {
-        var nombres = document.getElementById("nombres").value;
-        var apellidos = document.getElementById("apellidos").value;
-        var email = document.getElementById("email").value;
-        var id = document.getElementById("id").value;
-        var contrasena1 = document.getElementById("contrasena1").value;
-        var contrasena2 = document.getElementById("contrasena2").value;
+        let nombres = document.getElementById("nombres").value;
+        let apellidos = document.getElementById("apellidos").value;
+        let email = document.getElementById("email").value;
+        let id = document.getElementById("id").value;
+        let contrasena1 = document.getElementById("contrasena1").value;
+        let contrasena2 = document.getElementById("contrasena2").value;
+
         if (nombres === '' || apellidos === ''
             || email === '' || id === ''
             || contrasena1 === '' || contrasena2 === '') {
             alert('Existen campos en blanco')
         }
+
+        if (!email.includes("@")) {
+            alert("Debe ingresar un correo válido que contenga @")
+        }
+
         if (contrasena1 != contrasena2) {
             alert('[ERROR] Las contraseñas ingresadas no coinciden');
+        }
+
+        if (contrasena1.length < 8 || contrasena2.length < 8) {
+            alert('[ERROR] La contraseña debe ser de mínimo 8 caracteres');
         }
 
     }
