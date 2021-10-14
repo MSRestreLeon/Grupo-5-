@@ -49,10 +49,6 @@ def superAdministrador():
     return render_template("superAdministrador.html")
 
 
-@app.route("/superAdministrador/agendaMedica")
-def superAdministradorAgendaMedica():
-    return render_template("agendaSuper.html")
-
 
 @app.route("/superAdministrador/dashboard")
 def superAdministradorDashboard():
