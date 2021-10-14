@@ -27,17 +27,17 @@ def generarNuevaContrasena():
 # Rutas medico
 
 
-@app.route("/medico")
+@app.route("/medico", methods=["GET", "POST"])
 def medico():
     return render_template("medico.html")
 
 
-@app.route("/medico/historiaClinica")
+@app.route("/medico/historiaClinica", methods=["GET", "POST"])
 def historia_clinica():
     return render_template("historiaClinica.html")
 
 
-@app.route("/medico/consultaMedica")
+@app.route("/medico/consultaMedica", methods=["GET", "POST"])
 def consulta_medica():
     return render_template("consultaMedica.html")
 
