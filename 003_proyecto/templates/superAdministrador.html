@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,13 +30,11 @@
     
  
     <div class="SearchDiv">
-        <form id="searchForm" action="SearchController" method="post">
-            Cedula:<input type="text" name="searchQuery" required /> 
-            
-            
-            <input
-                type="submit" name="searchBtn" title="search" value="Buscar">
-        </form>
+        <form action="">
+            <div style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 50px;">Consulta Historia Clinica Paciente</div>
+            <div> <input type="text" id="docPaciente" placeholder="Documento de identidad paciente " style="position: absolute;width: 296px;height: 34px;left: 1102px;top: 70px;background: #ECECEC;border-radius: 15px;"> </div>
+            <div><img src="static/images/search.png" alt="" onclick="refhisPaciente()" style="position: absolute;width: 30px;height: 30px;left: 1410px;top: 70px;"></div>
+          </form>
     </div>
 
 </form>
@@ -45,15 +45,22 @@
    <div>
     <label>Edición Perfil Superadministrador</label>
 </div>
-    <form action="" method="">
-        <p style="padding-left:150px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </p>
-        <p style="padding-left:150px;">Nombre <input type="text" name="nombre" class="perfil"></p>
-            <p style="padding-left:150px;">Profesión<input type="text" name="profesion" class="perfil"></p>
-                <p style="padding-left:150px;">Fecha de nacimiento<input type="text" name="fechaDeNacimiento" class="perfil"></p>
-                    <p style="padding-left:150px;">Correo electronico <input type="text" name="correo" class="perfil"></p>
-                        <p style="padding-left:150px;">Cargo<input type="text" name="cargo" class="perfil"></p>
-                            
-  
+
+<form>
+    <div class="container">
+        <div class="box">Documento de identidad</div>
+        <div class="box"><input type="number"></div>
+        <div class="box">Nombre</div>
+        <div class="box"><input type="text"></div>
+        <div class="box">Correo electrónico</div>
+        <div class="box"><input type="email"></div>
+        <div class="box">Profesión</div>
+        <div class="box"><input type="text"></div>
+        <div class="box">Cargo</div>
+        <div class="box"><input type="text"></div>
+        <div class="box">Fecha de Nacimiento</div>
+        <div class="box"><input type="date"></div>
+
 
     </form>
     <form action="" method="" style=" position: absolute; top: 390px;">
@@ -65,7 +72,7 @@
         <div></div>
         <div></div>
       
-        <input class="btn btn-center" type="button" value="Editar"> 
+        <input class="container;btn btn-center" type="button" value="Editar"> 
             <input class="btn btn-center" type="button" value="Guardar"> 
         <p> 
         
@@ -73,7 +80,7 @@
         <p> 
             <label>        Editar datos basicos  e informacion corespondiente a usuarios</label>
         </p>
-        <input class="btn btn-space" type="button" value="Apertura de Agenda"> 
+        <input  class="container; btn btn-space" type="button" value="Apertura de Agenda"> 
         <input class="btn btn-space" type="button" value="Datos Medicos"> 
         <p> 
              <input class="btn btn-space" type="button" value="Datos Pacientes"> 
