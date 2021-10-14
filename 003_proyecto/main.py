@@ -49,22 +49,22 @@ def superAdministrador():
     return render_template("superAdministrador.html")
 
 
-@app.route("/superAdministrador/agendaMedica")
+@app.route("/superAdministrador/agendaMedica", methods=["GET", "POST"])
 def superAdministradorAgendaMedica():
     return render_template("agendaSuper.html")
 
 
-@app.route("/superAdministrador/dashboard")
+@app.route("/superAdministrador/dashboard", methods=["GET", "POST"])
 def superAdministradorDashboard():
     return render_template("dashboard.html")
 
 
-@app.route("/superAdministrador/historiaClinica")
+@app.route("/superAdministrador/historiaClinica", methods=["GET", "POST"])
 def superAdministradorHistoriaClinica():
     return render_template("historiaClinicaSuper.html")
 
 
-@app.route("/superAdministrador/aperturaAgenda")
+@app.route("/superAdministrador/aperturaAgenda", methods=["GET", "POST"])
 def superAdministradorAperturaAgenda():
     return render_template("aperturaAgenda.html")
 
@@ -81,12 +81,12 @@ def citaMedica():
     return render_template("citaMedica.html")
 
 
-@app.route("/paciente/examenMedico")
+@app.route("/paciente/examenMedico", methods=["GET", "POST"])
 def examenMedico():
     return render_template("examenMedico.html")
 
 
-@app.route("/paciente/historiaClinica")
+@app.route("/paciente/historiaClinica", methods=["GET", "POST"])
 def pacienteHistoriaClinica():
     return render_template("pacienteHistoriaClinica.html")
 
