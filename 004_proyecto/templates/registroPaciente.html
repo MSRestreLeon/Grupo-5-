@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/franja.css">
+    <link rel="stylesheet" href="/static/css/registroPaciente.css">
+    <script type="text/javascript" src="/static/js/validacionRegistroPaciente.js"></script>
+    <title>Registro pacientes</title>
+</head>
+
+<body>
+    <div class="franja">Hospital Universitario Santa Clara ESE</div>
+    <form action="/registroPaciente" method="POST" name="formRegistroPaciente" id="formRegistroPaciente">
+        <div class="containerRegistroPaciente">
+            <div><label>Nombres</label></div>
+            <div><input type="text" name="nombres" id="nombres"></div>
+            <div><label>Documento de identidad</label></div>
+            <div><input type="number" name="id" id="id"></div>
+            <div><label>Edad</label></div>
+            <div><input type="number" name="edad" id="edad"></div>
+            <div><label>Profesión</label></div>
+            <div><input type="text" name="profesion" id="profesion"></div>
+            <div><label>Email</label></div>
+            <div><input type="email" name="email" id="email"></div>
+            <div><label>Género</label></div>
+            <div>
+                <select name="genero" id="genero">
+                    <option value="noValido">Seleccione una opción</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+            </div>
+            <div><label>Tipo de sangre</label></div>
+            <div>
+                <select name="tipoSangre" id="tipoSangre">
+                    <option value="noValido">Seleccione una opción</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div><label>Contraseña</label></div>
+            <div><input type="password" name="password" id="password"></div>
+            <div><label>Confirmar contraseña</label></div>
+            <div><input type="password" name="confirmarPassword" id="confirmarPassword"></div>
+            <div></div>
+            <div><button type="submit">Registrarse</button></div>
+        </div>
+    </form>
+</body>
+
+</html>
