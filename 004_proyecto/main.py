@@ -2,6 +2,8 @@
 # Importar la clase Flask, el método render_template
 from flask import Flask, render_template, request
 import sqlite3
+# Importo la librería para cubrir el password
+import hashlib
 
 # Generar una instacia de la clase Flask
 # para que pueda encontrar los archivos templates
@@ -16,6 +18,7 @@ app = Flask(import_name=__name__)
 def login():
     if request.method == 'POST':
         id = request.form["id"]
+        password = request.form["password"]
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
@@ -36,13 +39,20 @@ def registroPaciente():
         genero = request.form["genero"]
         tipoSangre = request.form["tipoSangre"]
         password = request.form["password"]
+        # Ver https://www.geeksforgeeks.org/md5-hash-python/
+        # Codificar el password de tal manera que pueda ser
+        # aceptado por una función hash: password.encode(encoding="utf-8")
+        # Aplicar la función hash correspondiente hashlib.sha256()
+        # Generar la contraseña codificada en un formato hexadecimal: .hexdigest
+        passwordEncode = hashlib.sha256(
+            password.encode(encoding="utf-8")).hexdigest()
         rol = 'paciente'
         estado = 'activo'
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
             cursor.execute("INSERT INTO usuario VALUES (?, ?, ?, ?, ?)",
-                           [id, nombres, rol, password, estado])
+                           [id, nombres, rol, passwordEncode, estado])
             cursor.execute("INSERT INTO paciente VALUES (?, ?, ?, ?, ?, ?)",
                            [id, edad, profesion, email, genero, tipoSangre])
             connection.commit()
