@@ -6,3 +6,8 @@
     justify-content: center;
     column-gap: 0.5rem;
 }
+
+.containerMensaje {
+    text-align: center;
+    color:#ff0000;
+}

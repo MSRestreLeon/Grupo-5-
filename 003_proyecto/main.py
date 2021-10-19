@@ -1,15 +1,69 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import sqlite3
 import hashlib
+import os
 
 app = Flask(import_name=__name__)
+# Flask por default trabaja con sesiones
+# basadas en cookies. Las sesiones se encriptan
+# mediante una llave secreta: https://youtu.be/EqtHn_xsxTQ
+app.secret_key = os.urandom(24)
 
 # Login
 
 
 @app.route("/", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    # Especificar la variable mensaje
+    # como caracteres vacios para poder
+    # renderizar inicialmente la página
+    mensaje = ''
+    if request.method == 'POST':
+        # Las variables se obtinen a través del
+        # attributo name en cada elemento
+        id = request.form["id"]
+        password = request.form["password"]
+        passwordEncode = hashlib.sha256(
+            password.encode(encoding="utf-8")).hexdigest()
+        with sqlite3.connect("hospital.db") as connection:
+            # Ver información sobre el tema en
+            # https://rico-schmidt.name/pymotw-3/sqlite3/index.html > Objetos de fila
+            connection.row_factory = sqlite3.Row
+            cursor = connection.cursor()
+            cursor.execute(
+                "SELECT * FROM usuario WHERE id = ? AND password = ?",
+                [id, passwordEncode])
+            # Obtenemos la primera fila y guardarla como una variable
+            # llamada row
+            row = cursor.fetchone()
+            # Aquí verificamos que la fila no este vacía
+            # Si no esta vacía procedemos
+            if row:
+                # Para ver el tema de sesiones consultar:
+                # https://youtu.be/2Zz97NVbH0U y https://www.geeksforgeeks.org/login-and-registration-project-using-flask-and-mysql/
+                # Creamos una sesión
+                # Esta variable ya la teniamos definida
+                session["id"] = id
+                # Extraemos la variable rol de la fila para definir
+                # a que parte redirigir al usuario
+                session["rol"] = row["rol"]
+                # Debemos verificar si el usuario esta activo
+                session["estado"] = row["estado"]
+                if session["rol"] == 'superadministrador' and session["estado"] == 'activo':
+                    # Ver https://gist.github.com/rduplain/2173954
+                    # respecto a utilizar redirect
+                    return redirect(url_for('superAdministrador'))
+                elif session["rol"] == 'medico' and session["estado"] == 'activo':
+                    return redirect(url_for('medico'))
+                elif session["rol"] == 'paciente' and session["estado"] == 'activo':
+                    return redirect(url_for('paciente'))
+                elif session["estado"] == 'inactivo':
+                    mensaje = "El usuario se encuentra inactivo por favor comunicarse con el administrador del sistema"
+            # En caso que este vacía redireccionamos nuevamente al
+            # usuario a la página de login
+            else:
+                mensaje = "El documento de identidad o la contraseña son incorrectos o no existen"
+    return render_template("login.html", mensaje=mensaje)
 
 
 @app.route("/registroPaciente", methods=['GET', 'POST'])
