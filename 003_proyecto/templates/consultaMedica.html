@@ -9,55 +9,52 @@
 </head>
 
 <body>
-  <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" style="position: absolute; left: 1340px;top: 10px;" onclick="reflogin()"> </div>
-    <form action="" method="get">
-        <div><img src="/static/images/back.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1390px;top: 50px;" onclick="refmedico()"></div>
-        <div><img src="/static/images/home.png" alt="" style="position: absolute;width: 40px;height: 40px;left: 1332px;top: 50px;" onclick="refmedico()"></div>
-    </form>
-    <div style="position: absolute;top: 80px;">
-      <div><label>Consulta Medica</label></div>
-    </div> 
-    <div style="position: absolute;top: 90px;left: 260px;">Datos paciente</div>
-    <form action="" method="post">
-        <div style=" position: absolute; top: 126px;">Documento de identidad<input type="text" name="cedula" class="perfil" > </div>
-        <div style=" position: absolute; top: 166px;">Nombre <input type="text" name="nombre" class="perfil"> </div>
-        <div style=" position: absolute; top: 206px;">Genero<input type="text" name="genero" class="perfil"></div>
-        <div style=" position: absolute; top: 246px;">Edad<input type="text" name="edad" class="perfil"></div>
-        <div style=" position: absolute; top: 286px;">Tipo de sangre <input type="text" name="nombre" class="perfil"> </div>
-        <div style=" position: absolute; top: 326px;">Sintomas<div><textarea name="" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 426px;">Antecedentes familiares<div><textarea name="" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 526px;">Cirugias<div><textarea name="" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-        <div style=" position: absolute; top: 626px;">Diagnostico<div><textarea name="" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    </form>
-    <form action="" method="post" >
-      <div style="position:absolute;top:120px;left: 850px;">Peso<input id="peso" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:170px;left: 850px;">Altura<input id="altura" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:220px;left: 850px;">Precion arterial<input id="precion" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:270px;left: 850px;">Temperatura<input id="temperatura" type="text" class="datosConsulta"> </div>
-      <div style="position:absolute;top:320px;left: 850px;">Farmacologia consumo medicamentos <input id="farmacologiaCheck" type="checkbox"><input id="farmacologia" type="text"class="datosConsulta"></div>
-      <div style="position:absolute;top:370px;left: 850px;">Parejas<input id="parejas" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:420px;left: 850px;">Embarazos<input id="embarazosCheck" type="checkbox"> <input id="embarazos" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:470px;left: 850px;">Nacidos vivos<input id="nacidosVivos" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:520px;left: 850px;">Parto Natural<input id="partoNaturalCheck" type="checkbox"><input id="partoNatural" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:570px;left: 850px;">Metodo Anticonceptivo<input id="metodoAnticonceptivoCheck" type="checkbox"><input id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
-      <div style="position:absolute;top:620px;left: 850px;">Drogas<input id="drogasCheck" type="checkbox"><input id="drogas" type="text" class="datosConsulta"></div>
-      <div><input onclick="validarConsulta()" type="submit" value="Guardar consulta" style="position:absolute;top:770px;left: 650px;"></div>
-    </form>
-    </form>
-    <form action="" style=" position: absolute; top: 726px;">
-      <div><label>Autorizacion de examenes medicos</label></div>
-      <div><textarea name="" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
-    </form>
-    <form action="" method="post" style="position: absolute;top: 850px;"><input onclick="validarAutorizacionExamenesImprimir()" type="submit" value="Imprimir"><input onclick="validarAutorizacionExamenes()" type="submit" value="Guardar autorizaciones" style="position: absolute; left: 100px;"></form>
-    <form action="" style=" position: absolute; top: 726px;left: 920px;">
-      <div><label>Ordenes medicamentos - formulas</label></div>
-      <div><textarea name="" id="medicamentos" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
-    </form>
-    <form action="" style="position: absolute;top: 850px;left: 1000px;"><input onclick="validarOrdenesMedicamentosImprimir()" type="submit" value="Imprimir"><input onclick="validarOrdenesMedicamentos()" type="submit" value="Guardar ordenes medicamentos - Formula" style="position: absolute; left: 100px;"></form>
-    <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+  <div class="franja">Hospital Mision TIC 2020 <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
+    
+  <form action="" method="">
+    <div><img src="/static/images/back.png" class="home" alt=""  onclick="refmedico()"></div>
+    <div><img src="/static/images/home.png" class="back" alt=""  onclick="refmedico()"></div>
+  </form>
+
+  <div class="textoEncabezadoConsulta" >
+    <div><label>Consulta Medica</label></div>
+  </div> 
+
+  <div class="textoEncabezadoDatosPaciente">Datos paciente</div>
+
+  <form action="" method="get">
+    <div class="documento">            Documento de identidad             <input name="docPAciente" type="text" name="cedula" class="perfil" > </div>
+    <div class="nombre">               Nombre                             <input name="nombrePaciente" type="text" name="nombre" class="perfil"> </div>
+    <div class="genero">               Genero                             <input name="genero" type="text" name="genero" class="perfil"></div>
+    <div class="edad">                 Edad                               <input name="edad" type="text" name="edad" class="perfil"></div>
+    <div class="tipoRh">               Tipo de sangre                     <input name="tipoRh" type="text" name="nombre" class="perfil"> </div>
+  </form>
+
+  <form action="" method="post">
+    <div class="sintomas">             Sintomas                           <div><textarea name="sintomas" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="antecedentes">         Antecedentes familiares            <div><textarea name="antecedentes" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="cirugias">             Cirugias                           <div><textarea name="cirugias" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="diagnostico">          Diagnostico                        <div><textarea name="diagnostico" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="peso">                 Peso                               <input name="peso" id="peso" type="text" class="datosConsulta"></div>
+    <div class="altura">               Altura                             <input name="altura" id="altura" type="text" class="datosConsulta"></div>
+    <div class="precion">              Precion arterial                   <input name="precion" id="precion" type="text" class="datosConsulta"></div>
+    <div class="temperatura">          Temperatura                        <input name="temperatura" id="temperatura" type="text" class="datosConsulta"> </div>
+    <div class="farmacologia">         Farmacologia consumo medicamentos  <input id="farmacologiaCheck" type="checkbox"><input name="farmacologia" id="farmacologia" type="text"class="datosConsulta"></div>
+    <div class="parejas">              Parejas                            <input name="parejas" id="parejas" type="text" class="datosConsulta"></div>
+    <div class="embarazos">            Embarazos                          <input id="embarazosCheck" type="checkbox"> <input name="embarazos" id="embarazos" type="text" class="datosConsulta"></div>
+    <div class="nacidosVivos">         Nacidos vivos                      <input name="nacidosVivos" id="nacidosVivos" type="text" class="datosConsulta"></div>
+    <div class="partoNatural">         Parto Natural                      <input  id="partoNaturalCheck" type="checkbox"><input name="partoNatural" id="partoNatural" type="text" class="datosConsulta"></div>
+    <div class="metodoAnticonceptivo"> Metodo Anticonceptivo              <input id="metodoAnticonceptivoCheck" type="checkbox"><input name="metodoAnticonceptivo" id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
+    <div class="drogas">               Drogas                             <input id="drogasCheck" type="checkbox"><input name="dogras" id="drogas" type="text" class="datosConsulta"></div>
+    <div class="autorizaciones"><label>Autorizacion de examenes medicos   </label></div><div><textarea name="autorizacionExamenes" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
+    <div class="medicamentos"><label>  Ordenes medicamentos - formulas    </label></div><div><textarea name="ordenesMedicamentos" id="medicamentos" cols="30" rows="10" class="textoMedicamentos"></textarea></div>
+    <div><input  type="submit" onclick="validarConsulta()" value="Guardar consulta" class="buttonGuardarConsulta"></div>
+  </form>
+  <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>
+
   function validarConsulta(){
     var peso = document.getElementById("peso").value;
     var altura = document.getElementById("altura").value;
@@ -79,6 +76,9 @@
     var cirugias = document.getElementById("cirugias").value;
     var antecedentes = document.getElementById("antecedentes").value;
     var diagnostico = document.getElementById("diagnostico").value;
+    var examenes = document.getElementById("examenes").value;
+    var medicamentos = document.getElementById("medicamentos").value;
+
     if(isNaN(peso)==false && (peso=="")==false){
       if(isNaN(altura)==false && (altura=="")==false){
         if(isNaN(precion)==false && (precion=="")==false){
@@ -94,7 +94,11 @@
                             if ((sintomas=="")==false) {
                               if ((antecedentes=="")==false) {
                                 if ((diagnostico=="")==false) {
-                                  alert('Datos guardados');
+                                  if((examenes=="")==false) {
+                                    if ((medicamentos=="")==false) {
+                                      alert('Datos guardados');
+                                    }else{alert('[ERROR] Favor ingresar ordenes de medicamentos a cargar')}
+                                  }else{alert('[ERROR] Favor ingresar examenes medicos a cargar')}
                                 }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en diagnostico');}
                               }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en antecedentes');}
                             }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en sintomas');}
@@ -111,36 +115,17 @@
       }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en altura');}
     }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en peso');}
   }
-  function validarAutorizacionExamenes() {
-    var examenes = document.getElementById("examenes").value;
-    if (examenes=="") {
-      alert('[ERROR] Favor ingresar examenes medicos a cargar');
-    }else{alert('Examenes medicos cargados');}
-  }
-  function validarAutorizacionExamenesImprimir() {
-    var examenes = document.getElementById("examenes").value;
-    if (examenes=="") {
-      alert('[ERROR] Favor ingresar examenes medicos a imprimir');
-    }else{alert('Imprimiendo medicos cargados....');}
-  }
-  function validarOrdenesMedicamentos() {
-    var medicamentos = document.getElementById("medicamentos").value;
-    if (medicamentos=="") {
-      alert('[ERROR] Favor ingresar Ordenes de medicamentos a cargar');
-    }else{alert('Ordenes de medicamentos cargadas');}
-  }
-  function validarOrdenesMedicamentosImprimir() {
-    var medicamentos = document.getElementById("medicamentos").value;
-    if (medicamentos=="") {
-      alert('[ERROR] Favor ingresar Ordenes de medicamentos a imprimir');
-    }else{alert('Imprimiendo ordenes de medicamentos....');}
-  }
+
   function refmedico() {
     location.href="http://127.0.0.1:5000/medico"
   }
+
   function reflogin() {
     location.href="http://127.0.0.1:5000"
   }
 </script>
 </html>
+
 <link rel="stylesheet" href="/static/css/estilos.css">
+
+<link rel="stylesheet" href="/static/css/medico.css">

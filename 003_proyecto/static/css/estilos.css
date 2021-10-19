@@ -71,47 +71,11 @@
     }
     #phone {
     border-style: groove groove groove none;
-    }
+}
 
-.footer{
-    position: absolute;
-    background-color: #1E43C6;
-    color: #ffffff;
-    text-align: center;
-    height: 40px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 29px;
-    left: 0px;
-    right: 0px;
-}
-.textoConsulta {
-    text-align: left;
-    position: absolute;
-    width: 800px;
-    height: 70px;   
-    background: #C4C4C4;
-}
-.textoAutorizaciones {
-    text-align: left;
-    position: absolute;
-    width: 500px;
-    height: 70px;   
-    background: #C4C4C4;
-}
-.textoHistoriaClinica {
-    text-align: left;
-    position: absolute;
-    width: 1350px;
-    height: 200px;
-    top:120px;   
-    background: #C4C4C4;
-}
-.datosConsulta{
-    position: absolute;
-    width: 145px;
-    height: 23px;
-    left: 300px;    
-    background: #C4C4C4; 
-}
+
+
+
+
+
+
