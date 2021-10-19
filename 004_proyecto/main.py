@@ -19,7 +19,10 @@ def login():
     if request.method == 'POST':
         id = request.form["id"]
         password = request.form["password"]
+        passwordEncode = hashlib.sha256(
+            password.encode(encoding="utf-8")).hexdigest()
         with sqlite3.connect("hospital.db") as connection:
+            connection.row_factory = sqlite3.Row
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
             cursor.execute("INSERT INTO prueba VALUES (?)", [id])

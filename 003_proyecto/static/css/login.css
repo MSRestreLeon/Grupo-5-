@@ -1,10 +1,8 @@
-.franja {
-    background-color: #1E43C6;
-    color: #ffffff;
-    height: 40px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 29px;
-    text-align: center;
+.containerLogin {
+    display: grid;
+    margin: 0.8rem;
+    grid-template-columns: repeat(2, 10rem);
+    grid-template-rows: repeat(3, 2rem);
+    justify-content: center;
+    column-gap: 0.5rem;
 }

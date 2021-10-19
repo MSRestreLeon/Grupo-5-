@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
+import hashlib
 
 app = Flask(import_name=__name__)
 
@@ -11,9 +12,35 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/registrarse", methods=["GET", "POST"])
-def registrarse():
-    return render_template("registrarse.html")
+@app.route("/registroPaciente", methods=['GET', 'POST'])
+def registroPaciente():
+    if request.method == 'POST':
+        nombres = request.form["nombres"]
+        id = request.form["id"]
+        edad = request.form["edad"]
+        profesion = request.form["profesion"]
+        email = request.form["email"]
+        genero = request.form["genero"]
+        tipoSangre = request.form["tipoSangre"]
+        password = request.form["password"]
+        # Ver https://www.geeksforgeeks.org/md5-hash-python/
+        # Codificar el password de tal manera que pueda ser
+        # aceptado por una función hash: password.encode(encoding="utf-8")
+        # Aplicar la función hash correspondiente hashlib.sha256()
+        # Generar la contraseña codificada en un formato hexadecimal: .hexdigest
+        passwordEncode = hashlib.sha256(
+            password.encode(encoding="utf-8")).hexdigest()
+        rol = 'paciente'
+        estado = 'activo'
+        with sqlite3.connect("hospital.db") as connection:
+            # Lugar donde almacenamos todo lo que vamos a ejecutar
+            cursor = connection.cursor()
+            cursor.execute("INSERT INTO usuario VALUES (?, ?, ?, ?, ?)",
+                           [id, nombres, rol, passwordEncode, estado])
+            cursor.execute("INSERT INTO paciente VALUES (?, ?, ?, ?, ?, ?)",
+                           [id, edad, profesion, email, genero, tipoSangre])
+            connection.commit()
+    return render_template("registroPaciente.html")
 
 
 @app.route("/recuperarContrasena", methods=["GET", "POST"])
@@ -37,7 +64,7 @@ def medico():
         cargo = request.form["cargo"]
         idCita = request.form["idCita"]
         fechaAgenda = request.form["fechaAgenda"]
-        #Consultar y mostrar
+        # Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
@@ -63,7 +90,7 @@ def historia_clinica():
         fechaInicio = request.form["fechaInicio"]
         fechaFinal = request.form["fechaFinal"]
         historiaClinica = request.form["historiaClinica"]
-        #Consultar y mostrar
+        # Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
@@ -83,7 +110,7 @@ def consulta_medica():
         genero = request.form["genero"]
         edad = request.form["edad"]
         tipoRh = request.form["tipoRh"]
-        #Consultar y mostrar
+        # Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
@@ -110,12 +137,12 @@ def consulta_medica():
         drogas = request.form["dogras"]
         examenesMedicos = request.form["autorizacionExamenes"]
         ordenMedicamentos = request.form["ordenesMedicamentos"]
-        #Consultar y mostrar
+        # Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
             cursor.execute("INSERT INTO historiaClinica VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                           [id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos ])
+                           [id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos])
             connection.commit()
     return render_template("consultaMedica.html")
 
@@ -125,7 +152,6 @@ def consulta_medica():
 @app.route("/superAdministrador")
 def superAdministrador():
     return render_template("superAdministrador.html")
-
 
 
 @app.route("/superAdministrador/dashboard", methods=["GET", "POST"])
