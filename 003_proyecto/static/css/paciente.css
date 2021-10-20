@@ -6,12 +6,18 @@
     text-align: center;
 }
 
+.containerBienvenida {
+    text-align: center;
+    color: #ff0000;
+    margin: 0.5rem;
+}
+
 .icon {
     width: 150px;
     height: 150px;
 }
 
-.container {
+.containerDashboard {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

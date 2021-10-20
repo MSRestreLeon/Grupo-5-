@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.container {
+.containerRegistroPaciente {
     display: grid;
     grid-template-columns: 200px 500px;
     grid-template-rows: repeat(8, 20px);
