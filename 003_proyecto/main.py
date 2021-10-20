@@ -49,6 +49,9 @@ def login():
                 session["rol"] = row["rol"]
                 # Debemos verificar si el usuario esta activo
                 session["estado"] = row["estado"]
+                # Vamos a utilizar esta parte para obtener los nombres
+                # del usuario
+                session["nombres"] = row["nombres"]
                 if session["rol"] == 'superadministrador' and session["estado"] == 'activo':
                     # Ver https://gist.github.com/rduplain/2173954
                     # respecto a utilizar redirect
@@ -227,20 +230,36 @@ def superAdministradorAperturaAgenda():
 
 @app.route("/paciente")
 def paciente():
-    return render_template("paciente.html")
+    # En esta parte recuerde que la sesión es como un diccionario
+    # Es decir si la llave se encuentra en el diccionario entonces
+    # se obtiene true
+    if 'id' in session:
+        nombres = session["nombres"]
+    return render_template("paciente.html", nombres=nombres)
 
 
 @app.route("/paciente/citaMedica", methods=["GET", "POST"])
 def citaMedica():
+    if ('id' in session) and (request.method == 'POST'):
+        fechaInicialAgendaCita = request.form["fechaInicialAgendaCita"]
+        fechaFinalAgendaCita = request.form["fechaFinalAgendaCita"]
+        estado = 'disponible'
+        with sqlite3.connect("hospital.db") as connection:
+            connection.row_factory = sqlite3.Row
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM agendaMedica WHERE estado = ? AND (fecha BETWEEN ? AND ?)",
+                           [estado, fechaInicialAgendaCita, fechaFinalAgendaCita])
+            # Consultar esta página para mostrar datos en una tabla
+            # https://pythonbasics.org/flask-sqlite/
     return render_template("citaMedica.html")
 
 
-@app.route("/paciente/examenMedico", methods=["GET", "POST"])
+@ app.route("/paciente/examenMedico", methods=["GET", "POST"])
 def examenMedico():
     return render_template("examenMedico.html")
 
 
-@app.route("/paciente/historiaClinica", methods=["GET", "POST"])
+@ app.route("/paciente/historiaClinica", methods=["GET", "POST"])
 def pacienteHistoriaClinica():
     return render_template("pacienteHistoriaClinica.html")
 

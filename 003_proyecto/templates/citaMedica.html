@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/static/js/validacionCitaMedica.js"></script>
     <title>Citas Médicas</title>
 </head>
 
@@ -21,35 +22,23 @@
     <div class="border">
         Agendamiento de Cita
     </div>
-    <form action="" , method="post">
+    <form action="/paciente/citaMedica" , method="post">
         <div class="container">
-            <label for="">Especialidad</label>
-            <select name="select" id="especialidad" name=especialidad>
-                <option value="value1">Especialidad 1</option>
-                <option value="value2">Especialidad 2</option>
-                <option value="value3">Especialidad 3</option>
-            </select>
-            <label for="">Medico</label>
-            <select name="select" id="especialidad" name="especialidad">
-                <option value="value1">Medico 1</option>
-                <option value="value2">Medico 2</option>
-                <option value="value3">Medico 3</option>
-            </select>
-            <label for="">Fecha</label>
-            <input type="date" id="fechaAgendaCita" name="fechaAgendaCita">
-            <label for="">Hora</label>
-            <input type="time" id="horaAgendaCita" name="horaAgendaCita">
+            <label for="">Fecha Inicial</label>
+            <input type="date" id="fechaInicialAgendaCita" name="fechaInicialAgendaCita">
+            <label for="">Fecha Final</label>
+            <input type="date" id="fechaFinalAgendaCita" name="fechaFinalAgendaCita">
         </div>
     </form>
     <div>
-        <div class="button"><button type="submit" onclick="validarDatosAgendaCita()">Listar citas</button></div>
+        <div class="button"><button type="submit">Listar citas</button></div>
     </div>
     <div>
-        <textarea name="" id="" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
+        <textarea name="listaCitaMedica" id="listaCitaMedica" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
             </textarea>
     </div>
     <div>
-        <div class="button"><button type="submit" onclick="validarDatosAgendaCita()">Solicitar cita</button></div>
+        <div class="button"><button type="submit">Solicitar cita</button></div>
     </div>
     <div class="border">
         Citas pendientes
@@ -66,8 +55,7 @@
     </div>
     <div>
         <form class="form-inline" action="">
-            <div class="box"><button type="button" style="margin-top: 0px;"
-                    onclick="validarDatosCitasPasadas()">Ver</button></div>
+            <div class="box"><button type="button" style="margin-top: 0px;">Ver</button></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
                     type="date" id="fechaInicialCitaPasada" name="fechaInicialCitaPasada"></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
@@ -103,22 +91,4 @@
 
 </html>
 <link rel="stylesheet" href="/static/css/citaMedica.css">
-<script>
-    function validarDatosAgendaCita() {
-        let fechaAgendaCita = document.getElementById("fechaAgendaCita").value;
-        let horaAgendaCita = document.getElementById("horaAgendaCita").value;
-
-        if (fechaAgendaCita === '' || horaAgendaCita === '') {
-            alert('Para listar las citas disponibles y solicitar una cita es necesario no dejar campos en blanco')
-        }
-    }
-
-    function validarDatosCitasPasadas() {
-        let fechaInicialCitaPasada = document.getElementById("fechaInicialCitaPasada").value;
-        let fechaFinalCitaPasada = document.getElementById("fechaFinalCitaPasada").value;
-
-        if (fechaInicialCitaPasada === '' || fechaFinalCitaPasada === '' || fechaInicialCitaPasada > fechaFinalCitaPasada) {
-            alert('Para ver las citas pasadas es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
-        }
-    }
-</script>
+<script> </script>
