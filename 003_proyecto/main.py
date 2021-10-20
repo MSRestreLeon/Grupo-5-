@@ -122,11 +122,8 @@ def medico():
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO usuario VALUES (?, ?, ?, ?, ?)",
-                           [id, nombres, rol, password, estado])
-            cursor.execute("INSERT INTO paciente VALUES (?, ?, ?, ?, ?, ?)",
-                           [id, edad, profesion, email, genero, tipoSangre])
-            connection.commit()
+            for row in cursor.execute("SELECT * FROM agendaMedica WHERE docMedico = ? ",
+                [docMedico]):print(row)
     return render_template("medico.html")
 
 
@@ -174,6 +171,7 @@ def consulta_medica():
                            [id, edad, profesion, email, genero, tipoSangre])
             connection.commit()
     if request.method == 'post':
+        id = request.form["peso"]
         sintomas = request.form["sintomas"]
         antecedentes = request.form["nombreMedico"]
         cirugias = request.form["cirugias"]
@@ -195,7 +193,7 @@ def consulta_medica():
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO historiaClinica VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            cursor.execute("INSERT INTO historiaClinica (id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                            [id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos])
             connection.commit()
     return render_template("consultaMedica.html")

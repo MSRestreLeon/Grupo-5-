@@ -206,11 +206,11 @@
 }
 .textoEncabezadoConsulta{
     position: absolute;
-    top: 150px;
+    top: 90px;
 }
 .textoEncabezadoDatosPaciente{
     position: absolute;
-    top: 150px;
+    top: 90px;
     left: 260px;
 }
 .textoEncabezadoPerfil{
