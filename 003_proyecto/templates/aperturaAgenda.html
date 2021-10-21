@@ -20,15 +20,13 @@
     </div> 
     <div >Favor ingrese el documento de identidad del medico </div>
     <form action="" method="">
-    <div>
-    <div >            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfil" > </div>
-    <div >              Fecha                      <input id="fecha" name="especialidad" type="text"  class="perfil"> </div>
-    <div  >               Hora                            <input id="hora" name="estado" type="text"  class="perfil"> </div>
-    <var>
-        <p></p>
-    </var>
-    <div  style="margin-bottom: 5%;" class="cargo">               Estado                            <input id="estado" name="estado" type="text"  class="perfil"> </div>
-    <div><button type="submit" onclick="validarEdicion()" class="buttonEditarPaciente">Abrir Agenda</button></div>
+    <div >
+    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfil" > </div>
+    <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="text"  class="perfil"> </div>
+    <div class="cargo">                Hora                            <input id="hora" name="hora" type="text"  class="perfil"> </div>
+    <div class="genero">               Estado                            <input id="estado" name="estado" type="text"  class="perfil"> </div>
+
+    <div><button type="submit" onclick="validarEdicion()" class="buttonApertura">Abrir Agenda</button></div>
   </form>
 </div>
 </body>
@@ -38,27 +36,15 @@
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
     var estado = document.getElementById("estado").value;
-    if ((docMedico=="")==false){
-        if (isNaN(docMedico)==false) {
-            alert('Cedula actualizada');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
-    }
-    if ((fecha=="")==false){
-        if (isNaN(fecha)) {
-            alert('Especialidad actualizada');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente la fecha');}
-    }
-    if ((hora=="")==false) {
-        if ((hora="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente la hora');}
-    }
-    if ((estado=="")==false) {
-        if ((estado="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
-    }
-    
+    if (((docMedico=="")==false)&&(isNaN(docMedico)==false)) {
+      if ((fecha=="")==false) {
+        if ((hora=="")==false) {
+          if ((estado=="")==false) {
+            alert('Cita cargada')
+          }else{alert('Favor llenar estado')}
+        }else{alert('Favor llenar hora')}
+      }else{alert('Favor llenar fecha')}
+    }else{alert('Favor llenar documento de identidad de medico o revisar el dato ingresado')}
   }
     function refSuperAdmin() {
     location.href="http://127.0.0.1:5000/superAdministrador"

@@ -292,7 +292,11 @@
     top: 90px;
     
 }
-.buttonEditarPaciente{
+.buttonEditarMedico{
     position: absolute; 
     top: 246px;
+}
+.buttonApertura{
+    position: absolute; 
+    top: 286px;
 }
