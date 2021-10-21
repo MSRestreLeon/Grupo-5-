@@ -20,36 +20,34 @@
     <div><label>Consulta Medica</label></div>
   </div> 
 
-  <div class="textoEncabezadoDatosPaciente">Datos paciente</div>
+  <div class="textoEncabezadoDatosPaciente">Favor ingrese los siguentes datos </div>
 
-  <form action="" method="get">
-    <div class="documento">            Documento de identidad             <input name="docPAciente" type="text" name="cedula" class="perfil" > </div>
-    <div class="nombre">               Nombre                             <input name="nombrePaciente" type="text" name="nombre" class="perfil"> </div>
-    <div class="cargo">                Genero                             <input name="genero" type="text" name="genero" class="perfil"></div>
-    <div class="genero">               Edad                               <input name="edad" type="text" name="edad" class="perfil"></div>
-    <div class="edad">                 Tipo de sangre                     <input name="tipoRh" type="text" name="nombre" class="perfil"> </div>
-  </form>
-
-  <form action="" method="post">
-    <div class="sintomas">             Sintomas                           <div><textarea name="sintomas" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    <div class="antecedentes">         Antecedentes familiares            <div><textarea name="antecedentes" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    <div class="cirugias">             Cirugias                           <div><textarea name="cirugias" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    <div class="diagnostico">          Diagnostico                        <div><textarea name="diagnostico" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    <div class="peso">                 Peso                               <input name="peso" id="peso" type="text" class="datosConsulta"></div>
-    <div class="altura">               Altura                             <input name="altura" id="altura" type="text" class="datosConsulta"></div>
-    <div class="precion">              Precion arterial                   <input name="precion" id="precion" type="text" class="datosConsulta"></div>
-    <div class="temperatura">          Temperatura                        <input name="temperatura" id="temperatura" type="text" class="datosConsulta"> </div>
+  <form action="" method="POST">
+    <div>
+    <div class="documento">            Documento de identidad del paciente* <input name="docPaciente" type="text" class="perfil" > </div>
+    <div class="nombre">               Id cita*                            <input name="idCita" type="text"  class="perfil"> </div>
+    <div class="genero">               A continuacion ingresar los datos solicitados de la consulta medica</div>
+    <div class="sintomas">             Sintomas*                          <div><textarea name="sintomas" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="antecedentes">         Antecedentes familiares*            <div><textarea name="antecedentes" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="cirugias">             Cirugias*                           <div><textarea name="cirugias" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="diagnostico">          Diagnostico*                        <div><textarea name="diagnostico" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
+    <div class="peso">                 Peso*                               <input name="peso" id="peso" type="text" class="datosConsulta"></div>
+    <div class="altura">               Altura*                             <input name="altura" id="altura" type="text" class="datosConsulta"></div>
+    <div class="precion">              Precion arterial*                   <input name="precion" id="precion" type="text" class="datosConsulta"></div>
+    <div class="temperatura">          Temperatura*                        <input name="temperatura" id="temperatura" type="text" class="datosConsulta"> </div>
     <div class="farmacologia">         Farmacologia consumo medicamentos  <input id="farmacologiaCheck" type="checkbox"><input name="farmacologia" id="farmacologia" type="text"class="datosConsulta"></div>
-    <div class="parejas">              Parejas                            <input name="parejas" id="parejas" type="text" class="datosConsulta"></div>
+    <div class="parejas">              Parejas*                            <input name="parejas" id="parejas" type="text" class="datosConsulta"></div>
     <div class="embarazos">            Embarazos                          <input id="embarazosCheck" type="checkbox"> <input name="embarazos" id="embarazos" type="text" class="datosConsulta"></div>
-    <div class="nacidosVivos">         Nacidos vivos                      <input name="nacidosVivos" id="nacidosVivos" type="text" class="datosConsulta"></div>
+    <div class="nacidosVivos">         Nacidos vivos                     <input name="nacidosVivos" id="nacidosVivos" type="text" class="datosConsulta"></div>
     <div class="partoNatural">         Parto Natural                      <input  id="partoNaturalCheck" type="checkbox"><input name="partoNatural" id="partoNatural" type="text" class="datosConsulta"></div>
     <div class="metodoAnticonceptivo"> Metodo Anticonceptivo              <input id="metodoAnticonceptivoCheck" type="checkbox"><input name="metodoAnticonceptivo" id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
     <div class="drogas">               Drogas                             <input id="drogasCheck" type="checkbox"><input name="dogras" id="drogas" type="text" class="datosConsulta"></div>
-    <div class="autorizaciones"><label>Autorizacion de examenes medicos   </label></div><div><textarea name="autorizacionExamenes" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
-    <div class="medicamentos"><label>  Ordenes medicamentos - formulas    </label></div><div><textarea name="ordenesMedicamentos" id="medicamentos" cols="30" rows="10" class="textoMedicamentos"></textarea></div>
-    <div><input  type="submit"  value="Guardar consulta" class="buttonGuardarConsulta"></div>
+    <div class="autorizaciones"><label>Autorizacion de examenes medicos*   </label></div><div><textarea name="autorizacionExamenes" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
+    <div class="medicamentos"><label>  Ordenes medicamentos - formulas*    </label></div><div><textarea name="ordenesMedicamentos" id="medicamentos" cols="30" rows="10" class="textoMedicamentos"></textarea></div>
+    <div><button type="submit" onclick="validarConsulta()" class="buttonGuardarConsulta">Guardar consulta</button></div>
+  </div>
   </form>
+  <div class="mensajeAdvertencia">{{ mensaje }}</div>
   <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
@@ -86,7 +84,7 @@
             if((/^[A-ZÁÉÍÓÚÑ ]+$/i.test(farmacologia) && (farmacologia=="")==false)||(farmacologiaCheck==false)){
               if (isNaN(parejas)==false && (parejas=="")==false) {
                 if ((isNaN(embarazos)==false && (embarazos=="")==false)||(embarazosCheck==false)) {
-                  if (isNaN(nacidosVivos)==false && (nacidosVivos=="")==false) {
+                  if (isNaN(nacidosVivos)==false) {
                     if ((isNaN(partoNatural)==false && (partoNatural=="")==false)||(partoNaturalCheck==false)) {
                       if ((/^[A-ZÁÉÍÓÚÑ ]+$/i.test(metodoAnticonceptivo) && (metodoAnticonceptivo=="")==false)||(metodoAnticonceptivoCheck==false)) {
                         if ((cirugias=="")==false) {

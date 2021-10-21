@@ -14,30 +14,15 @@
         <div><img src="/static/images/back.png" alt="" class="back" onclick="refmedico()"></div>
         <div><img src="/static/images/home.png" alt="" class="home" onclick="refmedico()"></div>
     </form>
-    <div class="textoEncabezadoPerfil">
-        <label>Perfil de paciente</label>
-    </div>
-    <form action="" method="post">
-        <div class="documento">      Documento de identidad  <input name="docPaciente" type="text" name="cedula" class="perfil" > </div>
-        <div class="nombre">         Nombre                  <input name="nombrePaciente" type="text" name="nombre" class="perfil"> </div>
-        <div class="cargo">          Genero                  <input name="genero" type="text" name="genero" class="perfil"></div>
-        <div class="genero">         Edad                    <input name="edad" type="text" name="edad" class="perfil"></div>
-        <div class="edad">           Correo electronico      <input name="correo" type="text" name="correo" class="perfil"></div>
-        <div class="tipoRh">         Tipo de sangre          <input name="tipoRh" type="text" name="nombre" class="perfil"> </div>
-        <div class="numeroContacto"> Numero de contacto      <input name="numeroContacto" type="text" name="genero" class="perfil"></div>
-        <div class="direccion">      Direccion de recidencia <input name="direccion" type="text" name="edad" class="perfil"></div>
-    </form>
-    
-    <form action="" method="post" class="formularioHistoriaClinica">
+    <form action="" method="POST" class="formularioHistoriaClinica">
       <p>A continuacion podra consultar la historia clinica del paciente</p>
       <div>
-        <div><label for=""> Ingrese rango de fechas a consultar </label></div>
-        <label for="">      Ingrese fecha inicial               </label><input name="fechaInicio" id="fecha1" type="date">
-        <label for="">      Ingrese fecha final                 </label><input name="fechaFinal" id="fecha2" type="date" class="fecha2"><input onclick="validarFechas()" type="submit" value="Ver" class="buttonVerHistoria">
+        <div>      Documento de identidad paciente <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria">Consultar historia clinica</button> </div>
       </div>
-      <div><textarea name="historiaClinica" id="historia" cols="30" rows="10" class="textoHistoriaClinica"></textarea></div>  
+      <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
     </form>
-    <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+    
+    <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>

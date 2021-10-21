@@ -10,26 +10,17 @@
 
 <body>
   <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
-  <div style="position: absolute;top: 90px;"><label>Perfil de usuario</label></div>
-  <div class="textoEncabezadoPerfil">Recuerde mantener sus datos basicos actualizados</div>
 
-  <form action="" method="post">
+  <form action="" method="">
     <div class="textoConsultaHistoria">Consulta Historia Clinica Paciente</div>
-    <div> <input type="text" name="docPaciente" id="docPaciente" placeholder="Documento de identidad paciente " class="docPaciente" > </div>
-    <div><input type="button" value="Consultar" onclick="refhisPaciente()" class="buttonHistoria"></div>
+    <div><input type="button" value="Ir a interfaz de consulta de histotias medicas" onclick="refhisPaciente()" class="buttonHistoria"></div>
   </form>
 
-  <form action="" method="get"> 
-    <div class="documento">                  Documento de identidad  <input name="docMedico" id="documentoIdentidad" type="text" name="cedula" class="perfil" > </div>
-    <div class="nombre">                     Nombre                  <input name="nombre" id="nombreMedico" type="text" name="nombre" class="perfil"> </div>
-    <div class="cargo">                      Cargo/Especialidad      <input name="cargo" id="cargo" type="text" name="cargo" class="perfil"> </div>
-  </form>
-
-  <form action="" method="post" class="enunciadoAgenda">
-    <p>                                       A continuacion podra consultar su agenda de citas</p>
-    <div class="consultaFecha"><label for=""> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="date" class="fechaAgenda"><input type="submit" value="Consultar agenda medica" onclick="validarFechaAgenda()"></div>
-    <textarea name="textoAgenda" id="" cols="30" rows="10" class="textoHistoriaClinica"></textarea>
-    <div class="consultarId">                 Ingrese Id de cita       <input name="idCita" id="idCita" type="text"><input type="submit" value="Ir a cita Medica" onclick="refConsPaciente()" class="buttonId"></div>
+  <form action="" method="POST" class="enunciadoAgenda">
+    <p>A continuacion podra consultar su agenda de citas  (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</p>
+    <div class="consultaFecha"><label for=""> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="text" class="fechaAgenda"><label for=""> Ingrese su dumento de identidad</label><input name="docMedico" type="text" ><input type="submit" value="Consultar agenda medica" onclick="validarFechaAgenda()"></div>
+    <textarea name="textoAgenda" id="" cols="30" rows="10" class="textoHistoriaClinica">{{ agenda }}</textarea>
+    <div class="consultarId"><input type="button" value="Ir a interfaz de consulta medica" onclick="refConsPaciente()" class="buttonId"></div>
   </form>
 
   <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
@@ -64,18 +55,7 @@
     }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en documento');}
   }
   function refhisPaciente() {
-    var docPaciente = document.getElementById("docPaciente").value;
-    if (docPaciente==""){
-      alert('[ERROR] Debe de ingresar el documento del paciente ');
-      return false;
-    }else{
-      if(isNaN(docPaciente)){
-      // Si no se cumple la condicion...
-      alert('[ERROR] Debe de ingresar el documento de identidad del paciente correctamente ');
-      return false;
-      }else{location.href="http://127.0.0.1:5000/medico/historiaClinica"}
-    }
-    
+    location.href="http://127.0.0.1:5000/medico/historiaClinica"
   }
   function validarFechaAgenda() {
     var fecha = document.getElementById("fecha").value;
@@ -85,10 +65,8 @@
     
   }
   function refConsPaciente() {
-    var idCita = document.getElementById("idCita").value;
-    if (isNaN(idCita)== false && (idCita=="")==false) {
-      location.href="http://127.0.0.1:5000/medico/consultaMedica"
-    }else{alert('[ERROR] Debe de ingresar el id de la cita existente');}
+    location.href="http://127.0.0.1:5000/medico/consultaMedica"
+   
   }
 </script>
 </html>

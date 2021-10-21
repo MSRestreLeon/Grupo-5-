@@ -114,69 +114,49 @@ def generarNuevaContrasena():
 
 @app.route("/medico", methods=["GET", "POST"])
 def medico():
-    if request.method == 'get':
-        docPaciente = request.form["docPaciente"]
-        docMedico = request.form["docMedico"]
-        nombreMedico = request.form["nombreMedico"]
-        cargo = request.form["cargo"]
-        idCita = request.form["idCita"]
+    agenda=''
+    if request.method == 'POST':
         fechaAgenda = request.form["fechaAgenda"]
-        # Consultar y mostrar
+        docMedico = request.form["docMedico"]
+        #Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            for row in cursor.execute("SELECT * FROM agendaMedica WHERE docMedico = ? ",
-                [docMedico]):print(row)
-    return render_template("medico.html")
+            cursor.execute(
+                "SELECT * FROM agendaMedica WHERE idMedico = ? AND fecha = ?",
+                [docMedico,fechaAgenda])
+            agenda = cursor.fetchall()
+            #while matriz != None:
+            #    for i in range(len(matriz)):
+            #        for n in range(len(matriz[i])):
+            #          agenda=matriz[i][n] 
+    return render_template("medico.html",agenda=agenda)
 
 
 @app.route("/medico/historiaClinica", methods=["GET", "POST"])
 def historia_clinica():
-    if request.method == 'get':
+    historia=''
+    if request.method == 'POST':
         docPaciente = request.form["docPaciente"]
-        nombrePaciente = request.form["nombrePaciente"]
-        genero = request.form["genero"]
-        edad = request.form["edad"]
-        correo = request.form["correo"]
-        tipoRh = request.form["tipoRh"]
-        numeroContacto = request.form["numeroContacto"]
-        direccion = request.form["direccion"]
-        fechaInicio = request.form["fechaInicio"]
-        fechaFinal = request.form["fechaFinal"]
-        historiaClinica = request.form["historiaClinica"]
         # Consultar y mostrar
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO usuario VALUES (?, ?, ?, ?, ?)",
-                           [id, nombres, rol, password, estado])
-            cursor.execute("INSERT INTO paciente VALUES (?, ?, ?, ?, ?, ?)",
-                           [id, edad, profesion, email, genero, tipoSangre])
-            connection.commit()
-    return render_template("historiaClinica.html")
+            cursor.execute("SELECT * FROM historiaClinica WHERE docPaciente = ? ",
+                [docPaciente])
+            historia = cursor.fetchall()
+        
+    return render_template("historiaClinica.html",historia=historia)
 
 
-@app.route("/medico/consultaMedica", methods=["get", "post"])
+@app.route("/medico/consultaMedica", methods=["GET", "POST"])
 def consulta_medica():
-    if request.method == 'get':
+    mensaje = ''
+    if request.method == 'POST':
+        id = request.form["idCita"]
         docPaciente = request.form["docPaciente"]
-        nombrePaciente = request.form["nombrePaciente"]
-        genero = request.form["genero"]
-        edad = request.form["edad"]
-        tipoRh = request.form["tipoRh"]
-        # Consultar y mostrar
-        with sqlite3.connect("hospital.db") as connection:
-            # Lugar donde almacenamos todo lo que vamos a ejecutar
-            cursor = connection.cursor()
-            cursor.execute("INSERT INTO usuario VALUES (?, ?, ?, ?, ?)",
-                           [id, nombres, rol, password, estado])
-            cursor.execute("INSERT INTO paciente VALUES (?, ?, ?, ?, ?, ?)",
-                           [id, edad, profesion, email, genero, tipoSangre])
-            connection.commit()
-    if request.method == 'post':
-        id = request.form["peso"]
         sintomas = request.form["sintomas"]
-        antecedentes = request.form["nombreMedico"]
+        antecedentes = request.form["antecedentes"]
         cirugias = request.form["cirugias"]
         diagnostico = request.form["diagnostico"]
         peso = request.form["peso"]
@@ -196,10 +176,13 @@ def consulta_medica():
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            cursor.execute("INSERT INTO historiaClinica (id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                           [id, sintomas, antecedentes, cirugias, diagnostico, examenesMedicos, peso, altura, precionArterial, temperatura, farmacologia, parejas, embarazos, nacidosVivos, partoNatural, metodoAnticonceptivo, drogas, ordenMedicamentos])
-            connection.commit()
-    return render_template("consultaMedica.html")
+            if id == "" or docPaciente == "" or sintomas == "" or antecedentes == "" or cirugias == "" or diagnostico == "" or examenesMedicos == "" or peso == "" or altura == "" or precionArterial == "" or parejas == "" or ordenMedicamentos == "":
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO historiaClinica (idCitaMedica,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,presionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                           [id,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,precionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos])
+                connection.commit()
+    return render_template("consultaMedica.html",mensaje=mensaje)
 
 # Rutas Super Administrador
 

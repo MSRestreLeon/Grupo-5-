@@ -236,19 +236,19 @@
 }
 .buttonHistoria{
     position: absolute;
-    width: 70px;
+    width: auto;
     height: 30px;
     left: 1105px;
-    top: 145px;
+    top: 105px;
 }
 .enunciadoAgenda{
     position: absolute;
-    top: 230px;
+    top: 70px;
 }
 .consultarId{
     position: absolute;
     top: 400px;
-    left: 550px;
+    left: 360px;
 }
 .consultaFecha{
     position: absolute;
@@ -260,11 +260,16 @@
 }
 .fechaAgenda{
     position: relative;
-    left: 50px;
+    left: 0px;
 }
 .formularioHistoriaClinica{
     position: absolute;
-    top: 500px;
+    top: 90px;
+}
+.buttonConsultarHistoria{
+    position: absolute;
+    top: 90px;
+    left: 250px;
 }
 .fecha2{
     position: absolute;
@@ -273,4 +278,17 @@
 .buttonVerHistoria{
     position: absolute; 
     left: 700px;
+}
+.mensajeAdvertencia{
+    position: absolute; 
+    left: 550px;
+    top: 90px;
+    color: red;
+
+}
+.historia{
+    position: absolute; 
+    left: 550px;
+    top: 90px;
+    
 }
