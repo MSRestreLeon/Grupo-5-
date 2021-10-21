@@ -193,6 +193,34 @@ def superAdministrador():
 
 @app.route("/superAdministrador/editarMedico", methods=["GET", "POST"])
 def editarMedico():
+    if request.method == 'POST':
+        docMedico = request.form["docMedico"]
+        especialidad = request.form["especialidad"]
+        estado = request.form["estado"]
+        # Consultar y mostrar
+        with sqlite3.connect("hospital.db") as connection:
+            # Lugar donde almacenamos todo lo que vamos a ejecutar
+            cursor = connection.cursor()
+            if (docMedico==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (id) VALUES (?)",
+                        [docMedico])
+                cursor.execute("INSERT INTO usuario (id) VALUES (?)",
+                        [docMedico])
+                connection.commit()
+            if (especialidad==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (especialidad) VALUES (?)",
+                        [especialidad])
+                connection.commit()
+            if (estado==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (estado) VALUES (?)",
+                        [estado])
+                connection.commit()
     return render_template("editarMedico.html")
 
 @app.route("/superAdministrador/dashboard", methods=["GET", "POST"])
