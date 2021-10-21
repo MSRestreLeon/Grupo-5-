@@ -37,7 +37,7 @@
     <div><input type="estado" name="estado" id="estado"></div>
     
 
-    <div><input  class="btn btn-center" type="button" value="Editar" onclick="validarEdicion()" > </div>
+    
     <div><input class="btn btn-center" type="button" value="Guardar" onclick="validarEdicion()"> </div>
 </div>
 </body>
@@ -47,51 +47,53 @@
     var nombres = document.getElementById("nombres").value;
     var id = document.getElementById("id").value;
     var edad = document.getElementById("edad").value;
-    
     var profesion = document.getElementById("profesion").value;
     var edad = document.getElementById("edad").value;
     var email = document.getElementById("email").value;
     var genero = document.getElementById("genero").value;
     var rh = document.getElementById("rh").value;
     var estado = document.getElementById("estado").value;
-
+    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if ((nombres=="")==false){
-        if (isNaN(nombres)==false) {
-            alert('Cedula actualizada');
+        if (isNaN(nombres)) {
+            alert('Nombre actualizado');
         }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el nombre');}
     }
     if ((id=="")==false){
-        if (isNaN(id)) {
-            alert('Especialidad actualizada');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el especialidad');}
+        if (isNaN(id)==false) {
+            alert('Documento de identidad actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
     }
     if ((edad=="")==false) {
-        if ((edad="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+        if (isNaN(edad)==false) {
+            alert('Edad actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el edad');}
     }
 
     if ((profesion=="")==false) {
-        if ((profesion="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+        if (isNaN(profesion)) {
+            alert('Profesion actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el profesion');}
     }
-    if ((email=="")==false) {
-        if ((email="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    if (!expr.exec(email)==false && (email=="")==false) {
+        
+        if (isNaN(email)) {
+            alert('Email actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el email');}
     }
 
     if ((genero=="")==false) {
-        if ((genero="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+        if (isNaN(genero)) {
+            alert('genero actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el genero');}
     }
-    estado
-    if ((rh=="")==false) {
-        if ((rh="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    
+    if ((rh == "")==false) {
+        
+        if (isNaN(rh)) {
+            alert('rh actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el rh');}
+        
     }
     if ((estado=="")==false) {
         if ((estado="activo") || (estado="inactivo")) {
