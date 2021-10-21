@@ -308,10 +308,9 @@ def superAdministradorHistoriaClinica():
 
 @app.route("/superAdministrador/aperturaAgenda", methods=["GET", "POST"])
 def superAdministradorAperturaAgenda():
-     if request.method == 'POST':
+    if request.method == 'POST':
         docMedico = request.form["docMedico"]
         fecha = request.form["fecha"]
-        
         hora = request.form["hora"]
         estado = request.form["estado"]
         
@@ -319,35 +318,14 @@ def superAdministradorAperturaAgenda():
         with sqlite3.connect("hospital.db") as connection:
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
-            if (docMedico==""):
+            if (docMedico=="" or fecha=="" or hora=="" or estado==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
-                cursor.execute("INSERT INTO medico (id) VALUES (?)",
-                        [docMedico])
-                cursor.execute("INSERT INTO usuario (id) VALUES (?)",
-                        [docMedico])
-                connection.commit()
-            if (fecha==""):
-                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
-            else:
-                cursor.execute("INSERT INTO medico (fecha) VALUES (?)",
-                        [fecha])
-                connection.commit()
-            
-            if (hora==""):
-                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
-            else:
-                cursor.execute("INSERT INTO usuario (hora) VALUES (?)",
-                        [hora])
-                connection.commit()          
-            if (estado==""):
-                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
-            else:
-                cursor.execute("INSERT INTO usuario (estado) VALUES (?)",
-                        [estado])
-                connection.commit()
+                cursor.execute("INSERT INTO agendaMedica (idMedico,fecha,hora,estado) VALUES (?,?,?,?)",
+                        [docMedico,fecha,hora,estado])
+            connection.commit()
 
-        return render_template("aperturaAgenda.html")
+    return render_template("aperturaAgenda.html")
 
 
 # Rutas Paciente

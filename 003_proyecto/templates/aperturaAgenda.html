@@ -18,12 +18,12 @@
         <div><label>Apertura Agenda</label></div>
     </div> 
     <div >Favor ingrese el documento de identidad del medico </div>
-    <form action="" method="">
+    <form action="" method="POST">
     <div >
     <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfilJ" >  </div>
     <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="text"  class="perfilJ"> (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD") </div>
     <div class="cargo">                Hora                            <input id="hora" name="hora" type="text"  class="perfilJ">(Favor ingresar la fecha en el siguiente formato "hh:mm")  </div>
-    <div class="genero">               Estado                            <input id="estado" name="estado" type="text"  class="perfilJ"> (El estado debe de ser activo o inactivo)
+    <div class="genero">               Estado                            <input id="estado" name="estado" type="text"  class="perfilJ"> (El estado debe de ser disponible o noDisponible)
     </div>
 
     <div><button type="submit" onclick="validarEdicion()" class="buttonApertura">Abrir Agenda</button></div>
