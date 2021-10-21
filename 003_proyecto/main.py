@@ -229,7 +229,77 @@ def superAdministradorDashboard():
 
 @app.route("/superAdministrador/editarPaciente", methods=["GET", "POST"])
 def superAdministradorEditarPaciente():
+    if request.method == 'POST':
+        nombres = request.form["nombres"]
+        id = request.form["id"]
+        
+        edad = request.form["edad"]
+        profesion = request.form["profesion"]
+        email = request.form["email"]
+        genero = request.form["genero"]
+        rh = request.form["rh"]
+        estado = request.form["estado"]
+        # Consultar y mostrar
+        with sqlite3.connect("hospital.db") as connection:
+            # Lugar donde almacenamos todo lo que vamos a ejecutar
+            cursor = connection.cursor()
+            if (nombres==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (id) VALUES (?)",
+                        [nombres])
+                cursor.execute("INSERT INTO usuario (id) VALUES (?)",
+                        [nombres])
+                connection.commit()
+            if (id==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (id) VALUES (?)",
+                        [id])
+                connection.commit()
+            
+            if (edad==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (edad) VALUES (?)",
+                        [edad])
+                connection.commit()
+            
+            if (profesion==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (profesion) VALUES (?)",
+                        [profesion])
+                connection.commit()
+            if (email==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (email) VALUES (?)",
+                        [email])
+                connection.commit()
+            if (genero==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (genero) VALUES (?)",
+                        [genero])
+                connection.commit()
+
+            if (rh==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (rh) VALUES (?)",
+                        [rh])
+                connection.commit()                                
+        
+            if (estado==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (estado) VALUES (?)",
+                        [estado])
+                connection.commit()
+    
     return render_template("editarPaciente.html")
+
 
 @app.route("/superAdministrador/historiaClinica", methods=["GET", "POST"])
 def superAdministradorHistoriaClinica():
@@ -238,7 +308,47 @@ def superAdministradorHistoriaClinica():
 
 @app.route("/superAdministrador/aperturaAgenda", methods=["GET", "POST"])
 def superAdministradorAperturaAgenda():
-    return render_template("aperturaAgenda.html")
+     if request.method == 'POST':
+        docMedico = request.form["docMedico"]
+        fecha = request.form["fecha"]
+        
+        hora = request.form["hora"]
+        estado = request.form["estado"]
+        
+        # Consultar y mostrar
+        with sqlite3.connect("hospital.db") as connection:
+            # Lugar donde almacenamos todo lo que vamos a ejecutar
+            cursor = connection.cursor()
+            if (docMedico==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (id) VALUES (?)",
+                        [docMedico])
+                cursor.execute("INSERT INTO usuario (id) VALUES (?)",
+                        [docMedico])
+                connection.commit()
+            if (fecha==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO medico (fecha) VALUES (?)",
+                        [fecha])
+                connection.commit()
+            
+            if (hora==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (hora) VALUES (?)",
+                        [hora])
+                connection.commit()          
+            if (estado==""):
+                mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
+            else:
+                cursor.execute("INSERT INTO usuario (estado) VALUES (?)",
+                        [estado])
+                connection.commit()
+
+        return render_template("aperturaAgenda.html")
+
 
 # Rutas Paciente
 
