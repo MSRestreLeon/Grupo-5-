@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Administrador</title>
+
+<div style="margin-bottom: 5%;" class="franja">Hospital Mision TIC 2020</div>
+
+
+    <var></var>
+        <div><img src="static/images/back.png" class="formatoparaback"></div>
+<div><img src="static/images/home.png" class="formatoparahome" alt=""></div>
+</head>
+<body>
+    
+<div class="containerpaciente" >
+    <div><label>Nombres</label></div>
+    <div><input type="text" name="nombres" id="nombres"></div>
+    <div><label>Documento de identidad</label></div>
+    <div><input type="number" name="id" id="id"></div>
+    <div><label>Edad</label></div>
+    <div><input type="number" name="edad" id="edad"></div>
+    <div><label>Profesión</label></div>
+    <div><input type="text" name="profesion" id="profesion"></div>
+    <div><label>Email</label></div>
+    <div><input type="email" name="email" id="email"></div>
+    <div><label>Género</label></div>
+    <div><input type="genero" name="genero" id="genero"></div>
+    <div><label>Tipo de Sangre</label></div>
+    <div><input type="rh" name="rh" id="rh"></div>
+    <div><label>Estado</label></div>
+    <div><input type="estado" name="estado" id="estado"></div>
+    
+
+    <div><input  class="btn btn-center" type="button" value="Editar" onclick="validarEdicion()" > </div>
+    <div><input class="btn btn-center" type="button" value="Guardar" onclick="validarEdicion()"> </div>
+</div>
+</body>
+
+<script>
+    function validarEdicion() {
+    var nombres = document.getElementById("nombres").value;
+    var id = document.getElementById("id").value;
+    var edad = document.getElementById("edad").value;
+    
+    var profesion = document.getElementById("profesion").value;
+    var edad = document.getElementById("edad").value;
+    var email = document.getElementById("email").value;
+    var genero = document.getElementById("genero").value;
+    var rh = document.getElementById("rh").value;
+    var estado = document.getElementById("estado").value;
+
+    if ((nombres=="")==false){
+        if (isNaN(nombres)==false) {
+            alert('Cedula actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el nombre');}
+    }
+    if ((id=="")==false){
+        if (isNaN(id)) {
+            alert('Especialidad actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el especialidad');}
+    }
+    if ((edad=="")==false) {
+        if ((edad="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+
+    if ((profesion=="")==false) {
+        if ((profesion="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    if ((email=="")==false) {
+        if ((email="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+
+    if ((genero=="")==false) {
+        if ((genero="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    estado
+    if ((rh=="")==false) {
+        if ((rh="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    if ((estado=="")==false) {
+        if ((estado="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    
+  }
+    function refSuperAdmin() {
+    location.href="http://127.0.0.1:5000/superAdministrador"
+  }
+
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+</script>
+</html>
+
+
+    </html>
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/superAdmin.css">
+<script>
+function refdashboard() {
+    location.href="http://127.0.0.1:5000/superAdministrador/dashboard"
+  }
+</script>

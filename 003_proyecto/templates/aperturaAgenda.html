@@ -1,85 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Administrador</title>
+    <title>Edicion Medico</title>
 </head>
-<div class="franja">Hospital Mision TIC 2020</div>
-
-<form action="">
-   
- 
-
-
-
-
-
-
-      
-
-        </form>
-    </div>
-
-</form>
 <body>
-   <p>
-       <span></span>
-   </p>
-   <div>
-    <label>Apertura de Agendas</label>
-</div>
-    <form action="" method="">
-      <p>
-
-      </p>  <label for="choose"style="padding-left:30px;"> Documento de identidad<input type="number" class="perfil"id="choose" name="cedula" oninvalid="this.setCustomValidity('Cedula no valida')"> 
-        <p for="choose" style="padding-left:30px;">Nombre <input type="text" name="nombre" class="perfil"required></p>
-            <p for="choose" style="padding-left:30px;">Mes
-                
-
-<select name="mes"class="perfil" style="width: 125px" required>
-   <option value="1">Enero</option> 
-   <option value="2">Febrero</option> 
-   <option value="3">Marzo</option>
-   <option value="10">Abril</option> 
-   <option value="11">Mayo</option> 
-   <option value="12">Junio</option> 
-   <option value="1">Julio</option> 
-   <option value="2">Agosto</option> 
-   <option value="3">Septiembre</option>
-   <option value="10">Octubre</option> 
-   <option value="11">Noviembre</option> 
-   <option value="12">Diciembre</option> 
-</select>
-                <p for="choose" style="padding-left:30px;">Hora Primera cita<input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
-                    <p for="choose" style="padding-left:30px;">Hora Ultima cita <input class="perfil" style="width: 125px" type="time" min="07:00" max="18:00" step="600"> 
-
-                                            
-                    <form>
-                       
-                          <button class="btn btn-topspace" style="left: 40px;">Activar</button>
-                          <button style="left: 200px;"class="btn btn-topspace" >Consultar</button>
-                          
-                          <button style="left: 400px;"class="btn btn-topspace">Reasignar medico</button>
-                          <button style="left: 640px;"class="btn btn-topspace">Cancelar Citas</button>
-
-                        </div>
-                      </form>
-                <p>
-        </p>
-        
-
-    </form>
-   
+  <div class="franja">Hospital Mision TIC 2020 <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
     
-    <div >
-       
-    </div>
+  <form action="" method="">
+    <div><img src="/static/images/back.png" class="home" alt=""  onclick="refSuperAdmin()"></div>
+    <div><img src="/static/images/home.png" class="back" alt=""  onclick="refSuperAdmin()"></div>
+  </form>
+
+  <div class="containerpaciente" >
+    <div class="textoEncabezadoConsulta" >
+        <div><label>Apertura Agenda</label></div>
+    </div> 
+    <div >Favor ingrese el documento de identidad del medico </div>
+    <form action="" method="">
+    <div>
+    <div >            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfil" > </div>
+    <div >              Fecha                      <input id="fecha" name="especialidad" type="text"  class="perfil"> </div>
+    <div  >               Hora                            <input id="hora" name="estado" type="text"  class="perfil"> </div>
+    <var>
+        <p></p>
+    </var>
+    <div  style="margin-bottom: 5%;" class="cargo">               Estado                            <input id="estado" name="estado" type="text"  class="perfil"> </div>
+    <div><button type="submit" onclick="validarEdicion()" class="buttonEditarPaciente">Abrir Agenda</button></div>
+  </form>
+</div>
 </body>
+<script>
+    function validarEdicion() {
+    var docMedico = document.getElementById("docMedico").value;
+    var fecha = document.getElementById("fecha").value;
+    var hora = document.getElementById("hora").value;
+    var estado = document.getElementById("estado").value;
+    if ((docMedico=="")==false){
+        if (isNaN(docMedico)==false) {
+            alert('Cedula actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
+    }
+    if ((fecha=="")==false){
+        if (isNaN(fecha)) {
+            alert('Especialidad actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente la fecha');}
+    }
+    if ((hora=="")==false) {
+        if ((hora="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente la hora');}
+    }
+    if ((estado=="")==false) {
+        if ((estado="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    
+  }
+    function refSuperAdmin() {
+    location.href="http://127.0.0.1:5000/superAdministrador"
+  }
 
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+</script>
 </html>
+<link rel="stylesheet" href="/static/css/estilos.css">
 
-<link rel="stylesheet" href="/static/css/superAdmin.css">
-
+<link rel="stylesheet" href="/static/css/medico.css">
