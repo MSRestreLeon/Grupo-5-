@@ -19,14 +19,36 @@
   </div> 
 
   <div class="textoEncabezadoDatosPaciente">Favor ingrese el documento de identidad del medico que desee editar </div>
-  <form action="" method="POST">
+  <form action="" method="">
     <div>
-    <div class="documento">            Documento de identidad del medico <input name="docPaciente" type="text" class="perfil" > </div>
-    <div class="nombre">               Especialidad                      <input name="idCita" type="text"  class="perfil"> </div>
-    
+    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfil" > </div>
+    <div class="nombre">               Especialidad                      <input id="especialidad" name="especialidad" type="text"  class="perfil"> </div>
+    <div class="cargo">               Estado                            <input id="estado" name="estado" type="text"  class="perfil"> </div>
+    <div><button type="submit" onclick="validarEdicion()" class="buttonEditarPaciente">Editar Paciente</button></div>
   </form>
 </body>
 <script>
+    function validarEdicion() {
+    var docMedico = document.getElementById("docMedico").value;
+    var especialidad = document.getElementById("especialidad").value;
+    var estado = document.getElementById("estado").value;
+    if ((docMedico=="")==false){
+        if (isNaN(docMedico)==false) {
+            alert('Cedula actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
+    }
+    if ((especialidad=="")==false){
+        if (isNaN(especialidad)) {
+            alert('Especialidad actualizada');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el especialidad');}
+    }
+    if ((estado=="")==false) {
+        if ((estado="activo") || (estado="inactivo")) {
+            alert('Estado actualizado');
+        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+    }
+    
+  }
     function refSuperAdmin() {
     location.href="http://127.0.0.1:5000/superAdministrador"
   }

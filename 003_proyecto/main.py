@@ -187,11 +187,11 @@ def consulta_medica():
 # Rutas Super Administrador
 
 
-@app.route("/superAdministrador")
+@app.route("/superAdministrador", methods=["GET", "POST"])
 def superAdministrador():
     return render_template("superAdministrador.html")
 
-@app.route("/superAdministrador/editarMedico")
+@app.route("/superAdministrador/editarMedico", methods=["GET", "POST"])
 def editarMedico():
     return render_template("editarMedico.html")
 
