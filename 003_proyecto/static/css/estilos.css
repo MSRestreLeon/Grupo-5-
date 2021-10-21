@@ -18,6 +18,13 @@
     left: 250px;    
     background: #C4C4C4;
 }
+.perfilJ {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 500px;    
+    background: #C4C4C4;
+}
 .his_cli{
     width: 160px;
     background: white;
