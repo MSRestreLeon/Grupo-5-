@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edicion Medico</title>
+</head>
+<body>
+  <div class="franja">Hospital Mision TIC 2020 <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
+    
+  <form action="" method="">
+    <div><img src="/static/images/back.png" class="home" alt=""  onclick="refSuperAdmin()"></div>
+    <div><img src="/static/images/home.png" class="back" alt=""  onclick="refSuperAdmin()"></div>
+  </form>
+
+  <div class="textoEncabezadoConsulta" >
+    <div><label>Edicion datos medico</label></div>
+  </div> 
+
+  <div class="textoEncabezadoDatosPaciente">Favor ingrese el documento de identidad del medico que desee editar </div>
+  <form action="" method="POST">
+    <div>
+    <div class="documento">            Documento de identidad del medico <input name="docPaciente" type="text" class="perfil" > </div>
+    <div class="nombre">               Especialidad                      <input name="idCita" type="text"  class="perfil"> </div>
+    
+  </form>
+</body>
+<script>
+    function refSuperAdmin() {
+    location.href="http://127.0.0.1:5000/superAdministrador"
+  }
+
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+</script>
+</html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<link rel="stylesheet" href="/static/css/medico.css">

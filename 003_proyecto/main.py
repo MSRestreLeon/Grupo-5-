@@ -191,11 +191,17 @@ def consulta_medica():
 def superAdministrador():
     return render_template("superAdministrador.html")
 
+@app.route("/superAdministrador/editarMedico")
+def editarMedico():
+    return render_template("editarMedico.html")
 
 @app.route("/superAdministrador/dashboard", methods=["GET", "POST"])
 def superAdministradorDashboard():
     return render_template("dashboard.html")
 
+@app.route("/superAdministrador/editarPaciente", methods=["GET", "POST"])
+def superAdministradorEditarPaciente():
+    return render_template("editarPaciente.html")
 
 @app.route("/superAdministrador/historiaClinica", methods=["GET", "POST"])
 def superAdministradorHistoriaClinica():
