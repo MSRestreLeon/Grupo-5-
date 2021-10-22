@@ -5,60 +5,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paciente Historia Clínica</title>
+    <title>Historia clinica paciente</title>
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020</div>
-    <div class="container-end">
-        <div class="icon">
-            <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
-        <div class="icon">
-            <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
-    </div>
-    <div class="border">
-        Datos Paciente
-    </div>
-    <div class="container">
-        <label for="">Documento de identidad</label>
-        <label class="label" , for="">Aqui va el documento de identidad</label>
-        <label for="">Nombres</label>
-        <label class="label" , for="">Aqui van los nombres</label>
-        <label for="">Apellidos</label>
-        <label class="label" , for="">Aqui van los apellidos</label>
-    </div>
-    <div class="border">
-        Historia Clínica
-    </div>
-    <div>
-        <form class="form-inline" action="">
-            <div class="box"><button type="button" onclick="validarDatosHistClin()">Ver</button></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date" id="fechaInicialHistClin" name="fechaInicialHistClin"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
-                    type="date" id="fechaFinalHistClin" name="fechaFinalHistClin"></div>
-        </form>
-    </div>
-    <div>
-        <textarea name="" id="" cols="5" rows="30">
-            </textarea>
-    </div>
-    <div>
-        <div class="button"><button type="button" onclick="validarDatosHistClin()">Descargar</button></div>
-    </div>
+    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <form action="" method="get">
+        <div><img src="/static/images/back.png" alt="" class="back" onclick="refmedico()"></div>
+        <div><img src="/static/images/home.png" alt="" class="home" onclick="refmedico()"></div>
+    </form>
+    <form action="" method="POST" class="formularioHistoriaClinica">
+      <p>A continuacion podra consultar su historia clinica</p>
+      <div>
+        <div>      Documento de identidad  <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria">Consultar historia clinica</button> </div>
+      </div>
+      <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
+    </form>
+    
+    <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+    
 </body>
-
-</html>
-<link rel="stylesheet" href="/static/css/pacienteHistoriaClinica.css">
 <script>
-    function validarDatosHistClin() {
-        let fechaInicialHistClin = document.getElementById("fechaInicialHistClin").value;
-        let fechaFinalHistClin = document.getElementById("fechaFinalHistClin").value;
-
-        if (fechaInicialHistClin === '' || fechaFinalHistClin === '' || fechaInicialHistClin > fechaFinalHistClin) {
-            alert('Para ver y descargar los exámenes pendientes es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
-        }
-    }
-</script>
+  function validarFechas() {
+    var fecha1 = document.getElementById("fecha1").value;
+    var fecha2 = document.getElementById("fecha2").value;
+    if ((fecha1=="")==false) {
+      if ((fecha2=="")==false) {
+        alert ('fechas validadas')
+      }else{alert ('Fecha final sin diligenciar')}
+    }else{alert ('Fecha inicial sin diligenciar')}
+  }
+  
+  function refmedico() {
+    location.href="http://127.0.0.1:5000/medico"
+  }
+  function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+  </script>
+</html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">

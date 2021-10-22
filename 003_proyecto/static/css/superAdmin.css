@@ -161,6 +161,7 @@
             row-gap: 20px;
             column-gap: 1px;
             padding-left:170px;
+            
     }   
     .containerAperturaAgenda {
         display: grid;

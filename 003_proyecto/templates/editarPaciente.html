@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,33 +10,39 @@
 
 
     <var></var>
-        <div><img src="static/images/back.png" class="formatoparaback"></div>
-<div><img src="static/images/home.png" class="formatoparahome" alt=""></div>
+        
 </head>
 <body>
+    <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion">
+    <div><img src="/static/images/back.png" alt="" class="back" onclick="refSuperAdmin()"></div>
+    <div><img src="/static/images/home.png" alt="" class="home" onclick="refSuperAdmin()"></div>
+    <form action="" method="POST">
+        <div class="containerpaciente" >
+            <div><label>Nombres</label></div>
+            <div><input type="text" name="nombres" id="nombres"></div>
+            <div><label>Documento de identidad del paciente (Original)</label></div>
+            <div><input type="text" name="idOriginal" id="idOriginal"></div>
+            <div><label>Documento de identidad del paciente (Nuevo)</label></div>
+            <div><input type="number" name="id" id="id"></div>
+            <div><label>Edad</label></div>
+            <div><input type="number" name="edad" id="edad"></div>
+            <div><label>Profesión</label></div>
+            <div><input type="text" name="profesion" id="profesion"></div>
+            <div><label>Email</label></div>
+            <div><input type="email" name="email" id="email"></div>
+            <div><label>Género</label></div>
+            <div><input type="genero" name="genero" id="genero"></div>
+            <div><label>Tipo de Sangre</label></div>
+            <div><input type="rh" name="rh" id="rh"></div>
+            <div><label>Estado</label></div>
+            <div><input type="estado" name="estado" id="estado"></div>
+            
+        
+            
+            <div><input class="btn btn-center" type="submit" value="Guardar" onclick="validarEdicion()"> </div>
+        </div>
+    </form>   
     
-<div class="containerpaciente" >
-    <div><label>Nombres</label></div>
-    <div><input type="text" name="nombres" id="nombres"></div>
-    <div><label>Documento de identidad</label></div>
-    <div><input type="number" name="id" id="id"></div>
-    <div><label>Edad</label></div>
-    <div><input type="number" name="edad" id="edad"></div>
-    <div><label>Profesión</label></div>
-    <div><input type="text" name="profesion" id="profesion"></div>
-    <div><label>Email</label></div>
-    <div><input type="email" name="email" id="email"></div>
-    <div><label>Género</label></div>
-    <div><input type="genero" name="genero" id="genero"></div>
-    <div><label>Tipo de Sangre</label></div>
-    <div><input type="rh" name="rh" id="rh"></div>
-    <div><label>Estado</label></div>
-    <div><input type="estado" name="estado" id="estado"></div>
-    
-
-    
-    <div><input class="btn btn-center" type="button" value="Guardar" onclick="validarEdicion()"> </div>
-</div>
 </body>
 
 <script>
@@ -117,6 +120,7 @@
 
 <link rel="stylesheet" href="/static/css/estilos.css">
 <link rel="stylesheet" href="/static/css/superAdmin.css">
+<link rel="stylesheet" href="/static/css/medico.css">
 <script>
 function refdashboard() {
     location.href="http://127.0.0.1:5000/superAdministrador/dashboard"

@@ -19,7 +19,10 @@
   <form action="" method="POST" class="enunciadoAgenda">
     <p>A continuacion podra consultar su agenda de citas  (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</p>
     <div class="consultaFecha"><label for=""> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="text" class="fechaAgenda"><label for=""> Ingrese su dumento de identidad</label><input name="docMedico" type="text" ><input type="submit" value="Consultar agenda medica" onclick="validarFechaAgenda()"></div>
-    <textarea name="textoAgenda" id="" cols="30" rows="10" class="textoHistoriaClinica">{{ agenda }}</textarea>
+    <p style="position: absolute;top: 100px;">Sus citas agendadas para el dia solicitado son:</p>
+    <div style="position: absolute;top: 150px;"><textarea name="" id="" cols="12" rows="13">{{ agendaHorasStr }}</textarea>
+      <textarea name="" id="" cols="11" rows="13">{{ agendaIdStr }}</textarea>
+    </div>
     <div class="consultarId"><input type="button" value="Ir a interfaz de consulta medica" onclick="refConsPaciente()" class="buttonId"></div>
   </form>
 
