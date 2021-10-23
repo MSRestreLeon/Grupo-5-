@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/franja.css">
     <link rel="stylesheet" href="/static/css/registroPaciente.css">
+    <link rel="stylesheet" href="/static/css/medico.css">
     <script type="text/javascript" src="/static/js/validacionRegistroPaciente.js"></script>
     <title>Registro pacientes</title>
 </head>
 
 <body>
-    <div class="franja">Hospital Universitario Santa Clara ESE</div>
+    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Inicio de sesion" onclick="reflogin()" class="cerrarSesion"> </div>
     <form action="/registroPaciente" method="POST" name="formRegistroPaciente" id="formRegistroPaciente">
         <div class="containerRegistroPaciente">
             <div><label>Nombres</label></div>
@@ -56,5 +57,9 @@
         </div>
     </form>
 </body>
-
+<script>
+    function reflogin() {
+        location.href="http://127.0.0.1:5000"
+  }
+</script>
 </html>

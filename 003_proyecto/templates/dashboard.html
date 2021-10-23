@@ -7,71 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Administrador</title>
 </head>
-<div class="franja">Hospital Mision TIC 2020</div>
-
-<form action="">
-   
-        </form>
-    </div>
-
-
-
-
-    
-</form>
 <body>
-   <p>
-       <span></span>
-   </p>
-   <div>
-    <label>Dash Board Citas</label>
-</div>
-    <form action="" method="">
+    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <form action="" method="get">
+        <div><img src="/static/images/back.png" alt="" class="back" onclick="refSuperAdministrador()"></div>
+        <div><img src="/static/images/home.png" alt="" class="home" onclick="refSuperAdministrador()"></div>
+    </form>
+    <div><img src="/static/images/back.png" class="back" onclick="refSuperAdministrador()"></div>
+    <div><img src="/static/images/home.png" class="home" onclick="refSuperAdministrador()"></div>
+    
+    <div>
+       <label>Dash Board Citas</label>
+    </div>
+    <form action="" style="top:30px;position: relative;" method="POST">
         <p style="padding-left:30px;">Fecha cita (AAAA/MM/DD) <input type="text"style="width: 125px"  name="fechaCita" class="perfil" > </p>
         <p style="padding-left:30px;">Hora cita (hh:mm) <input type="text" style="width: 125px"  name="horaCita" class="perfil" > </p>
-
-        <p for="choose" style="padding-left:30px;">ID Paciente<input class="perfil" style="width: 125px" type="text" name ="idPaciente">
-            <p for="choose" style="padding-left:30px;">Id Medico<input class="perfil" style="width: 125px" type="text" name ="idMedico">
+        <p for="choose" style="padding-left:30px;">Id Medico<input class="perfil" style="width: 125px" type="text" name ="idMedico">           
+        <p><input style="left: 400px;top:85px;width: 159px;height: 48px;"class="btn btn-topspace" type="submit" value="Consultar"> </p>
         
-
-                                  
- 
-                            
-                <p>
-        <input style="left: 400px;top:85px;width: 159px;height: 48px;"class="btn btn-topspace" type="button" value="Consultar"> 
-              
-        </p>
+        <textarea style="width: 1100px;height: 300px;top: 50px;position: relative;" name="" id="" cols="9" rows="5">{{citaConsulta}}</textarea>
         
 
     </form>
-   
-    
-    <div >
-       
-    </div>
-    <p></p>
 </body>
-<p></p>
-<p></p>
-<br> <br>
-
-<table width="1200" cellspacing="1" cellpadding="3" border="0" bgcolor="#80A93E">
-<tr>
-   <td style="text-align-last: center;" bgcolor="#B7F259"><font size=1 face="verdana, arial, helvetica"><b>PANEL DE INFORMACION</b></font></td>
-</tr>
-<tr>
-   <td bgcolor="#F5ECB9">
-
-    <table width="95%" cellspacing="1" cellpadding="1" border="0" align="center">
-
- <!--             columna 1             -->
-
-                <form>
-            <textarea style="width: 1200px;" name="" id="" cols="9" rows="5">
-                ACA VAN LAS COLUMNAS
-                Fecha, Hora, ID Paciente, Paciente, ID Medico, Médico, Especialidad, Estado, Calificacion
-            </textarea>
-        </form>
+<script>
+    function refSuperAdministrador() {
+        location.href="http://127.0.0.1:5000/superAdministrador"
+  }
+  function reflogin() {
+        location.href="http://127.0.0.1:5000/"
+  }
+</script>
 </html>
 <link rel="stylesheet" href="/static/css/superAdmin.css">
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">
+
 

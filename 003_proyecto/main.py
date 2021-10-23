@@ -118,7 +118,7 @@ def medico():
     agendaId=[""]
     agendaHorasStr=""
     agendaIdStr=""
-    if request.method == 'POST':
+    if  request.method == 'POST':
         fechaAgenda = request.form["fechaAgenda"]
         docMedico = request.form["docMedico"]
         #Consultar y mostrar
@@ -126,7 +126,7 @@ def medico():
             # Lugar donde almacenamos todo lo que vamos a ejecutar
             cursor = connection.cursor()
             cursor.execute(
-                "SELECT count(*) FROM agendaMedica WHERE idMedico = ? AND fecha = ?",
+                "SELECT count(*) FROM agendaMedica WHERE idMedico = ? AND fecha = ? AND estado = 'noDisponible'",
                 [docMedico,fechaAgenda])
             matriz = cursor.fetchall()
             tamañoMatriz=matriz[0][0]
@@ -140,6 +140,7 @@ def medico():
                 agendaId.append(str(matriz2[i][0]))
             agendaHorasStr = " Hora : ".join(agendaHoras)
             agendaIdStr = " Id cita: ".join(agendaId)
+            
     return render_template("medico.html",agendaHorasStr=agendaHorasStr,agendaIdStr=agendaIdStr)
 
 
@@ -164,59 +165,64 @@ def historia_clinica():
             for i in range(tamañoMatriz):
                 d = matriz2[i][1]
                 historiaMatriz.append("Consulta con id de cita ( %d ) : " %d)
-                for c in range(18):
+                for c in range(20):
                     if c == 0 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append("/Id historia clinica: ")
                         historiaMatriz.append(str(matriz2[i][c])) 
-                    if c == 2 and (matriz2[i][c]=="")==False:
+                    if c == 3 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Sintomas: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 3 and (matriz2[i][c]=="")==False:
+                    if c == 4 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Antecedentes: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 4 and (matriz2[i][c]=="")==False:
+                    if c == 5 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Cirugias: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 5 and (matriz2[i][c]=="")==False:
+                    if c == 6 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Diagnostico: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 6 and (matriz2[i][c]=="")==False:
+                    if c == 7 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Examenes medicos: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 7 and (matriz2[i][c]=="")==False:
+                    if c == 8 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Peso: ")
                         historiaMatriz.append(str(matriz2[i][c]))
-                    if c == 8 and (matriz2[i][c]=="")==False:
+                    if c == 9 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /altura: ")
                         historiaMatriz.append(str(matriz2[i][c]))
+<<<<<<< HEAD
                     if c == 9 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Presion Arterial: ")
-                        historiaMatriz.append(str(matriz2[i][c]))
+=======
                     if c == 10 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Temperatura: ")
+                        historiaMatriz.append(" /Peresion Arterial: ")
+>>>>>>> 905a62113baec2c0ff14acd78c2775d8e7c44ddf
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 11 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Farmacologia: ")
+                        historiaMatriz.append(" /Temperatura: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 12 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Parejas: ")
+                        historiaMatriz.append(" /Farmacologia: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 13 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Embarazo: ")
+                        historiaMatriz.append(" /Parejas: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 14 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Nacidos vivos: ")
+                        historiaMatriz.append(" /Embarazo: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 15 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Parto Natural: ")
+                        historiaMatriz.append(" /Nacidos vivos: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 16 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Metodo Anticonceptivo: ")
+                        historiaMatriz.append(" /Parto Natural: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 17 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Drogas: ")
+                        historiaMatriz.append(" /Metodo Anticonceptivo: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 18 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Drogas: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 19 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Orden Medica: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                 historiaMatriz.append("---------------------")
@@ -229,7 +235,7 @@ def historia_clinica():
 @app.route("/medico/consultaMedica", methods=["GET", "POST"])
 def consulta_medica():
     mensaje = ''
-    if request.method == 'POST':
+    if  request.method == 'POST':
         id = request.form["idCita"]
         docPaciente = request.form["docPaciente"]
         sintomas = request.form["sintomas"]
@@ -256,7 +262,7 @@ def consulta_medica():
             if id == "" or docPaciente == "" or sintomas == "" or antecedentes == "" or cirugias == "" or diagnostico == "" or examenesMedicos == "" or peso == "" or altura == "" or precionArterial == "" or parejas == "" or ordenMedicamentos == "":
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
-                cursor.execute("INSERT INTO historiaClinica (idCitaMedica,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,presionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                cursor.execute("INSERT INTO historiaClinica (idConsulta,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,presionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                            [id,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,precionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos])
     return render_template("consultaMedica.html",mensaje=mensaje)
 
@@ -265,11 +271,13 @@ def consulta_medica():
 
 @app.route("/superAdministrador", methods=["GET", "POST"])
 def superAdministrador():
+    #if 'id' in session:
+    #    nombres = session["nombres"]
     return render_template("superAdministrador.html")
 
 @app.route("/superAdministrador/editarMedico", methods=["GET", "POST"])
 def editarMedico():
-    if request.method == 'POST':
+    if  request.method == 'POST':
         docMedicoOriginal = request.form["docMedicoOriginal"]
         docMedico = request.form["docMedico"]
         especialidad = request.form["especialidad"]
@@ -306,11 +314,183 @@ def editarMedico():
 
 @app.route("/superAdministrador/dashboard", methods=["GET", "POST"])
 def superAdministradorDashboard():
-    return render_template("dashboard.html")
+    citaConsulta=''
+    if  (request.method == 'POST'):
+        citaConsulta = ''
+        fecha = request.form["fechaCita"]
+        horaCita = request.form["horaCita"]
+        idMedico=request.form["idMedico"]
+        agendaCitas=[""]
+        i=0
+        with sqlite3.connect("hospital.db") as connection:
+            connection.row_factory = sqlite3.Row
+            cursor = connection.cursor()
+            if (fecha=="")==False and (horaCita=="")==False  :
+                i=1
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? and hora = ? ",
+                               [fecha,horaCita])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE  fecha = ? and hora = ? ",
+                               [fecha,horaCita])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+            elif (fecha=="")==False and (idMedico=="")==False  :
+                i=1
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? and idMedico = ? ",
+                               [fecha,idMedico])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE  fecha = ? and idMedico = ? ",
+                               [fecha,idMedico])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+            
+            elif (horaCita=="")==False and (idMedico=="")==False  :
+                i=1
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE hora = ? and idMedico = ? ",
+                               [horaCita,idMedico])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE  hora = ? and idMedico = ? ",
+                               [horaCita,idMedico])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+            elif (horaCita=="")==False  and i==0 :
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE hora = ? ",
+                               [horaCita])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE hora = ? ",
+                               [horaCita])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+            elif (idMedico=="")==False  and i==0:
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE idMedico = ? ",
+                               [idMedico])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE  idMedico = ? ",
+                               [idMedico])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+            elif (fecha=="")==False and i==0:
+                
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? ",
+                               [fecha])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE  fecha = ? ",
+                               [fecha])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    d = matriz2[i][0]
+                    agendaCitas.append("Informacion de cita con id ( %d ) : " %d)
+                    for c in range(4):
+                        if c == 1 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Documento de identidad de medico: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 2 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Fecha: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 3 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Hora: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                        if c == 4 and (matriz2[i][c]=="")==False:
+                            agendaCitas.append(" /Estado: ")
+                            agendaCitas.append(str(matriz2[i][c]))
+                    agendaCitas.append("---------------------")
+                citaConsulta = "  ".join(agendaCitas)
+    return render_template("dashboard.html",citaConsulta=citaConsulta)
 
 @app.route("/superAdministrador/editarPaciente", methods=["GET", "POST"])
 def superAdministradorEditarPaciente():
-    if request.method == 'POST':
+    if  request.method == 'POST':
         idOrigal = request.form["idOriginal"]
         nombres = request.form["nombres"]
         id = request.form["id"]
@@ -336,21 +516,18 @@ def superAdministradorEditarPaciente():
                 cursor.execute("UPDATE citaMedica SET idPaciente = (?) where idPaciente = (?)",
                         [id,idOrigal])
                 connection.commit()
-
             if (edad==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
                 cursor.execute("UPDATE paciente SET edad = (?) where id = (?)",
                         [edad,idOrigal])
-                connection.commit()
-            
+                connection.commit()         
             if (profesion==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
                 cursor.execute("UPDATE paciente SET profesion = (?) where id = (?)",
                         [profesion,idOrigal])
                 connection.commit()
-            
             if (email==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
@@ -384,12 +561,13 @@ def superAdministradorEditarPaciente():
 
 @app.route("/superAdministrador/historiaClinica", methods=["GET", "POST"])
 def superAdministradorHistoriaClinica():
+    
     return render_template("historiaClinicaSuper.html")
 
 
 @app.route("/superAdministrador/aperturaAgenda", methods=["GET", "POST"])
 def superAdministradorAperturaAgenda():
-    if request.method == 'POST':
+    if  request.method == 'POST':
         docMedico = request.form["docMedico"]
         fecha = request.form["fecha"]
         hora = request.form["hora"]
@@ -424,35 +602,162 @@ def paciente():
     # En esta parte recuerde que la sesión es como un diccionario
     # Es decir si la llave se encuentra en el diccionario entonces
     # se obtiene true
-    if 'id' in session:
-        nombres = session["nombres"]
-    return render_template("paciente.html", nombres=nombres)
+    #if 'id' in session:
+    #    nombres = session["nombres"]
+    return render_template("paciente.html")
 
 
 @app.route("/paciente/citaMedica", methods=["GET", "POST"])
 def citaMedica():
-    if ('id' in session) and (request.method == 'POST'):
-        fechaInicialAgendaCita = request.form["fechaInicialAgendaCita"]
-        fechaFinalAgendaCita = request.form["fechaFinalAgendaCita"]
-        estado = 'disponible'
+    citasDisponibles=''
+    hora=''
+    if  (request.method == 'POST'):
+        fecha = request.form["fecha"]
+        idCitaSolicitada = request.form["idCitaSolicitada"]
+        idPaciente=request.form["idPaciente"]
+        idCitaCalificar=request.form["idCitaCalificar"]
+        calificacion=request.form["calificacion"]
+        agendaHoras=[""]
+        agendaId=[""]
         with sqlite3.connect("hospital.db") as connection:
             connection.row_factory = sqlite3.Row
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM agendaMedica WHERE estado = ? AND (fecha BETWEEN ? AND ?)",
-                           [estado, fechaInicialAgendaCita, fechaFinalAgendaCita])
-            # Consultar esta página para mostrar datos en una tabla
-            # https://pythonbasics.org/flask-sqlite/
-    return render_template("citaMedica.html")
+            if (fecha=="")==False :
+                cursor.execute("SELECT count(*) FROM agendaMedica WHERE estado = 'disponible' AND fecha = ? ",
+                               [fecha])
+                matriz = cursor.fetchall()
+                tamañoMatriz=matriz[0][0]
+                cursor.execute("SELECT * FROM agendaMedica WHERE estado = 'disponible' AND fecha = ? ",
+                               [fecha])
+                matriz2 = cursor.fetchall()
+                for i in range(tamañoMatriz):
+                    agendaHoras.append(matriz2[i][3]) 
+                for i in range(tamañoMatriz):
+                    agendaId.append(str(matriz2[i][0]))
+                hora = " Hora : ".join(agendaHoras)
+                citasDisponibles = " Id cita: ".join(agendaId)
+            if (idCitaSolicitada=="")==False and (idPaciente=="")==False:
+                estadoAgenda="noDisponible"
+                estadoCita="pendiente"
+                cursor.execute("UPDATE agendaMedica SET estado = (?) where id = (?)",
+                        [estadoAgenda,idCitaSolicitada])
+                cursor.execute("SELECT idMedico FROM agendaMedica WHERE id = ?  ",
+                        [idCitaSolicitada])
+                matriz = cursor.fetchall()
+                idMedico=matriz[0][0]
+                cursor.execute("INSERT INTO citaMedica (idAgendaMedica, idPaciente, idMedico, estado)VALUES (?, ?, ?, ?)",
+                        [idCitaSolicitada, idPaciente, idMedico, estadoCita])
+            if (idCitaCalificar=="")==False:
+                cursor.execute("UPDATE citaMedica SET calificacion = (?) where idAgendaMedica = (?)",
+                        [calificacion,idCitaCalificar])
+    return render_template("citaMedica.html",hora=hora,citasDisponibles=citasDisponibles)
 
 
 @ app.route("/paciente/examenMedico", methods=["GET", "POST"])
 def examenMedico():
-    return render_template("examenMedico.html")
+    examenes=''
+
+    if  (request.method == 'POST'):
+        idPaciente = request.form["idPaciente"]
+        matrizExamenes=[]
+        
+        with sqlite3.connect("hospital.db") as connection:
+            connection.row_factory = sqlite3.Row
+            cursor = connection.cursor()
+            cursor.execute(
+                "SELECT count(*) FROM historiaClinica WHERE docPaciente = ? ",
+                            [idPaciente])
+            matriz = cursor.fetchall()
+            tamañoMatriz=matriz[0][0]
+            cursor.execute("SELECT * FROM historiaClinica WHERE docPaciente = ?",
+                           [idPaciente])
+            matriz2 = cursor.fetchall()
+            for i in range(tamañoMatriz):
+                matrizExamenes.append(matriz2[i][7])
+            examenes = "  ".join(matrizExamenes)
+        
+    return render_template("examenMedico.html",examenes=examenes)
 
 
 @ app.route("/paciente/historiaClinica", methods=["GET", "POST"])
 def pacienteHistoriaClinica():
-    return render_template("pacienteHistoriaClinica.html")
+    historia=''
+    historiaMatriz=[]
+    if  request.method == 'POST':
+        docPaciente = request.form["docPaciente"]
+        # Consultar y mostrar
+        with sqlite3.connect("hospital.db") as connection:
+            # Lugar donde almacenamos todo lo que vamos a ejecutar
+            cursor = connection.cursor()
+            cursor.execute(
+                "SELECT count(*) FROM historiaClinica WHERE docPaciente = ? ",
+                [docPaciente])
+            matriz = cursor.fetchall()
+            tamañoMatriz=matriz[0][0]
+            cursor.execute("SELECT * FROM historiaClinica WHERE docPaciente = ? ",
+                [docPaciente])
+            matriz2 = cursor.fetchall()
+            for i in range(tamañoMatriz):
+                d = matriz2[i][1]
+                historiaMatriz.append("Consulta con id de cita ( %d ) : " %d)
+                for c in range(20):
+                    if c == 0 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append("/Id historia clinica: ")
+                        historiaMatriz.append(str(matriz2[i][c])) 
+                    if c == 3 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Sintomas: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 4 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Antecedentes: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 5 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Cirugias: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 6 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Diagnostico: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 7 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Examenes medicos: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 8 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Peso: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 9 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /altura: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 10 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Peresion Arterial: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 11 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Temperatura: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 12 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Farmacologia: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 13 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Parejas: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 14 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Embarazo: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 15 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Nacidos vivos: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 16 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Parto Natural: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 17 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Metodo Anticonceptivo: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 18 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Drogas: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                    if c == 19 and (matriz2[i][c]=="")==False:
+                        historiaMatriz.append(" /Orden Medica: ")
+                        historiaMatriz.append(str(matriz2[i][c]))
+                historiaMatriz.append("---------------------")
+            historia = "  ".join(historiaMatriz)
+    return render_template("pacienteHistoriaClinica.html",historia=historia)
 
 
 if __name__ == '__main__':
