@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020</div>
+    <div class="franja">Hospital Mision TIC 2020<input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute;left: 1350px;"></div>
     <div class="container-end">
         <div class="icon">
             <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
@@ -22,73 +22,55 @@
     <div class="border">
         Agendamiento de Cita
     </div>
-    <form action="/paciente/citaMedica" , method="post">
-        <div class="container">
-            <label for="">Fecha Inicial</label>
-            <input type="date" id="fechaInicialAgendaCita" name="fechaInicialAgendaCita">
-            <label for="">Fecha Final</label>
-            <input type="date" id="fechaFinalAgendaCita" name="fechaFinalAgendaCita">
+    <form action="" , method="POST">
+        <div>
+            <label for="">Fecha (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</label>
+            <input type="text" id="fechaInicialAgendaCita" name="fecha">
+            
         </div>
-    </form>
+    
     <div>
         <div class="button"><button type="submit">Listar citas</button></div>
     </div>
+    
+    <textarea style="height: 100px;width: 95px;" cols="10" rows="10">{{citasDisponibles}} </textarea>
+    <textarea style="height: 100px;width: 110px;" id="" cols="10" rows="10">{{hora}}</textarea>
+    
+    
     <div>
-        <textarea name="listaCitaMedica" id="listaCitaMedica" cols="1" rows="30">Aquí obtenemos la lista de citas disponibles
-            </textarea>
-    </div>
-    <div>
+        <div>Ingrese el id de la cita que desea agendar <input type="text" name="idCitaSolicitada"></div><div>Ingrese su documento de identidad <input type="text" name="idPaciente"></div>
         <div class="button"><button type="submit">Solicitar cita</button></div>
-    </div>
-    <div class="border">
-        Citas pendientes
-    </div>
-    <div>
-        <div class="button"><button type="button">Listar citas pendientes</button></div>
-    </div>
-    <div>
-        <textarea name="" id="" cols="3" rows="30">Aquí obtenemos la lista de citas disponibles
-            </textarea>
-    </div>
-    <div class="border">
-        Citas pasadas
-    </div>
-    <div>
-        <form class="form-inline" action="">
-            <div class="box"><button type="button" style="margin-top: 0px;">Ver</button></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date" id="fechaInicialCitaPasada" name="fechaInicialCitaPasada"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
-                    type="date" id="fechaFinalCitaPasada" name="fechaFinalCitaPasada"></div>
-        </form>
-    </div>
-    <div>
-        <textarea name="" id="" cols="5" rows="30">Aquí obtenemos la lista de citas pasadas donde la primera columna es el id de la cita
-            </textarea>
     </div>
     <div class="border">
         Calificar citas pasadas
     </div>
     <div>
-        <form class="form-inline" action="">
+        
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Id cita</label><input
-                    type="number"></div>
+                    type="number" name="idCitaCalificar"></div>
             <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Calificación cita</label>
-                <select name="" id="">
-                    <option value="value1">1</option>
-                    <option value="value2">2</option>
-                    <option value="value3">3</option>
-                    <option value="value3">4</option>
-                    <option value="value3">5</option>
+                <select name="calificacion" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </div>
-        </form>
+        
     </div>
     <div>
-        <div class="button"><button type="button">Calificar cita</button></div>
+        <div class="button"><input type="submit" value="Calificar cita"></div>
     </div>
+    </form>
 </body>
 
 </html>
 <link rel="stylesheet" href="/static/css/citaMedica.css">
-<script> </script>
+<script>
+    function reflogin() {
+        location.href="http://127.0.0.1:5000"}
+    function refmedico() {
+        location.href="http://127.0.0.1:5000/paciente"
+    }
+</script>

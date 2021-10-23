@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020</div>
+    <div class="franja">Hospital Mision TIC 2020<input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute;left: 1360px;"></div>
     <div class="container-end">
         <div class="icon">
             <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
@@ -18,52 +18,25 @@
             <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
         </div>
     </div>
-    <div class="border">
-        Resultados exámenes médicos realizados
-    </div>
-    <div>
-        <form class="form-inline" action="">
-            <div class="box"><button type="button" onclick="validarDatosExamMedRealizado()">Ver</button></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date" id="fechaInicialExamMedRealizado" name="fechaInicialExamMedRealizado"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
-                    type="date" id="fechaFinalExamMedRealizado" name="fechaFinalExamMedRealizado"></div>
-        </form>
-    </div>
-    <div>
-        <form>
-            <textarea name="" id="" cols="30" rows="2">
-            </textarea>
-        </form>
-    </div>
-    <div>
-        <form>
-            <div class="button"><button type="button" onclick="validarDatosExamMedRealizado()">Descargar</button></div>
-        </form>
-    </div>
-    <div class="border">
-        Exámenes médicos pendientes
-    </div>
-    <div>
-        <form class="form-inline" action="">
-            <div class="box"><button type="button" onclick="validarDatosExamMedPend()">Ver</button></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Inicial</label><input
-                    type="date" id="fechaInicialExamMedPend" name="fechaInicialExamMedPend"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Fecha Final</label><input
-                    type="date" id="fechaFinalExamMedPend" name="fechaFinalFinalExamMedPend"></div>
-        </form>
-    </div>
-    <div>
-        <form>
-            <textarea name="" id="" cols="30" rows="2">
-            </textarea>
-        </form>
-    </div>
-    <div>
-        <form>
-            <div class="button"><button type="button" onclick="validarDatosExamMedPend()">Descargar</button></div>
-        </form>
-    </div>
+    <form action="" method="POST">
+        <div class="border">
+            Examenes medicos 
+        </div>
+        <div>
+            <form class="form-inline" action="" >
+                <div class="box" style="position: absolute;top:140px;"><button type="submit" onclick="validarDatosExamMedRealizado()">Ver</button></div>
+                <div>Ingrese su documento de identidad <input type="text" name="idPaciente"></div>
+            </form>
+        </div>
+        <div>
+            <form>
+                <textarea name="" id="" cols="30" rows="2">{{ examenes }}</textarea>
+            </form>
+        </div>
+    </form>
+    
+    
+    
 </body>
 
 </html>
@@ -85,5 +58,10 @@
         if (fechaInicialExamMedPend === '' || fechaFinalExamMedPend === '' || fechaInicialExamMedPend > fechaFinalExamMedPend) {
             alert('Para ver y descargar los exámenes pendientes es necesario no dejar campos en blanco y que la fecha final no sea anterior a la fecha inicial')
         }
+    }
+    function reflogin() {
+        location.href="http://127.0.0.1:5000"}
+    function refmedico() {
+        location.href="http://127.0.0.1:5000/paciente"
     }
 </script>

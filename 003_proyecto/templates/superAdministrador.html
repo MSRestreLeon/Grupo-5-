@@ -13,8 +13,7 @@
 
 <p>
     <var>
-        <div><img src="static/images/back.png" class="formatoparaback"></div>
-<div><img src="static/images/home.png" class="formatoparahome" alt=""></div>
+
 </var>
 </p>
 <var>
@@ -23,7 +22,7 @@
 <form action="">
 <p></p>
 <p>
-    <var></var>
+    <div>{{ nombres }}</div>
     <div class="cuerpoizquierdo">Consulta Historia Clinica Paciente</div></p>
     
    
@@ -59,13 +58,15 @@
     </form>
     
 </body>
+<script>
+    function refdashboard() {
+        location.href="http://127.0.0.1:5000/superAdministrador/dashboard"
+    }
 
+    
+
+</script>
 
 </html>
 <link rel="stylesheet" href="/static/css/estilos.css">
 <link rel="stylesheet" href="/static/css/superAdmin.css">
-<script>
-function refdashboard() {
-    location.href="http://127.0.0.1:5000/superAdministrador/dashboard"
-  }
-</script>

@@ -11,13 +11,13 @@
 <body>
     <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
     <form action="" method="get">
-        <div><img src="/static/images/back.png" alt="" class="back" onclick="refmedico()"></div>
-        <div><img src="/static/images/home.png" alt="" class="home" onclick="refmedico()"></div>
+        <div><img src="/static/images/back.png" alt="" class="back" onclick="refPaciente()"></div>
+        <div><img src="/static/images/home.png" alt="" class="home" onclick="refPaciente()"></div>
     </form>
     <form action="" method="POST" class="formularioHistoriaClinica">
       <p>A continuacion podra consultar su historia clinica</p>
       <div>
-        <div>      Documento de identidad  <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria">Consultar historia clinica</button> </div>
+        <div>      Documento de identidad  <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
       </div>
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
     </form>
@@ -26,18 +26,9 @@
     
 </body>
 <script>
-  function validarFechas() {
-    var fecha1 = document.getElementById("fecha1").value;
-    var fecha2 = document.getElementById("fecha2").value;
-    if ((fecha1=="")==false) {
-      if ((fecha2=="")==false) {
-        alert ('fechas validadas')
-      }else{alert ('Fecha final sin diligenciar')}
-    }else{alert ('Fecha inicial sin diligenciar')}
-  }
   
-  function refmedico() {
-    location.href="http://127.0.0.1:5000/medico"
+  function refPaciente() {
+    location.href="http://127.0.0.1:5000/paciente"
   }
   function reflogin() {
     location.href="http://127.0.0.1:5000"
