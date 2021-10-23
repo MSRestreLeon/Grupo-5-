@@ -511,21 +511,18 @@ def superAdministradorEditarPaciente():
                 cursor.execute("UPDATE citaMedica SET idPaciente = (?) where idPaciente = (?)",
                         [id,idOrigal])
                 connection.commit()
-
             if (edad==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
                 cursor.execute("UPDATE paciente SET edad = (?) where id = (?)",
                         [edad,idOrigal])
-                connection.commit()
-            
+                connection.commit()         
             if (profesion==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
                 cursor.execute("UPDATE paciente SET profesion = (?) where id = (?)",
                         [profesion,idOrigal])
                 connection.commit()
-            
             if (email==""):
                 mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
             else:
