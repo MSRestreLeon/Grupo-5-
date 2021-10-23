@@ -190,7 +190,7 @@ def historia_clinica():
                         historiaMatriz.append(" /altura: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 9 and (matriz2[i][c]=="")==False:
-                        historiaMatriz.append(" /Peresion Arterial: ")
+                        historiaMatriz.append(" /Presion Arterial: ")
                         historiaMatriz.append(str(matriz2[i][c]))
                     if c == 10 and (matriz2[i][c]=="")==False:
                         historiaMatriz.append(" /Temperatura: ")
