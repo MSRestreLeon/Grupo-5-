@@ -24,8 +24,8 @@
         </div>
         <div>
             <form class="form-inline" action="" >
-                <div class="box" style="position: absolute;top:140px;"><button type="submit" onclick="validarDatosExamMedRealizado()">Ver</button></div>
-                <div>Ingrese su documento de identidad <input type="text" name="idPaciente"></div>
+                <div class="box" style="position: absolute;top:140px;"><button type="submit" onclick="validarDatos()">Ver</button></div>
+                <div>Ingrese su documento de identidad <input type="number" name="idPaciente" id="docPaciente"></div>
             </form>
         </div>
         <div>
@@ -33,6 +33,7 @@
                 <textarea name="" id="" cols="30" rows="2">{{ examenes }}</textarea>
             </form>
         </div>
+        <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
     </form>
     
     
@@ -42,6 +43,12 @@
 </html>
 <link rel="stylesheet" href="/static/css/examenMedico.css">
 <script>
+    function validarDatos(){
+      var documento = document.getElementById("docPaciente").value;
+      if ((documento=="")==false && isNaN(documento)== false ) {
+        alert('Consultando examenes medicos...');
+      }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
+    }
     function validarDatosExamMedRealizado() {
         let fechaInicialExamMedRealizado = document.getElementById("fechaInicialExamMedRealizado").value;
         let fechaFinalExamMedRealizado = document.getElementById("fechaFinalExamMedRealizado").value;

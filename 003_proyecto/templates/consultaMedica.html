@@ -33,21 +33,22 @@
     <div class="diagnostico">          Diagnostico*                        <div><textarea name="diagnostico" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="peso">                 Peso*                               <input name="peso" id="peso" type="text" class="datosConsulta"></div>
     <div class="altura">               Altura*                             <input name="altura" id="altura" type="text" class="datosConsulta"></div>
-    <div class="presion">              Presion arterial*                   <input name="presion" id="presion" type="text" class="datosConsulta"></div>
+    <div class="precion">              Presion arterial*                   <input name="precion" id="presion" type="text" class="datosConsulta"></div>
     <div class="temperatura">          Temperatura*                        <input name="temperatura" id="temperatura" type="text" class="datosConsulta"> </div>
-    <div class="farmacologia">         Farmacologia consumo medicamentos  <input id="farmacologiaCheck" type="checkbox"><input name="farmacologia" id="farmacologia" type="text"class="datosConsulta"></div>
+    <div class="farmacologia">         Farmacologia consumo medicamentos   <input id="farmacologiaCheck" type="checkbox"><input name="farmacologia" id="farmacologia" type="text"class="datosConsulta"></div>
     <div class="parejas">              Parejas*                            <input name="parejas" id="parejas" type="text" class="datosConsulta"></div>
-    <div class="embarazos">            Embarazos                          <input id="embarazosCheck" type="checkbox"> <input name="embarazos" id="embarazos" type="text" class="datosConsulta"></div>
-    <div class="nacidosVivos">         Nacidos vivos                     <input name="nacidosVivos" id="nacidosVivos" type="text" class="datosConsulta"></div>
-    <div class="partoNatural">         Parto Natural                      <input  id="partoNaturalCheck" type="checkbox"><input name="partoNatural" id="partoNatural" type="text" class="datosConsulta"></div>
-    <div class="metodoAnticonceptivo"> Metodo Anticonceptivo              <input id="metodoAnticonceptivoCheck" type="checkbox"><input name="metodoAnticonceptivo" id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
-    <div class="drogas">               Drogas                             <input id="drogasCheck" type="checkbox"><input name="dogras" id="drogas" type="text" class="datosConsulta"></div>
+    <div class="embarazos">            Embarazos                           <input id="embarazosCheck" type="checkbox"> <input name="embarazos" id="embarazos" type="text" class="datosConsulta"></div>
+    <div class="nacidosVivos">         Nacidos vivos                       <input name="nacidosVivos" id="nacidosVivos" type="text" class="datosConsulta"></div>
+    <div class="partoNatural">         Parto Natural                       <input  id="partoNaturalCheck" type="checkbox"><input name="partoNatural" id="partoNatural" type="text" class="datosConsulta"></div>
+    <div class="metodoAnticonceptivo"> Metodo Anticonceptivo               <input id="metodoAnticonceptivoCheck" type="checkbox"><input name="metodoAnticonceptivo" id="metodoAnticonceptivo" type="text" class="datosConsulta"></div>
+    <div class="drogas">               Drogas                              <input id="drogasCheck" type="checkbox"><input name="dogras" id="drogas" type="text" class="datosConsulta"></div>
     <div class="autorizaciones"><label>Autorizacion de examenes medicos*   </label></div><div><textarea name="autorizacionExamenes" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
     <div class="medicamentos"><label>  Ordenes medicamentos - formulas*    </label></div><div><textarea name="ordenesMedicamentos" id="medicamentos" cols="30" rows="10" class="textoMedicamentos"></textarea></div>
     <div><button type="submit" onclick="validarConsulta()" class="buttonGuardarConsulta">Guardar consulta</button></div>
   </div>
   </form>
-  <div class="mensajeAdvertencia">{{ mensaje }}</div>
+  <p style="color: red;position: relative;left: 550px;top: 52px;">{{mensaje}}</p>
+  <p style="color: red;position: relative;left: 550px;top: 72px;">{{mensaje2}}</p>
   <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
@@ -76,7 +77,6 @@
     var diagnostico = document.getElementById("diagnostico").value;
     var examenes = document.getElementById("examenes").value;
     var medicamentos = document.getElementById("medicamentos").value;
-
     if(isNaN(peso)==false && (peso=="")==false){
       if(isNaN(altura)==false && (altura=="")==false){
         if(isNaN(precion)==false && (precion=="")==false){

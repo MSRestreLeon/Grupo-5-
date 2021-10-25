@@ -25,12 +25,12 @@
     <form action="" , method="POST">
         <div>
             <label for="">Fecha (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</label>
-            <input type="text" id="fechaInicialAgendaCita" name="fecha">
+            <input type="text" id="fechaConsulta" name="fecha">
             
         </div>
     
     <div>
-        <div class="button"><button type="submit">Listar citas</button></div>
+        <div class="button"><button onclick="validarDatosConsulta()" type="submit">Listar citas</button></div>
     </div>
     
     <textarea style="height: 100px;width: 95px;" cols="10" rows="10">{{citasDisponibles}} </textarea>
@@ -38,36 +38,58 @@
     
     
     <div>
-        <div>Ingrese el id de la cita que desea agendar <input type="text" name="idCitaSolicitada"></div><div>Ingrese su documento de identidad <input type="text" name="idPaciente"></div>
-        <div class="button"><button type="submit">Solicitar cita</button></div>
+        <div>Ingrese el id de la cita que desea agendar <input type="number" id="idCita" name="idCitaSolicitada"></div>
+        <div>Ingrese su documento de identidad <input type="number" name="idPaciente" id="docPaciente"></div>
+        <div class="button"><button onclick="validarDatosAgendamiento()" type="submit">Solicitar cita</button></div>
     </div>
     <div class="border">
         Calificar citas pasadas
     </div>
     <div>
         
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Id cita</label><input
-                    type="number" name="idCitaCalificar"></div>
-            <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Calificación cita</label>
-                <select name="calificacion" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        
+    <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Id cita</label>
+        <input type="number" id="idCitaCalificar" name="idCitaCalificarn"></div>
+    <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Calificación cita</label>
+        <select name="calificacion" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
     </div>
     <div>
-        <div class="button"><input type="submit" value="Calificar cita"></div>
+        <div class="button"><input type="submit" onclick="validarDatosCalificacion()" value="Calificar cita"></div>
     </div>
     </form>
+    <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
 </body>
 
 </html>
 <link rel="stylesheet" href="/static/css/citaMedica.css">
 <script>
+    function validarDatosConsulta(){
+        var fechaConsulta = document.getElementById("fechaConsulta").value;
+        if ((fechaConsulta=="")==false ) {
+            alert('Consultando citas disponibles...');
+        }else{alert('[Error]Fecha invalida');}
+    }
+    function validarDatosAgendamiento(){
+        var idCita = document.getElementById("idCita").value;
+        var documento = document.getElementById("docPaciente").value;
+        if ((documento=="")==false && isNaN(documento)== false ) {
+            if ((idCita=="")==false && isNaN(idCita)== false) {
+                alert('Cita agendada...');
+            }else{alert('[Error]Ingrese el id de la cita que desea agendar');}
+        }else{alert('[Error]Ingrese su documento de identidad');}
+    }
+    function validarDatosCalificacion(){
+        var idCitaCalificar = document.getElementById("idCitaCalificar").value;
+        if ((idCitaCalificar=="")==false && isNaN(idCitaCalificar)== false ) {
+            alert('Calificacion exitosa, gracias por calificar nuestro servicio');
+        }else{alert('[Error]Ingrese el id de la cita que desea calificar');}
+    }
     function reflogin() {
         location.href="http://127.0.0.1:5000"}
     function refmedico() {

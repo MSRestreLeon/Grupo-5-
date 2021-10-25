@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div class="franja">Hospital Mision TIC 2020 <input type="submit" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
     <form action="" method="get">
         <div><img src="/static/images/back.png" alt="" class="back" onclick="refPaciente()"></div>
         <div><img src="/static/images/home.png" alt="" class="home" onclick="refPaciente()"></div>
@@ -17,16 +17,22 @@
     <form action="" method="POST" class="formularioHistoriaClinica">
       <p>A continuacion podra consultar su historia clinica</p>
       <div>
-        <div>      Documento de identidad  <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
+        <div>      Documento de identidad  <input name="docPaciente" type="number" id="docPaciente" class="perfil" ><input type="submit" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
       </div>
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
     </form>
-    
+    <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
     <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>
-  
+  function validarDatos(){
+    var documento = document.getElementById("docPaciente").value;
+    if ((documento=="")==false && isNaN(documento)== false ) {
+      alert('Consultando historia clinica...');
+    }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
+  }
+
   function refPaciente() {
     location.href="http://127.0.0.1:5000/paciente"
   }

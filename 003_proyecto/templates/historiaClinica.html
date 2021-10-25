@@ -17,23 +17,20 @@
     <form action="" method="POST" class="formularioHistoriaClinica">
       <p>A continuacion podra consultar la historia clinica del paciente</p>
       <div>
-        <div>      Documento de identidad paciente <input name="docPaciente" type="text"  class="perfil" ><button type="submit" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
+        <div>      Documento de identidad paciente <input name="docPaciente" type="text" id="docPaciente"  class="perfil" ><button type="submit" onclick = "validarDatos()" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
       </div>
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
     </form>
-    
+    <p style="color: red;position: relative;left: 600px;top: 500px;">{{mensaje}}</p>
     <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>
-  function validarFechas() {
-    var fecha1 = document.getElementById("fecha1").value;
-    var fecha2 = document.getElementById("fecha2").value;
-    if ((fecha1=="")==false) {
-      if ((fecha2=="")==false) {
-        alert ('fechas validadas')
-      }else{alert ('Fecha final sin diligenciar')}
-    }else{alert ('Fecha inicial sin diligenciar')}
+  function validarDatos(){
+    var documento = document.getElementById("docPaciente").value;
+    if ((documento=="")==false && isNaN(documento)== false ) {
+      alert('Consultando historia clinica...');
+    }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
   }
   
   function refmedico() {

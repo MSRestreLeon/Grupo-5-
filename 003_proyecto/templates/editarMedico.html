@@ -21,12 +21,13 @@
   <div class="textoEncabezadoDatosPaciente">Favor ingrese el documento de identidad original del medico para el cual desee editar su informacion </div>
   <form action="" method="POST">
     <div>
-    <div class="documento">            Documento de identidad del medico (original) <input  style="position: absolute;left: 300px;"  id="docMedicoOriginal" name="docMedicoOriginal" type="text" class="perfil" > </div>
-    <div class="nombre">            Documento de identidad del medico(nuevo) <input style="position: absolute;left: 300px;"  id="docMedico" name="docMedico" type="text" class="perfil" > </div>
+    <div class="documento">            Documento de identidad del medico (original) <input  style="position: absolute;left: 300px;"  id="docMedicoOriginal" name="docMedicoOriginal" type="number" class="perfil" > </div>
+    <div class="nombre">            Documento de identidad del medico(nuevo) <input style="position: absolute;left: 300px;"  id="docMedico" name="docMedico" type="number" class="perfil" > </div>
     <div class="cargo">               Especialidad                      <input style="position: absolute;left: 300px;" id="especialidad" name="especialidad" type="text"  class="perfil"> </div>
-    <div class="genero">                Estado                            <input style="position: absolute;left: 300px;" id="estado" name="estado" type="text"  class="perfil"> </div>
+    <div class="genero">                Estado (activo/inactivo)                           <input style="position: absolute;left: 300px;" id="estado" name="estado" type="text"  class="perfil"> </div>
     <div><button type="submit" onclick="validarEdicion()" class="buttonEditarMedico">Editar Medico</button></div>
   </form>
+  <p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
 </body>
 <script>
     function validarEdicion() {
@@ -35,7 +36,7 @@
     var estado = document.getElementById("estado").value;
     if ((docMedico=="")==false){
         if (isNaN(docMedico)==false) {
-            alert('Cedula actualizada');
+            alert('Documento de identidad actualizado');
         }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
     }
     if ((especialidad=="")==false){

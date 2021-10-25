@@ -20,31 +20,29 @@
     <div >Favor ingrese el documento de identidad del medico </div>
     <form action="" method="POST">
     <div >
-    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="text" class="perfilJ" >  </div>
+    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" >  </div>
     <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="text"  class="perfilJ"> (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD") </div>
     <div class="cargo">                Hora                            <input id="hora" name="hora" type="text"  class="perfilJ">(Favor ingresar la fecha en el siguiente formato "hh:mm")  </div>
-    <div class="genero">               Estado                            <input id="estado" name="estado" type="text"  class="perfilJ"> (El estado debe de ser disponible o noDisponible)
+    
     </div>
 
     <div><button type="submit" onclick="validarEdicion()" class="buttonApertura">Abrir Agenda</button></div>
   </form>
 </div>
+<p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
 </body>
 <script>
     function validarEdicion() {
     var docMedico = document.getElementById("docMedico").value;
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
-    var estado = document.getElementById("estado").value;
     if (((docMedico=="")==false)&&(isNaN(docMedico)==false)) {
-      if ((fecha=="")==false) {
-        if ((hora=="")==false) {
-          if ((estado=="")==false) {
-            alert('Cita cargada')
-          }else{alert('Favor llenar estado')}
-        }else{alert('Favor llenar hora')}
-      }else{alert('Favor llenar fecha')}
-    }else{alert('Favor llenar documento de identidad de medico o revisar el dato ingresado')}
+      if ((fecha=="")==false && (docMedico=="")==false) {
+        if ((hora=="")==false && (docMedico=="")==false) {
+          alert('Cita cargada')
+        }else{alert('[ERROR]Favor llenar hora')}
+      }else{alert('[ERROR]Favor llenar fecha')}
+    }else{alert('[ERROR]Favor llenar documento de identidad de medico o revisar el dato ingresado')}
   }
     function refSuperAdmin() {
     location.href="http://127.0.0.1:5000/superAdministrador"
