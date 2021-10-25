@@ -140,10 +140,11 @@
         column-gap: 1px;
         padding-left:170px;
     }   
+    /* grid para contenedores */
     .container2 {
         display: grid;
         grid-template-columns: 320px 500px;
-        grid-template-rows: repeat(200,20px);
+        grid-template-rows: repeat(2,20px);
         justify-content: center;
         margin-top: 20px;
         margin-bottom: 5px;
