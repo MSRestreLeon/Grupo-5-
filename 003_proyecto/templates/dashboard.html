@@ -19,32 +19,43 @@
     <div>
        <label>Dash Board Citas</label>
     </div>
-    <form action="" style="top:30px;position: relative;" method="POST">
-        <p style="padding-left:30px;">Fecha cita (AAAA/MM/DD) <input type="text"style="width: 125px"  name="fechaCita" class="perfil" > </p>
-        <p style="padding-left:30px;">Hora cita (hh:mm) <input type="text" style="width: 125px"  name="horaCita" class="perfil" > </p>
-        <p for="choose" style="padding-left:30px;">Id Medico<input class="perfil" style="width: 125px" type="number" name ="idMedico">           
-        <p><input style="left: 400px;top:85px;width: 159px;height: 48px;"class="btn btn-topspace" type="submit" value="Consultar"> </p>
+    <form action="" style="top:30px;position: relative;" method="POST" name="formulario">
+        <p style="padding-left:30px;">Fecha cita  <input type="date"style="width: 125px"  name="fechaCita" class="perfil" id="fecha"> </p>
+        <p style="padding-left:30px;">Hora cita  <input type="time" style="width: 125px"  name="horaCita" class="perfil" id="hora" min="06:00" max="18:00" step="900"> </p>
+        <p for="choose" style="padding-left:30px;">Id Medico<input class="perfil" style="width: 125px" type="number" name ="idMedico" id="docMedico">           
+        <p><input onclick="validarEdicion()" style="left: 400px;top:85px;width: 159px;height: 48px;"class="btn btn-topspace" type="button" value="Consultar"> </p>
         
-        <textarea style="width: 1100px;height: 300px;top: 50px;position: relative;" name="" id="" cols="9" rows="5">{{citaConsulta}}</textarea>
+        <textarea style="width: 1100px;height: 300px;top: 50px;position: relative;" name="" id="" cols="9" rows="5" readonly>{{citaConsulta}}</textarea>
         
 
     </form>
-    <p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
+    <p style="color: red;position: relative;left: 550px;top: 100px;">{{mensaje}}</p>
 </body>
 <script>
     function validarEdicion() {
         var docMedico = document.getElementById("docMedico").value;
         var fecha = document.getElementById("fecha").value;
         var hora = document.getElementById("hora").value;
-        if (((docMedico=="")==false)&&(isNaN(docMedico)==false)) {
-            alert('Consultando agenda medica ')    
-        }else{alert('[ERROR]Favor llenar documento de identidad de medico correctamente')}
+        var fechaValidar =/^\d{4}-\d{2}-\d{2}$/;
+        var horaValidar=/^\d{2}:\d{2}$/ ;
+        if (((docMedico=="")==false)) {
+            if((isNaN(docMedico)==false)){
+                alert('Consultando agenda medica.... ') 
+                document.formulario.submit()
+            }else{alert('[ERROR]Favor llenar documento de identidad de medico correctamente')}
+        }
+        if ((hora=="")==false) {
+            if(horaValidar.exec(hora)){
+                alert('Consultando agenda medica....')
+                document.formulario.submit()
+            } else{alert('[ERROR]Favor llenar hora correctamente')}
+        }
         if ((fecha=="")==false) {
-            alert('Consultando agenda medica') 
-        }else{alert('[ERROR]Favor llenar hora correctamente')}
-        if ((fecha=="")==false) {
-            alert('Consultando agenda medica') 
-        }else{alert('[ERROR]Favor llenar fecha correctamente')}
+            if(fechaValidar.exec(fecha)){
+                alert('Consultando agenda medica....')
+                document.formulario.submit()
+            } else{alert('[ERROR]Favor llenar fecha correctamente')}
+        }
     }
     function refSuperAdministrador() {
         location.href="http://127.0.0.1:5000/superAdministrador"

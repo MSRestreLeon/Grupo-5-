@@ -18,12 +18,20 @@
       <div><label>Documento de Identidad</label></div>
       <div><input type="number" name="id" id="id"></div>
       <div><label>Contraseña</label></div>
-      <div><input type="text" name="password" id="password"></div>
+      <div><input type="password" name="password" id="password"></div>
       <div></div>
       <div><button>Ingresar</button></div>
     </div>
   </form>
   <div class="containerMensaje">{{ mensaje }}</div>
+  <div class="containerMensaje">{{ vSesion }}</div>
 </body>
-
+<script>
+  function validarDatos(){
+    var id = document.getElementById("id").value
+    if((id=="")==false && isNaN(id)==false){
+      alert('Validando los datos ingresados...');
+    }else{alert('[ERROR]Favor revise los datos ingresados, operacion abortada');}
+  }
+</script>
 </html>

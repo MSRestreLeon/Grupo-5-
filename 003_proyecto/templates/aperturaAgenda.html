@@ -18,28 +18,32 @@
         <div><label>Apertura Agenda</label></div>
     </div> 
     <div >Favor ingrese el documento de identidad del medico </div>
-    <form action="" method="POST">
+    <form action="" method="POST" name="formulario">
     <div >
-    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" >  </div>
-    <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="text"  class="perfilJ"> (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD") </div>
-    <div class="cargo">                Hora                            <input id="hora" name="hora" type="text"  class="perfilJ">(Favor ingresar la fecha en el siguiente formato "hh:mm")  </div>
+    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" >(*) </div>
+    <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="date"  class="perfilJ"> (*) </div>
+    <div class="cargo">                Hora                           <input id="hora" name="hora" type="time"  class="perfilJ">(*)  </div>
     
     </div>
 
-    <div><button type="submit" onclick="validarEdicion()" class="buttonApertura">Abrir Agenda</button></div>
+    <div><button type="button" onclick="validarEdicion()" class="buttonApertura" formnovalidate>Abrir Agenda</button></div>
   </form>
 </div>
 <p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
+<p style="color: green;position: relative;left: 550px;top: 500px;">{{mensajep}}</p>
 </body>
 <script>
     function validarEdicion() {
     var docMedico = document.getElementById("docMedico").value;
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
+    var fechaValidar =/^\d{4}-\d{2}-\d{2}$/;
+    var horaValidar=/^\d{2}:\d{2}$/ ;
     if (((docMedico=="")==false)&&(isNaN(docMedico)==false)) {
-      if ((fecha=="")==false && (docMedico=="")==false) {
-        if ((hora=="")==false && (docMedico=="")==false) {
-          alert('Cita cargada')
+      if ((fecha=="")==false && (docMedico=="")==false && fechaValidar.exec(fecha)) {
+        if ((hora=="")==false && (docMedico=="")==false && horaValidar.exec(hora)) {
+          alert('Agendando cita....')
+          document.formulario.submit()
         }else{alert('[ERROR]Favor llenar hora')}
       }else{alert('[ERROR]Favor llenar fecha')}
     }else{alert('[ERROR]Favor llenar documento de identidad de medico o revisar el dato ingresado')}

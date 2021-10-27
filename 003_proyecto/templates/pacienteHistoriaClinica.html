@@ -14,14 +14,14 @@
         <div><img src="/static/images/back.png" alt="" class="back" onclick="refPaciente()"></div>
         <div><img src="/static/images/home.png" alt="" class="home" onclick="refPaciente()"></div>
     </form>
-    <form action="" method="POST" class="formularioHistoriaClinica">
+    <form action="" method="POST" class="formularioHistoriaClinica" name="formulario">
       <p>A continuacion podra consultar su historia clinica</p>
       <div>
-        <div>      Documento de identidad  <input name="docPaciente" type="number" id="docPaciente" class="perfil" ><input type="submit" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
+        <div>      Documento de identidad  <input name="docPaciente" type="number" id="docPaciente" class="perfil" ><input type="button" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
       </div>
-      <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica">{{ historia }}</textarea></div>  
+      <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
     </form>
-    <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
+    <p style="color: red;position: relative;left: 600px; top: 550px;">{{mensaje}}</p>
     <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
@@ -30,6 +30,7 @@
     var documento = document.getElementById("docPaciente").value;
     if ((documento=="")==false && isNaN(documento)== false ) {
       alert('Consultando historia clinica...');
+      document.formulario.submit()
     }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
   }
 

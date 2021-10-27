@@ -182,7 +182,7 @@
     width: 1350px;
     height: 200px;
     top:160px;   
-    background: #C4C4C4;
+    
 }
 .textoConsulta {
     text-align: left;
@@ -190,6 +190,7 @@
     width: 800px;
     height: 70px;   
     background: #C4C4C4;
+    
 }
 .footer{
     position: absolute;
@@ -218,12 +219,21 @@
     left: 270px;
     top: 90px;
 }
-.textoConsultaHistoria{
+.textoConsultaHistoriaM{
     position: absolute;
     width: 336px;
     height: 34px;
     left: 1102px;
     top: 80px;
+    font-size: 20px;
+}
+.textoConsultaHistoria{
+    position: absolute;
+    width: 336px;
+    height: 34px;
+    left: 1102px;
+    top: 120px;
+    font-size: 18px;
 }
 .docPaciente{
     position: relative;
@@ -239,7 +249,8 @@
     width: auto;
     height: 30px;
     left: 1105px;
-    top: 105px;
+    top: 150px;
+    border-radius: 5px;
 }
 .enunciadoAgenda{
     position: absolute;
@@ -252,15 +263,19 @@
 }
 .consultaFecha{
     position: absolute;
-    top: 50px;
+    top: 70px;
 }
 .buttonId{
     position: absolute;
     left: 250px;
+    border-radius: 5px;
 }
 .fechaAgenda{
     position: relative;
-    left: 0px;
+    left: 112px;
+    border-radius: 5px;
+    background-color: #C4C4C4;
+    
 }
 .formularioHistoriaClinica{
     position: absolute;

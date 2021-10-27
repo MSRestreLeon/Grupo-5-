@@ -18,19 +18,19 @@
             <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
         </div>
     </div>
-    <form action="" method="POST">
+    <form action="" name="formulario" method="POST">
         <div class="border">
             Examenes medicos 
         </div>
         <div>
             <form class="form-inline" action="" >
-                <div class="box" style="position: absolute;top:140px;"><button type="submit" onclick="validarDatos()">Ver</button></div>
+                <div class="box" style="position: absolute;top:140px;"><button type="button" onclick="validarDatos()">Ver</button></div>
                 <div>Ingrese su documento de identidad <input type="number" name="idPaciente" id="docPaciente"></div>
             </form>
         </div>
         <div>
             <form>
-                <textarea name="" id="" cols="30" rows="2">{{ examenes }}</textarea>
+                <textarea name="" id="" cols="30" rows="2" readonly>{{ examenes }}</textarea>
             </form>
         </div>
         <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
@@ -47,6 +47,7 @@
       var documento = document.getElementById("docPaciente").value;
       if ((documento=="")==false && isNaN(documento)== false ) {
         alert('Consultando examenes medicos...');
+        document.formulario.submit()
       }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
     }
     function validarDatosExamMedRealizado() {

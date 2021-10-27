@@ -22,19 +22,19 @@
 
   <div class="textoEncabezadoDatosPaciente">Favor ingrese los siguentes datos </div>
 
-  <form action="" method="POST">
+  <form action="" method="POST" name="formulario">
     <div>
-    <div class="documento">            Documento de identidad del paciente* <input name="docPaciente" type="text" class="perfil" > </div>
-    <div class="nombre">               Id cita*                            <input name="idCita" type="text"  class="perfil"> </div>
+    <div class="documento">            Documento de identidad del paciente* <input name="docPaciente" type="number" class="perfil" id="docPaciente" > </div>
+    <div class="nombre">               Id cita*                            <input name="idCita" type="number"  class="perfil" id="idCita"> </div>
     <div class="genero">               A continuacion ingresar los datos solicitados de la consulta medica</div>
     <div class="sintomas">             Sintomas*                          <div><textarea name="sintomas" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="antecedentes">         Antecedentes familiares*            <div><textarea name="antecedentes" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="cirugias">             Cirugias*                           <div><textarea name="cirugias" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="diagnostico">          Diagnostico*                        <div><textarea name="diagnostico" id="diagnostico" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
-    <div class="peso">                 Peso*                               <input name="peso" id="peso" type="text" class="datosConsulta"></div>
-    <div class="altura">               Altura*                             <input name="altura" id="altura" type="text" class="datosConsulta"></div>
-    <div class="precion">              Presion arterial*                   <input name="precion" id="presion" type="text" class="datosConsulta"></div>
-    <div class="temperatura">          Temperatura*                        <input name="temperatura" id="temperatura" type="text" class="datosConsulta"> </div>
+    <div class="peso">                 Peso*                               <input name="peso" id="peso" type="number" class="datosConsulta"></div>
+    <div class="altura">               Altura*                             <input name="altura" id="altura" type="number" class="datosConsulta"></div>
+    <div class="precion">              Presion arterial*                   <input name="precion" id="precion" type="number" class="datosConsulta"></div>
+    <div class="temperatura">          Temperatura*                        <input name="temperatura" id="temperatura" type="number" class="datosConsulta"> </div>
     <div class="farmacologia">         Farmacologia consumo medicamentos   <input id="farmacologiaCheck" type="checkbox"><input name="farmacologia" id="farmacologia" type="text"class="datosConsulta"></div>
     <div class="parejas">              Parejas*                            <input name="parejas" id="parejas" type="text" class="datosConsulta"></div>
     <div class="embarazos">            Embarazos                           <input id="embarazosCheck" type="checkbox"> <input name="embarazos" id="embarazos" type="text" class="datosConsulta"></div>
@@ -44,17 +44,20 @@
     <div class="drogas">               Drogas                              <input id="drogasCheck" type="checkbox"><input name="dogras" id="drogas" type="text" class="datosConsulta"></div>
     <div class="autorizaciones"><label>Autorizacion de examenes medicos*   </label></div><div><textarea name="autorizacionExamenes" id="examenes" cols="30" rows="10" class="textoAutorizaciones"></textarea></div>
     <div class="medicamentos"><label>  Ordenes medicamentos - formulas*    </label></div><div><textarea name="ordenesMedicamentos" id="medicamentos" cols="30" rows="10" class="textoMedicamentos"></textarea></div>
-    <div><button type="submit" onclick="validarConsulta()" class="buttonGuardarConsulta">Guardar consulta</button></div>
+    <div><button type="button" onclick="validarConsulta()" class="buttonGuardarConsulta">Guardar consulta</button></div>
   </div>
   </form>
   <p style="color: red;position: relative;left: 550px;top: 52px;">{{mensaje}}</p>
   <p style="color: red;position: relative;left: 550px;top: 72px;">{{mensaje2}}</p>
+  <p style="color: green;position: relative;left: 550px;top: 72px;">{{mensajep}}</p>
   <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
     
 </body>
 <script>
 
   function validarConsulta(){
+    var docPaciente = document.getElementById("docPaciente").value;
+    var idCita = document.getElementById("idCita").value;
     var peso = document.getElementById("peso").value;
     var altura = document.getElementById("altura").value;
     var precion = document.getElementById("precion").value;
@@ -77,7 +80,7 @@
     var diagnostico = document.getElementById("diagnostico").value;
     var examenes = document.getElementById("examenes").value;
     var medicamentos = document.getElementById("medicamentos").value;
-    if(isNaN(peso)==false && (peso=="")==false){
+    if((peso=="")==false && isNaN(peso)==false  ){
       if(isNaN(altura)==false && (altura=="")==false){
         if(isNaN(precion)==false && (precion=="")==false){
           if(isNaN(temperatura)==false && (temperatura=="")==false){
@@ -93,8 +96,13 @@
                               if ((antecedentes=="")==false) {
                                 if ((diagnostico=="")==false) {
                                   if((examenes=="")==false) {
-                                    if ((medicamentos=="")==false) {
-                                      alert('Datos guardados');
+                                    if ((medicamentos=="")==false ) {
+                                      if ((docPaciente=="")==false && isNaN(docPaciente)==false) {
+                                        if ((idCita=="")==false && isNaN(idCita)==false) {
+                                          alert('Datos guardados');
+                                          document.formulario.submit()
+                                        }else{alert('[ERROR] Favor revisar os datos ingresado en id cita')}
+                                      }else{alert('[ERROR] Favor revisar los datos ingresados en documento de identidad de paciente')}    
                                     }else{alert('[ERROR] Favor ingresar ordenes de medicamentos a cargar')}
                                   }else{alert('[ERROR] Favor ingresar examenes medicos a cargar')}
                                 }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en diagnostico');}

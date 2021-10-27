@@ -36,7 +36,7 @@
             </div>
             <div><label>Tipo de sangre</label></div>
             <div>
-                <select name="tipoSangre" id="tipoSangre">
+                <select name="tipoSangre" id="rh">
                     <option value="noValido">Seleccione una opción</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -51,13 +51,45 @@
             <div><label>Contraseña</label></div>
             <div><input type="password" name="password" id="password"></div>
             <div><label>Confirmar contraseña</label></div>
-            <div><input type="password" name="confirmarPassword" id="confirmarPassword"></div>
+            <div><input type="password" name="password2" id="confirmarPassword"></div>
             <div></div>
-            <div><button type="submit">Registrarse</button></div>
+            <div><button type="submit" onclick="validarDatos()">Registrarse</button></div>
         </div>
     </form>
+    <p style="color: red;position: relative;left: 500px;top: 100px;">{{mensaje}}</p>
+    <p style="color: green;position: relative;left: 500px;top: 100px;">{{mensajep}}</p>
 </body>
 <script>
+    function validarDatos() {
+        var nombres = document.getElementById("nombres").value;
+        var id = document.getElementById("id").value;
+        var edad = document.getElementById("edad").value;
+        var profesion = document.getElementById("profesion").value;
+        var email = document.getElementById("email").value;
+        var genero = document.getElementById("genero").value;
+        var rh = document.getElementById("rh").value;
+        var contraseña1 = document.getElementById("password").value;
+        var contraseña2 = document.getElementById("confirmarPassword").value;
+        var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if((nombres=="")==false && isNaN(nombres)){
+            if((id=="")==false && isNaN(id)==false){
+              if((edad=="")==false && isNaN(edad)==false){
+                if((profesion=="")==false && isNaN(profesion)){
+                  if(!expr.exec(email)==false && (email=="")==false){
+                    if ((genero==" ")==false && isNaN(genero)) {
+                      if ((rh == " ")==false && isNaN(rh)) {
+                        if (contraseña1==contraseña2 ) {
+                            alert('Datos guardados');       
+                        }else{alert('[ERROR] Las contraseñas ingresadas deben de coincidir');}
+                      }else{alert('[ERROR] Favor elegir su tipo de sangre');}
+                    }else{alert('[ERROR] Favor elegir su genero');}
+                  }else{alert('[ERROR] Favor ingrese correctamente su correo electronico');}
+                }else{alert('[ERROR] Favor ingrese su profesion');}
+              }else{alert('[ERROR] Favor ingrese su edad');}
+            }else{alert('[ERROR] Favor ingrese su documento de identidad');}
+        }else{alert('[ERROR] Favor ingrese sus nombres');}
+    
+    }
     function reflogin() {
         location.href="http://127.0.0.1:5000"
   }

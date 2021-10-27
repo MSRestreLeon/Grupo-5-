@@ -22,25 +22,25 @@
     <div class="border">
         Agendamiento de Cita
     </div>
-    <form action="" , method="POST">
+    <form action="" name="formulario" method="POST">
         <div>
-            <label for="">Fecha (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</label>
-            <input type="text" id="fechaConsulta" name="fecha">
+            <label for="">Fecha(*)</label>
+            <input type="date" id="fechaConsulta" name="fecha">
             
         </div>
     
     <div>
-        <div class="button"><button onclick="validarDatosConsulta()" type="submit">Listar citas</button></div>
+        <div class="button"><button onclick="validarDatosConsulta()" type="button">Listar citas</button></div>
     </div>
     
-    <textarea style="height: 100px;width: 95px;" cols="10" rows="10">{{citasDisponibles}} </textarea>
-    <textarea style="height: 100px;width: 110px;" id="" cols="10" rows="10">{{hora}}</textarea>
+    <textarea style="height: 100px;width: 95px;" cols="10" rows="10" readonly>{{citasDisponibles}} </textarea>
+    <textarea style="height: 100px;width: 110px;" id="" cols="10" rows="10" readonly>{{hora}}</textarea>
     
     
     <div>
         <div>Ingrese el id de la cita que desea agendar <input type="number" id="idCita" name="idCitaSolicitada"></div>
         <div>Ingrese su documento de identidad <input type="number" name="idPaciente" id="docPaciente"></div>
-        <div class="button"><button onclick="validarDatosAgendamiento()" type="submit">Solicitar cita</button></div>
+        <div class="button"><button onclick="validarDatosAgendamiento()" type="button">Solicitar cita</button></div>
     </div>
     <div class="border">
         Calificar citas pasadas
@@ -60,10 +60,11 @@
     </div>
     </div>
     <div>
-        <div class="button"><input type="submit" onclick="validarDatosCalificacion()" value="Calificar cita"></div>
+        <div class="button"><input type="button" onclick="validarDatosCalificacion()" value="Calificar cita"></div>
     </div>
     </form>
-    <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
+    <p style="color: red;position: relative;left: 500px;">{{mensaje}}</p>
+    <p style="color: green;position: relative;left: 500px;">{{mensajep}}</p>
 </body>
 
 </html>
@@ -71,8 +72,10 @@
 <script>
     function validarDatosConsulta(){
         var fechaConsulta = document.getElementById("fechaConsulta").value;
-        if ((fechaConsulta=="")==false ) {
+        var fechaValidar =/^\d{4}-\d{2}-\d{2}$/;
+        if ((fechaConsulta=="")==false && fechaValidar.exec(fechaConsulta) ) {
             alert('Consultando citas disponibles...');
+            document.formulario.submit()
         }else{alert('[Error]Fecha invalida');}
     }
     function validarDatosAgendamiento(){
@@ -80,14 +83,16 @@
         var documento = document.getElementById("docPaciente").value;
         if ((documento=="")==false && isNaN(documento)== false ) {
             if ((idCita=="")==false && isNaN(idCita)== false) {
-                alert('Cita agendada...');
+                alert('Agendando cita...');
+                document.formulario.submit()
             }else{alert('[Error]Ingrese el id de la cita que desea agendar');}
         }else{alert('[Error]Ingrese su documento de identidad');}
     }
     function validarDatosCalificacion(){
         var idCitaCalificar = document.getElementById("idCitaCalificar").value;
         if ((idCitaCalificar=="")==false && isNaN(idCitaCalificar)== false ) {
-            alert('Calificacion exitosa, gracias por calificar nuestro servicio');
+            alert('Calificando la cita ingresada....');
+            document.formulario.submit()
         }else{alert('[Error]Ingrese el id de la cita que desea calificar');}
     }
     function reflogin() {

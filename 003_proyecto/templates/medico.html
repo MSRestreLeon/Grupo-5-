@@ -11,24 +11,31 @@
 <body>
   <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
   
-  <form action="" method="">
-    <div class="textoConsultaHistoria">Consulta Historia Clinica Paciente</div>
-    <div><input type="button" value="Ir a interfaz de consulta de historias medicas" onclick="refhisPaciente()" class="buttonHistoria"></div>
+  <form action="" method="" >
+    
+    <div class="textoConsultaHistoriaM" ><b>Menu</b> </div>
+    <div class="textoConsultaHistoria" ><b>Consulta Historia Clinica Paciente</b> </div>
+    <div><input type="button"  value="Ir a interfaz de consulta de historias medicas" onclick="refhisPaciente()" class="buttonHistoria"></div>
+    <div style="position: absolute;width: 336px;height: 34px;left: 1102px;top: 200px;font-size: 18px;"><b>Realizar consulta medica</b> </div>
+    <div ><input type="button"  value="Ir a interfaz de consulta medica" onclick="refConsPaciente()" style="position: absolute;left: 1108px;top:230px;border-radius: 5px;width: auto;"></div>
+    
   </form>
-
-  <form action="" method="POST" class="enunciadoAgenda">
-    <!--<div>Bienvenido {{ nombres }}</div>-->
-    <p>A continuacion podra consultar su agenda de citas  (Favor ingresar la fecha en el siguiente formato "AAAA-MM-DD")</p>
-    <div class="consultaFecha"><label for=""> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="text" class="fechaAgenda"><label for=""> Ingrese su documento de identidad</label><input name="docMedico" type="text" ><input type="submit" value="Consultar agenda medica" onclick="validarFechaAgenda()"></div>
-    <p style="position: absolute;top: 100px;">Sus citas agendadas para el dia solicitado son:</p>
-    <div style="position: absolute;top: 150px;"><textarea name="" id="" cols="12" rows="13">{{ agendaHorasStr }}</textarea>
-      <textarea name="" id="" cols="11" rows="13">{{ agendaIdStr }}</textarea>
+<!--Formulario a ejecutar-->
+  <form action="" method="POST" class="enunciadoAgenda" name="formulario">
+    <p style="font-size: 20px;"><b>A continuacion podra consultar su agenda de citas</b></p>
+    <div class="consultaFecha"><label for="" style="font-size: 18px;"> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="date" class="fechaAgenda"></div>
+    <div style="position: relative;left: 0px;top: 45px;"><label style="font-size: 18px;" > Ingrese su documento de identidad</label><input name="docMedico" type="number" id="docMedico" style="border-radius: 5px;position: relative;left: 42px;background-color: #C4C4C4;"><input type="button" value="Consultar agenda medica" onclick="validarDatos()" style="position: relative; left: 100px;border-radius: 5px;"></div>
+    <p style="position: absolute;top: 150px;font-size: 18px;"><b> Sus citas agendadas para el dia solicitado son:</b></p>
+    <div style="position: absolute;top: 210px;left: 150px;"><textarea name="" id="" cols="12" rows="13" readonly>{{ agendaHorasStr }}</textarea>
+      <textarea name="" id="" cols="11" rows="13" readonly>{{ agendaIdStr }}</textarea>
     </div>
-    <div class="consultarId"><input type="button" value="Ir a interfaz de consulta medica" onclick="refConsPaciente()" class="buttonId"></div>
   </form>
   <p style="color: red;position: relative;left: 550px;top: 600px;">{{mensaje}}</p>
+  <div><img src="/static/images/person.png" alt="" style="position: relative;top: 650px;" ></div>
   <div class="footer" style="top: 755px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+  <form action="" name="formulario2" method="POST">
 
+  </form>
 </body>
 <script>
   function reflogin() {
@@ -39,35 +46,22 @@
     location.href="http://127.0.0.1:5000"
   }
   function validarDatos(){
-    var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var documento = document.getElementById("documentoIdentidad").value;
-    var nombre = document.getElementById("nombre").value;
-    var cargo = document.getElementById("cargo").value;
-    var edad = document.getElementById("edad").value;
-    var correo = document.getElementById("correo").value;
-    if(isNaN(documento)==false && (documento=="")==false){
-      if(/^[A-ZÁÉÍÓÚÑ ]+$/i.test(nombre) && (nombre=="")==false){
-        if(/^[A-ZÁÉÍÓÚÑ ]+$/i.test(cargo) && (cargo=="")==false){
-          if(isNaN(edad)== false && (edad=="")==false){
-            if(!expr.exec(correo)==false && (correo=="")==false){
-              alert('Datos guardados');
-              //actualizar base de datos
-            }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en correo');}
-          }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en edad');}
-        }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en cargo');}
-      }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en nombre');}
-    }else{alert('[ERROR] Datos no guardados, favor revice los datos ingresados en documento');}
+    var expr = /^\d{4}-\d{2}-\d{2}$/;
+    var docMedico = document.getElementById("docMedico").value;
+    var fecha = document.getElementById("fecha").value;
+    if(isNaN(docMedico)== false && (docMedico=="")==false){
+      if((fecha=="")==false && expr.exec(fecha)){
+        alert('Consultando agenda medica');
+        document.formulario.submit()
+        //actualizar base de datos
+      }else{alert('[ERROR] Favor revice los datos ingresados en fecha');}
+    }else{alert('[ERROR] Favor revice los datos ingresados en documento de identidad');}
+        
   }
   function refhisPaciente() {
     location.href="http://127.0.0.1:5000/medico/historiaClinica"
   }
-  function validarFechaAgenda() {
-    var fecha = document.getElementById("fecha").value;
-    if (fecha=="") {
-      alert('[ERROR] Debe de ingresar la fecha del dia de agenda a consultar');
-    }else{alert('Cargando agenda medica')}
-    
-  }
+ 
   function refConsPaciente() {
     location.href="http://127.0.0.1:5000/medico/consultaMedica"
    

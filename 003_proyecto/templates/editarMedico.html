@@ -19,15 +19,16 @@
   </div> 
 
   <div class="textoEncabezadoDatosPaciente">Favor ingrese el documento de identidad original del medico para el cual desee editar su informacion </div>
-  <form action="" method="POST">
+  <form action="" method="POST" name="formulario">
     <div>
     <div class="documento">            Documento de identidad del medico (original) <input  style="position: absolute;left: 300px;"  id="docMedicoOriginal" name="docMedicoOriginal" type="number" class="perfil" > </div>
     <div class="nombre">            Documento de identidad del medico(nuevo) <input style="position: absolute;left: 300px;"  id="docMedico" name="docMedico" type="number" class="perfil" > </div>
     <div class="cargo">               Especialidad                      <input style="position: absolute;left: 300px;" id="especialidad" name="especialidad" type="text"  class="perfil"> </div>
     <div class="genero">                Estado (activo/inactivo)                           <input style="position: absolute;left: 300px;" id="estado" name="estado" type="text"  class="perfil"> </div>
-    <div><button type="submit" onclick="validarEdicion()" class="buttonEditarMedico">Editar Medico</button></div>
+    <div><button type="button" onclick="validarEdicion()" class="buttonEditarMedico">Editar Medico</button></div>
   </form>
   <p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
+  <p style="color: green;position: relative;left: 550px;top: 500px;">{{mensajep}}</p>
 </body>
 <script>
     function validarEdicion() {
@@ -36,18 +37,21 @@
     var estado = document.getElementById("estado").value;
     if ((docMedico=="")==false){
         if (isNaN(docMedico)==false) {
-            alert('Documento de identidad actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el documento de identidad');}
+            alert('Actualizando documento de identidad....');
+            document.formulario.submit()
+        }else{alert('[ERROR] Datos no guardados, favor ingrese correctamente el documento de identidad');}
     }
     if ((especialidad=="")==false){
         if (isNaN(especialidad)) {
-            alert('Especialidad actualizada');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el especialidad');}
+            alert('Actualizando especialidad....');
+            document.formulario.submit()
+        }else{alert('[ERROR] Datos no guardados, favor ingrese correctamente el especialidad');}
     }
     if ((estado=="")==false) {
         if ((estado="activo") || (estado="inactivo")) {
-            alert('Estado actualizado');
-        }else{alert('[ERROR] Datos no guardados, favor ingrese corectamente el estado');}
+            alert('Actualizando estado....');
+            document.formulario.submit()
+        }else{alert('[ERROR] Datos no guardados, favor ingrese correctamente el estado');}
     }
     
   }
