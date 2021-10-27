@@ -24,14 +24,14 @@
   <form action="" method="POST" class="enunciadoAgenda" name="formulario">
     <p style="font-size: 20px;"><b>A continuacion podra consultar su agenda de citas</b></p>
     <div class="consultaFecha"><label for="" style="font-size: 18px;"> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="date" class="fechaAgenda"></div>
-    <div style="position: relative;left: 0px;top: 45px;"><label style="font-size: 18px;" > Ingrese su documento de identidad</label><input name="docMedico" type="number" id="docMedico" style="border-radius: 5px;position: relative;left: 42px;background-color: #C4C4C4;"><input type="button" value="Consultar agenda medica" onclick="validarDatos()" style="position: relative; left: 100px;border-radius: 5px;"></div>
+    <div><input type="button" value="Consultar agenda medica" onclick="validarDatos()" style="position: relative;border-radius: 5px;top: 40px;"></div>
     <p style="position: absolute;top: 150px;font-size: 18px;"><b> Sus citas agendadas para el dia solicitado son:</b></p>
     <div style="position: absolute;top: 210px;left: 150px;"><textarea name="" id="" cols="12" rows="13" readonly>{{ agendaHorasStr }}</textarea>
       <textarea name="" id="" cols="11" rows="13" readonly>{{ agendaIdStr }}</textarea>
     </div>
   </form>
   <p style="color: red;position: relative;left: 550px;top: 600px;">{{mensaje}}</p>
-  <div><img src="/static/images/footer.jfif" alt="" style="position: relative;top: 590px;line-height: 29px;text-align: center;width: 1460px;height: 150px;" ></div>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: relative;top: 590px;line-height: 29px;width: 1460px;height: 150px;" ></div>
   <div class="footer" style="top: 755px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
   <form action="" name="formulario2" method="POST">
 
@@ -47,15 +47,15 @@
   }
   function validarDatos(){
     var expr = /^\d{4}-\d{2}-\d{2}$/;
-    var docMedico = document.getElementById("docMedico").value;
+    
     var fecha = document.getElementById("fecha").value;
-    if(isNaN(docMedico)== false && (docMedico=="")==false){
-      if((fecha=="")==false && expr.exec(fecha)){
-        alert('Consultando agenda medica');
-        document.formulario.submit()
-        //actualizar base de datos
-      }else{alert('[ERROR] Favor revice los datos ingresados en fecha');}
-    }else{alert('[ERROR] Favor revice los datos ingresados en documento de identidad');}
+    
+    if((fecha=="")==false && expr.exec(fecha)){
+      alert('Consultando agenda medica');
+      document.formulario.submit()
+      //actualizar base de datos
+    }else{alert('[ERROR] Favor revice los datos ingresados en fecha');}
+    
         
   }
   function refhisPaciente() {

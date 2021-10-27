@@ -149,7 +149,7 @@ def citaMedica():
         if  (request.method == 'POST'):
             fecha = request.form["fecha"]
             idCitaSolicitada = request.form["idCitaSolicitada"]
-            idPaciente=request.form["idPaciente"]
+            idPaciente=session["id"]
             idCitaCalificar=request.form["idCitaCalificarn"]
             calificacion=request.form["calificacion"]
             agendaHoras=[""]
@@ -223,7 +223,7 @@ def examenMedico():
     vSesion=''
     if 'id' in session and session["rol"] == 'paciente':
         if  (request.method == 'POST'):
-            idPaciente = request.form["idPaciente"]
+            idPaciente = session["id"]
             matrizExamenes=[]
             
             with sqlite3.connect("hospital.db") as connection:
@@ -260,7 +260,7 @@ def pacienteHistoriaClinica():
     vSesion=''
     if 'id' in session and session["rol"] == 'paciente':
         if  request.method == 'POST':
-            docPaciente = request.form["docPaciente"]
+            docPaciente = session["id"]
             # Consultar y mostrar
             with sqlite3.connect("hospital.db") as connection:
                 # Lugar donde almacenamos todo lo que vamos a ejecutar
@@ -357,7 +357,7 @@ def medico():
     if 'id' in session and session["rol"] == 'medico':
         if  request.method == 'POST':
             fechaAgenda = request.form["fechaAgenda"]
-            docMedico = request.form["docMedico"]
+            docMedico = session["id"]
             #Consultar y mostrar
             with sqlite3.connect("hospital.db") as connection:
                 # Lugar donde almacenamos todo lo que vamos a ejecutar

@@ -17,7 +17,7 @@
     <form action="" method="POST" class="formularioHistoriaClinica" name="formulario">
       <p>A continuacion podra consultar su historia clinica</p>
       <div>
-        <div>      Documento de identidad  <input name="docPaciente" type="number" id="docPaciente" class="perfil" ><input type="button" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
+       <input type="button" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
       </div>
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
     </form>
@@ -27,11 +27,8 @@
 </body>
 <script>
   function validarDatos(){
-    var documento = document.getElementById("docPaciente").value;
-    if ((documento=="")==false && isNaN(documento)== false ) {
-      alert('Consultando historia clinica...');
-      document.formulario.submit()
-    }else{alert('[Error]Ingrese docuemento de identidad de paciente');}
+    alert('Consultando historia clinica...')
+    document.formulario.submit()
   }
 
   function refPaciente() {

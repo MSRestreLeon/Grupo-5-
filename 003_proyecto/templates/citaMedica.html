@@ -39,7 +39,6 @@
     
     <div>
         <div>Ingrese el id de la cita que desea agendar <input type="number" id="idCita" name="idCitaSolicitada"></div>
-        <div>Ingrese su documento de identidad <input type="number" name="idPaciente" id="docPaciente"></div>
         <div class="button"><button onclick="validarDatosAgendamiento()" type="button">Solicitar cita</button></div>
     </div>
     <div class="border">
@@ -81,12 +80,11 @@
     function validarDatosAgendamiento(){
         var idCita = document.getElementById("idCita").value;
         var documento = document.getElementById("docPaciente").value;
-        if ((documento=="")==false && isNaN(documento)== false ) {
-            if ((idCita=="")==false && isNaN(idCita)== false) {
-                alert('Agendando cita...');
-                document.formulario.submit()
-            }else{alert('[Error]Ingrese el id de la cita que desea agendar');}
-        }else{alert('[Error]Ingrese su documento de identidad');}
+        if ((idCita=="")==false && isNaN(idCita)== false) {
+            alert('Agendando cita...');
+            document.formulario.submit()
+        }else{alert('[Error]Ingrese el id de la cita que desea agendar');}
+        
     }
     function validarDatosCalificacion(){
         var idCitaCalificar = document.getElementById("idCitaCalificar").value;
