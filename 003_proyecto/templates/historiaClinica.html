@@ -9,21 +9,22 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020 <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div class="franja"><b>Hospital Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
     <form action="" method="get">
-        <div><img src="/static/images/back.png" alt="" class="back" onclick="refmedico()"></div>
-        <div><img src="/static/images/home.png" alt="" class="home" onclick="refmedico()"></div>
+        
+        <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refmedico()"></div>
     </form>
     <form action="" method="POST" class="formularioHistoriaClinica" name="formulario">
-      <p>A continuacion podra consultar la historia clinica del paciente</p>
+      <p style="font-size: 20px;"><b>A continuacion podra consultar la historia clinica del paciente</b> </p>
       <div>
-        <div>      Documento de identidad paciente <input name="docPaciente" type="number" id="docPaciente"  class="perfil" ><button type="button" onclick = "validarDatos()" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
+        <div style="font-size: 18px;">      Documento de identidad paciente <input name="docPaciente" type="number" id="docPaciente"  class="perfil" ><button type="button" onclick = "validarDatos()" class="buttonConsultarHistoria" >Consultar historia clinica</button> </div>
       </div>
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
       
     </form>
     <p style="color: red;position: relative;left: 600px;top: 500px;">{{mensaje}}</p>
-    <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: relative;top: 590px;line-height: 29px;text-align: center;width: 1460px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
     
 </body>
 <script>

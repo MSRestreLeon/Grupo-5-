@@ -9,24 +9,24 @@
 </head>
 
 <body>
-  <div class="franja">Hospital Mision TIC 2020 <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
+  <div class="franja" ><b>Hospital Santa Clara ESE</b>  <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
     
   <form action="" method="">
-    <div><img src="/static/images/back.png" class="home" alt=""  onclick="refmedico()"></div>
-    <div><img src="/static/images/home.png" class="back" alt=""  onclick="refmedico()"></div>
+    <div><img src="/static/images/home.png" class="home" style="top:65px;" alt=""  onclick="refmedico()"></div>
+    
   </form>
 
   <div class="textoEncabezadoConsulta" >
-    <div><label>Consulta Medica</label></div>
+    <div><label style="font-size: 20px;"><b>Consulta Medica</b> </label></div>
   </div> 
 
-  <div class="textoEncabezadoDatosPaciente">Favor ingrese los siguentes datos </div>
+  <div class="textoEncabezadoDatosPaciente" style="font-size: 20px;">Favor ingrese los siguentes datos sobre la consulta medica: </div>
 
   <form action="" method="POST" name="formulario">
     <div>
     <div class="documento">            Documento de identidad del paciente* <input name="docPaciente" type="number" class="perfil" id="docPaciente" > </div>
     <div class="nombre">               Id cita*                            <input name="idCita" type="number"  class="perfil" id="idCita"> </div>
-    <div class="genero">               A continuacion ingresar los datos solicitados de la consulta medica</div>
+    <div class="genero" style="font-size: 20px;">               A continuacion ingresar los datos solicitados:</div>
     <div class="sintomas">             Sintomas*                          <div><textarea name="sintomas" id="sintomas" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="antecedentes">         Antecedentes familiares*            <div><textarea name="antecedentes" id="antecedentes" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
     <div class="cirugias">             Cirugias*                           <div><textarea name="cirugias" id="cirugias" cols="30" rows="10" class="textoConsulta"></textarea></div></div>
@@ -50,7 +50,7 @@
   <p style="color: red;position: relative;left: 550px;top: 52px;">{{mensaje}}</p>
   <p style="color: red;position: relative;left: 550px;top: 72px;">{{mensaje2}}</p>
   <p style="color: green;position: relative;left: 550px;top: 72px;">{{mensajep}}</p>
-  <div class="footer" style="top: 900px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+  <div class="footer" style="top: 900px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
     
 </body>
 <script>
