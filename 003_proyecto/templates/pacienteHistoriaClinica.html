@@ -9,20 +9,19 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020 <input type="submit" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
-    <form action="" method="get">
-        <div><img src="/static/images/back.png" alt="" class="back" onclick="refPaciente()"></div>
-        <div><img src="/static/images/home.png" alt="" class="home" onclick="refPaciente()"></div>
-    </form>
-    <form action="" method="POST" class="formularioHistoriaClinica" name="formulario">
-      <p>A continuacion podra consultar su historia clinica</p>
-      <div>
-       <input type="button" onclick="validarDatos()" class="buttonConsultarHistoria" value="Consultar historia clinica"> </div>
-      </div>
-      <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
-    </form>
-    <p style="color: red;position: relative;left: 600px; top: 550px;">{{mensaje}}</p>
-    <div class="footer" style="top: 750px;">Esta plataforma cumple con la politica de privacidad y datos vigentes</div>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+  <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refPaciente()"></div>
+  <form action="" method="POST" style="position: absolute;top: 60px;" name="formulario">
+    <p style="font-size: 20px;"><b>Historia Clinica</b></p>
+    <p style="font-size: 18px;">A continuacion podra consultar su historia clinica</p>
+    <div>
+     <input type="button" onclick="validarDatos()" style="border-radius: 5px;font-size: 17px;" value="Consultar historia clinica"> </div>
+    </div>
+    <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
+  </form>
+    <p style="color: red;position: absolute;left: 600px; top: 550px;">{{mensaje}}</p>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
     
 </body>
 <script>

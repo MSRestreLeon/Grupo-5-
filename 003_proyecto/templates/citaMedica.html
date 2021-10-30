@@ -10,60 +10,61 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020<input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute;left: 1350px;"></div>
-    <div class="container-end">
-        <div class="icon">
-            <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
-        <div class="icon">
-            <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refPaciente()"></div>
+    <div style="position: absolute;top: 50px;">
+        <p style="font-size: 20px;"><b>Agendamiento de Cita</b></p> 
+        <form action="" name="formulario" method="POST">
+            <div>
+                <p style="font-size: 18px;">Ingrese la fecha en la que desea agendar</p>  
+                <label for="" style="font-size: 17px;">Fecha(*)</label>
+                <input type="date" id="fechaConsulta" name="fecha" style="font-size: 17px;border-radius: 5px;">
+                <div class="button"><input type="button" onclick="validarDatosConsulta()" style="font-size: 17px;border-radius: 5px;top: 140px;position: absolute;" value="Listar citas"></div>
+            </div>
+            <div style="position: absolute;font-size: 17px;top: 185px;">
+                <textarea style="height: 100px;width: 95px;" cols="10" rows="10" readonly>{{citasDisponibles}} </textarea>
+                <textarea style="height: 100px;width: 110px;" id="" cols="10" rows="10" readonly>{{hora}}</textarea>
+            </div>
+            <div style="position: absolute;font-size: 17px;top: 310px;">
+                <div>Ingrese el id de la cita que desea agendar </div>
+                <div><label for="" style="font-size: 17px;position: absolute;top: 30px;">Id cita</label><input type="number" id="idCita" name="idCitaSolicitada" style="border-radius: 5px;font-size: 17px;position: absolute;top: 30px;left: 50px;"> </div>
+                <div><input onclick="validarDatosAgendamiento()" type="button" value="Solicitar cita" style="border-radius: 5px;font-size: 17px;position: absolute;top: 70px;"></div>
+            </div>
     </div>
-    <div class="border">
-        Agendamiento de Cita
-    </div>
-    <form action="" name="formulario" method="POST">
-        <div>
-            <label for="">Fecha(*)</label>
-            <input type="date" id="fechaConsulta" name="fecha">
-            
-        </div>
     
-    <div>
-        <div class="button"><button onclick="validarDatosConsulta()" type="button">Listar citas</button></div>
-    </div>
-    
-    <textarea style="height: 100px;width: 95px;" cols="10" rows="10" readonly>{{citasDisponibles}} </textarea>
-    <textarea style="height: 100px;width: 110px;" id="" cols="10" rows="10" readonly>{{hora}}</textarea>
-    
-    
-    <div>
-        <div>Ingrese el id de la cita que desea agendar <input type="number" id="idCita" name="idCitaSolicitada"></div>
-        <div class="button"><button onclick="validarDatosAgendamiento()" type="button">Solicitar cita</button></div>
-    </div>
-    <div class="border">
-        Calificar citas pasadas
-    </div>
-    <div>
+    <div style="position: absolute;left: 900px;top: 50px;">
+        <p style="font-size: 20px;"><b>Calificar citas pasadas</b></p> 
         
-    <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Id cita</label>
-        <input type="number" id="idCitaCalificar" name="idCitaCalificarn"></div>
-    <div class="box" style="height: 20px;"><label for="" style="margin-right: 3px;">Calificación cita</label>
-        <select name="calificacion" id="">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+            <p style="font-size: 18px;">Liste las citas pendientes por calificar</p>
+        <div>
+            <div class="button"><input value="Listar citas pasadas" onclick="validarDatosPasadas()" type="button" style="border-radius: 5px;font-size: 17px;" name="citasPasadas"></div>
+        </div>
+        <div style="position: absolute;top: 150px;font-size: 17px;">
+            <textarea style="height: 100px;width: 95px;" cols="10" rows="10" readonly>{{citasDisponibles2}} </textarea>
+           
+        </div>
+        <div style="position: absolute;top: 250px;">
+            <p style="font-size: 17px;">Ingrese el id de la cita y asigne su calificacion </p>
+        <div class="box" style="height: 20px;"><label for="" style="font-size: 17px;">Id cita</label>
+            <input type="number" id="idCitaCalificar" name="idCitaCalificar" style="border-radius: 5px;font-size: 17px;"></div>
+        <div class="box" ><label for="" style="margin-right: 3px;top: 72px;position: absolute;font-size: 17px;left: 290px;">Calificación cita</label>
+            <select name="calificacion" id="" style="height: 20px;position: absolute;top: 72px;left: 380px;border-radius: 5px;font-size: 17px;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="button"><input type="button" onclick="validarDatosCalificacion()" value="Calificar cita" style="position: absolute;top: 120px;border-radius: 5px;font-size: 17px;"></div>
     </div>
-    </div>
-    <div>
-        <div class="button"><input type="button" onclick="validarDatosCalificacion()" value="Calificar cita"></div>
-    </div>
+        </div>
+        
     </form>
-    <p style="color: red;position: relative;left: 500px;">{{mensaje}}</p>
-    <p style="color: green;position: relative;left: 500px;">{{mensajep}}</p>
+    <p style="color: red;position: absolute;left: 500px;top: 480px;">{{mensaje}}</p>
+    <p style="color: green;position: absolute;left: 500px;top: 480px;">{{mensajep}}</p>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
 </body>
 
 </html>
@@ -77,9 +78,11 @@
             document.formulario.submit()
         }else{alert('[Error]Fecha invalida');}
     }
+    function validarDatosPasadas(){
+        document.formulario.submit()
+    }
     function validarDatosAgendamiento(){
         var idCita = document.getElementById("idCita").value;
-        var documento = document.getElementById("docPaciente").value;
         if ((idCita=="")==false && isNaN(idCita)== false) {
             alert('Agendando cita...');
             document.formulario.submit()
@@ -95,7 +98,9 @@
     }
     function reflogin() {
         location.href="http://127.0.0.1:5000"}
-    function refmedico() {
+    function refPaciente() {
         location.href="http://127.0.0.1:5000/paciente"
     }
 </script>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">

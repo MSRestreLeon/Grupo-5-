@@ -9,35 +9,24 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020<input type="button" value="Cerrar sesion" onclick="reflogin()" style="position: absolute;left: 1360px;"></div>
-    <div class="container-end">
-        <div class="icon">
-            <img src="/static/images/back.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
-        <div class="icon">
-            <img src="/static/images/home.png" alt="" onclick="location.href='http://127.0.0.1:5000/paciente'">
-        </div>
-    </div>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refPaciente()"></div>
     <form action="" name="formulario" method="POST">
-        <div class="border">
-            Examenes medicos 
+        <div style="position: absolute;top: 60px;">
+            <p style="font-size: 20px;"><b>Examenes medicos</b></p>  
+            <p style="font-size: 18px;">En esta seccion usted podra consultar sus examenes medicos programados en las consultas realizadas con anterioridad</p> 
+            <div>
+                <form class="form-inline" action="" >
+                    <div ><input type="button" onclick="validarDatos()" value="Consutar examenes medicos" style="position: absolute;top:100px;border-radius: 5px;font-size: 17px;"></div>
+                </form>
+            </div>
+            <textarea name="" id="" cols="30" rows="10" class="textoHistoriaClinica" style="position: absolute;top: 120px;" readonly>{{ examenes }}</textarea>
+        
+            <p style="color: red;position: absolute;left: 600px;top: 500px;">{{mensaje}}</p>
         </div>
-        <div>
-            <form class="form-inline" action="" >
-                <div class="box" style="position: absolute;top:140px;"><button type="button" onclick="validarDatos()">Ver</button></div>
-               
-            </form>
-        </div>
-        <div>
-            <form>
-                <textarea name="" id="" cols="30" rows="2" readonly>{{ examenes }}</textarea>
-            </form>
-        </div>
-        <p style="color: red;position: relative;left: 600px;">{{mensaje}}</p>
     </form>
-    
-    
-    
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
 </body>
 
 </html>
@@ -51,7 +40,9 @@
     
     function reflogin() {
         location.href="http://127.0.0.1:5000"}
-    function refmedico() {
+    function refPaciente() {
         location.href="http://127.0.0.1:5000/paciente"
     }
 </script>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">

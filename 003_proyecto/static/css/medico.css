@@ -26,105 +26,128 @@
 .documento{
     position: absolute; 
     top: 126px;
+    font-size: 16px;
 }
 .nombre{
     position: absolute; 
     top: 166px;
+    font-size: 16px;
 }
 .cargo{
     position: absolute; 
     top: 206px;
+    font-size: 16px;
 }
 .genero{
     position: absolute; 
     top: 246px;
+    font-size: 16px;
 }
 .edad{
     position: absolute; 
     top: 286px;
+    font-size: 16px;
 }
 .tipoRh{
     position: absolute; 
     top: 326px;
+    font-size: 16px;
 }
 .numeroContacto{
     position: absolute; 
     top: 366px;
+    font-size: 16px;
 }
 .direccion{
     position: absolute; 
     top: 406px;
+    font-size: 16px;
 }
 .sintomas{
     position: absolute; 
     top: 326px;
+    font-size: 16px;
 }
 .antecedentes{
     position: absolute; 
     top: 426px;
+    font-size: 16px;
 }
 .cirugias{
     position: absolute; 
     top: 526px;
+    font-size: 16px;
 }
 .diagnostico{
     position: absolute; 
     top: 626px;
+    font-size: 16px;
 }
 .peso{
     position:absolute;
     top:120px;
     left: 850px;
+    font-size: 16px;
 }
 .altura{
     position:absolute;
     top:170px;
     left: 850px;
+    font-size: 16px;
 }
 .precion{
     position:absolute;
     top:220px;
     left: 850px;
+    font-size: 16px;
 }
 .temperatura{
     position:absolute;
     top:270px;
     left: 850px;
+    font-size: 16px;
 }
 .farmacologia{
     position:absolute;
     top:320px;
     left: 850px;
+    font-size: 16px;
 }
 .parejas{
     position:absolute;
     top:370px;
     left: 850px;
+    font-size: 16px;
 }
 .embarazos{
     position:absolute;
     top: 420px;
     left: 850px;
+    font-size: 16px;
 }
 .nacidosVivos{
     position:absolute;
     top:470px;
     left: 850px;
+    font-size: 16px;
 }
 .partoNatural{
     position:absolute;
     top:520px;
     left: 850px;
+    font-size: 16px;
 }
 .metodoAnticonceptivo{
     position:absolute;
     top:570px;
     left: 850px;
+    font-size: 16px;
 }
 .drogas{
     position:absolute;
     top:620px;
     left: 850px;
+    font-size: 16px;
 }
 .buttonGuardarConsulta{
     position:absolute;
@@ -132,10 +155,12 @@
     left: 650px;
     border-radius: 5px;
     height: 30px;
+    font-size: 16px;
 }
 .autorizaciones{
     position: absolute;
     top: 726px;
+    font-size: 16px;
 }
 .textoAutorizaciones {
     text-align: left;
@@ -155,6 +180,7 @@
     position: absolute; 
     top: 726px;
     left: 920px;
+    font-size: 16px;
 }
 .textoMedicamentos {
     text-align: left;
@@ -176,6 +202,7 @@
     height: 23px;
     left: 300px;    
     background: #C4C4C4; 
+    font-size: 16px;
 }
 .textoHistoriaClinica {
     text-align: left;
@@ -184,6 +211,7 @@
     width: 1350px;
     height: 200px;
     top:160px;   
+    font-size: 18px;
     
 }
 .textoConsulta {
@@ -209,12 +237,12 @@
 }
 .textoEncabezadoConsulta{
     position: absolute;
-    top: 90px;
+    top: 60px;
 }
 .textoEncabezadoDatosPaciente{
     position: absolute;
     top: 90px;
-    left: 260px;
+    left: 7px;
 }
 .textoEncabezadoPerfil{
     position: absolute; 

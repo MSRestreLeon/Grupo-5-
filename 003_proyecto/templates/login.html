@@ -11,21 +11,21 @@
 </head>
 
 <body>
-  <div class="franja">Hospital Uninorte</div>
-  <div><a href="registroPaciente">Registrarse como paciente</a></div>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Registrarse como paciente" onclick="refregistro()" style="position: absolute;left: 1250px;top: 10px;"> </div>
   <form action="/" method="POST">
-    <div class="containerLogin">
-      <div><label>Documento de Identidad</label></div>
-      <div><input type="number" name="id" id="id"></div>
-      <div><label>Contraseña</label></div>
-      <div><input type="password" name="password" id="password"></div>
+    <div class="containerLogin" style="position: absolute;top: 60px;left: 550px;">
+      <div><label style="font-size: 17px;">Documento de Identidad</label></div>
+      <div><input type="number" name="id" id="id" style="font-size: 17px;"></div>
+      <div><label style="font-size: 17px;position: absolute;top: 50px;">Contraseña</label></div>
+      <div><input type="password" name="password" id="password" style="font-size: 17px;top: 50px;position: absolute;"></div>
       <div></div>
-      <div><button>Ingresar</button></div>
+      <div><button style="font-size: 17px;position: absolute;top: 90px;border-radius: 5px;">Ingresar</button></div>
     </div>
   </form>
-  <div class="containerMensaje">{{ mensaje }}</div>
-  <div class="containerMensaje">{{ vSesion }}</div>
-  
+  <div class="containerMensaje" style="position: absolute;left: 550px;top: 450px;">{{ mensaje }}</div>
+  <div class="containerMensaje" style="position: absolute;left: 550px;top: 450px;">{{ vSesion }}</div>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
 </body>
 <script>
   function validarDatos(){
@@ -34,5 +34,10 @@
       alert('Validando los datos ingresados...');
     }else{alert('[ERROR]Favor revise los datos ingresados, operacion abortada');}
   }
+  function refregistro(){
+    location.href="http://127.0.0.1:5000/registroPaciente"
+  }
 </script>
 </html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">

@@ -9,11 +9,9 @@
 </head>
 
 <body>
-    <div class="franja"><b>Hospital Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
-    <form action="" method="get">
-        
-        <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refmedico()"></div>
-    </form>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>   
+    <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refmedico()"></div>
+    
     <form action="" method="POST" class="formularioHistoriaClinica" name="formulario">
       <p style="font-size: 20px;"><b>A continuacion podra consultar la historia clinica del paciente</b> </p>
       <div>
@@ -22,8 +20,8 @@
       <div><textarea name="historia" id="historia" cols="30" rows="10" class="textoHistoriaClinica" readonly>{{ historia }}</textarea></div>  
       
     </form>
-    <p style="color: red;position: relative;left: 600px;top: 500px;">{{mensaje}}</p>
-    <div><img src="/static/images/footer.jfif" alt="" style="position: relative;top: 590px;line-height: 29px;text-align: center;width: 1460px;height: 150px;" ></div>
+    <p style="color: red;position: absolute;left: 600px;top: 500px;">{{mensaje}}</p>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
     <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
     
 </body>

@@ -9,29 +9,36 @@
 </head>
 
 <body>
-    <div class="franja">Hospital Mision TIC 2020</div>
-    <div class="containerBienvenida"></div>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
     <div class="containerDashboard">
-        <div class="box">
-            <img class="icon" src="/static/images/citaMedica.png" alt="">
+        <div class="box" style="left: 150px;position: absolute;">
+            <img class="icon" src="/static/images/citaMedica.png" onclick="location.href='http://127.0.0.1:5000/paciente/citaMedica'" alt="">
             <!--http://127.0.0.1:5000/paciente/citaMedica-->
             <button type="button" onclick="location.href='http://127.0.0.1:5000/paciente/citaMedica'">Citas
                 Médicas</button>
         </div>
-        <div class="box">
-            <img class="icon" src="/static/images/examenMedico.png" alt="">
+        <div class="box" style="left: 670px;position: absolute;">
+            <img class="icon" src="/static/images/examenMedico.png" onclick="location.href='http://127.0.0.1:5000/paciente/examenMedico'" alt="">
             <button type="button" onclick="location.href='http://127.0.0.1:5000/paciente/examenMedico'">Exámenes
                 Médicos</button>
         </div>
-        <div class="box">
-            <img class="icon" src="/static/images/historiaClinica.png" alt="">
+        <div class="box" style="left: 1200px;position: absolute;">
+            <img class="icon" src="/static/images/historiaClinica.png" onclick="location.href='http://127.0.0.1:5000/paciente/historiaClinica'" alt="">
             <button type="button" onclick="location.href='http://127.0.0.1:5000/paciente/historiaClinica'">Historia
                 Clínica</button>
         </div>
     </div>
 
     </div>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;width: 1460px;height: 150px;" ></div>
+  <div class="footer" style="top: 755px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
 </body>
-
+<script>
+    function reflogin() {
+    location.href="http://127.0.0.1:5000"
+  }
+</script>
 </html>
 <link rel="stylesheet" href="/static/css/paciente.css">
+<link rel="stylesheet" href="/static/css/medico.css">
+<link rel="stylesheet" href="/static/css/estilos.css">

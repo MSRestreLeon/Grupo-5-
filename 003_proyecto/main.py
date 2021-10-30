@@ -142,6 +142,7 @@ def paciente():
 def citaMedica():
     citasDisponibles=''
     hora=''
+    citasDisponibles2=''
     mensaje=''
     mensajep=''
     vSesion=''
@@ -150,14 +151,34 @@ def citaMedica():
             fecha = request.form["fecha"]
             idCitaSolicitada = request.form["idCitaSolicitada"]
             idPaciente=session["id"]
-            idCitaCalificar=request.form["idCitaCalificarn"]
+            idCitaCalificar=request.form["idCitaCalificar"]
             calificacion=request.form["calificacion"]
             agendaHoras=[""]
             agendaId=[""]
+            agendaId2=[""]
             with sqlite3.connect("hospital.db") as connection:
                 connection.row_factory = sqlite3.Row
                 cursor = connection.cursor()
-                if (fecha=="")==False :
+                if (idCitaCalificar=='') and (idCitaSolicitada=='') and (fecha==''):
+                    cursor.execute("SELECT count(*) FROM citaMedica WHERE  estado='cumplida' and idPaciente=? and (calificacion is NULL) ",
+                                    [idPaciente])
+                    validadorMatriz = cursor.fetchall()
+                    validador4=validadorMatriz[0][0]
+                    if validador4>0:
+                        cursor.execute("SELECT count(*) FROM citaMedica WHERE estado = 'cumplida'  and idPaciente= ? and (calificacion is NULL) ",
+                                    [idPaciente])
+                        matriz = cursor.fetchall()
+                        tamañoMatriz=matriz[0][0]
+                        cursor.execute("SELECT * FROM citaMedica WHERE estado = 'cumplida'  and idPaciente= ? and (calificacion is NULL)",
+                                    [idPaciente])
+                        matriz2 = cursor.fetchall()
+                         
+                        for i in range(tamañoMatriz):
+                            agendaId2.append(str(matriz2[i][1]))
+                        
+                        citasDisponibles2 = " Id cita: ".join(agendaId2)
+                    
+                if (fecha==" ")==False :
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? and estado='disponible' ",
                                     [fecha])
                     validadorMatriz = cursor.fetchall()
@@ -176,8 +197,7 @@ def citaMedica():
                             agendaId.append(str(matriz2[i][0]))
                         hora = " Hora : ".join(agendaHoras)
                         citasDisponibles = " Id cita: ".join(agendaId)
-                    else:mensaje='[ERROR]La fecha ingresada no se encuentra disponible, operacion abortada'
-                if (idCitaSolicitada=="")==False and (idPaciente=="")==False:
+                if (idCitaSolicitada==' ')==False :
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE id = ? and estado='disponible' ",
                                     [idCitaSolicitada])
                     validadorMatriz1 = cursor.fetchall()
@@ -190,7 +210,7 @@ def citaMedica():
                     estadoCita="pendiente"
                     if validador1>0:
                         if validador2>0:
-                            cursor.execute("UPDATE agendaMedica SET estado = (?) where id = (?)",
+                            cursor.execute("UPDATE agendaMedica SET estado = ? where id = ?",
                                     [estadoAgenda,idCitaSolicitada])
                             cursor.execute("SELECT idMedico FROM agendaMedica WHERE id = ?  ",
                                     [idCitaSolicitada])
@@ -198,19 +218,20 @@ def citaMedica():
                             idMedico=matriz[0][0]
                             cursor.execute("INSERT INTO citaMedica (idAgendaMedica, idPaciente, idMedico, estado)VALUES (?, ?, ?, ?)",
                                     [idCitaSolicitada, idPaciente, idMedico, estadoCita])
+                            mensajep='Cita agendada exitosamente'        
                         else:mensaje='[ERROR]El documento de identidad ingresado no existe, operacion abortada'
-                    else:mensaje='[ERROR]El id de la cita que desea agendar no existe o no se encuentra disponible, operacion abortada'
-                if (idCitaCalificar=="")==False:
+                    
+                if (idCitaCalificar!=' '):
                     cursor.execute("SELECT count(*) FROM citaMedica WHERE idAgendaMedica = ? and estado='cumplida'",
                                     [idCitaCalificar])
                     validadorMatriz3 = cursor.fetchall()
                     validador3=validadorMatriz3[0][0]
                     if validador3>0:
-                        cursor.execute("UPDATE citaMedica SET calificacion = (?) where idAgendaMedica = (?)",
+                        cursor.execute("UPDATE citaMedica SET calificacion = ? where idAgendaMedica = ?",
                                 [calificacion,idCitaCalificar])
                         mensajep='Cita calificada exitosamente, gracias por calificar nuestros servicios'
-                    else: mensaje='[ERROR]La cita ingresada no esta disponible para ser evaluada, operacion abortada'
-        return render_template("citaMedica.html",hora=hora,citasDisponibles=citasDisponibles,mensaje=mensaje,mensajep=mensajep)
+                    
+        return render_template("citaMedica.html",hora=hora,citasDisponibles=citasDisponibles,mensaje=mensaje,mensajep=mensajep,citasDisponibles2=citasDisponibles2)
     else:
         vSesion='Inicie sesion para poder ingresar a la plataforma' 
         return render_template("login.html",vSesion=vSesion)
@@ -224,7 +245,7 @@ def examenMedico():
     if 'id' in session and session["rol"] == 'paciente':
         if  (request.method == 'POST'):
             idPaciente = session["id"]
-            matrizExamenes=[]
+            matrizExamenes=[" "]
             
             with sqlite3.connect("hospital.db") as connection:
                 connection.row_factory = sqlite3.Row
@@ -235,16 +256,19 @@ def examenMedico():
                 validador=validadorMatriz[0][0]
                 if validador==1: 
                     cursor.execute(
-                        "SELECT count(*) FROM historiaClinica WHERE docPaciente = ? ",
+                        "SELECT count(*) FROM historiaClinica WHERE docPaciente = ? and examenesMedicos is not null ",
                                     [idPaciente])
                     matriz = cursor.fetchall()
                     tamañoMatriz=matriz[0][0]
-                    cursor.execute("SELECT * FROM historiaClinica WHERE docPaciente = ?",
+                    cursor.execute("SELECT * FROM historiaClinica WHERE docPaciente = ? and examenesMedicos is not null",
                                    [idPaciente])
                     matriz2 = cursor.fetchall()
                     for i in range(tamañoMatriz):
+                        d=matriz2[i][1]
+                        matrizExamenes.append("Examen medico autorizado para la consulta con id (%d): "%d)
                         matrizExamenes.append(matriz2[i][7])
-                    examenes = "  ".join(matrizExamenes)
+                        matrizExamenes.append("---------------------")
+                    examenes = " ".join(matrizExamenes)
                 else:mensaje='Documento de identidad no encontrado'
         return render_template("examenMedico.html",examenes=examenes,mensaje=mensaje)
     else:
@@ -282,61 +306,61 @@ def pacienteHistoriaClinica():
                         d = matriz2[i][1]
                         historiaMatriz.append("Consulta con id de cita ( %d ) : " %d)
                         for c in range(20):
-                            if c == 0 and (matriz2[i][c]=="")==False:
+                            if c == 0 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append("/Id historia clinica: ")
                                 historiaMatriz.append(str(matriz2[i][c])) 
-                            if c == 3 and (matriz2[i][c]=="")==False:
+                            if c == 3 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Sintomas: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 4 and (matriz2[i][c]=="")==False:
+                            if c == 4 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Antecedentes: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 5 and (matriz2[i][c]=="")==False:
+                            if c == 5 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Cirugias: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 6 and (matriz2[i][c]=="")==False:
+                            if c == 6 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Diagnostico: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 7 and (matriz2[i][c]=="")==False:
+                            if c == 7 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Examenes medicos: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 8 and (matriz2[i][c]=="")==False:
+                            if c == 8 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Peso: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 9 and (matriz2[i][c]=="")==False:
+                            if c == 9 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /altura: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 10 and (matriz2[i][c]=="")==False:
+                            if c == 10 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Peresion Arterial: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 11 and (matriz2[i][c]=="")==False:
+                            if c == 11 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Temperatura: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 12 and (matriz2[i][c]=="")==False:
+                            if c == 12 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Farmacologia: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 13 and (matriz2[i][c]=="")==False:
+                            if c == 13 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Parejas: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 14 and (matriz2[i][c]=="")==False:
+                            if c == 14 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Embarazo: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 15 and (matriz2[i][c]=="")==False:
+                            if c == 15 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Nacidos vivos: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 16 and (matriz2[i][c]=="")==False:
+                            if c == 16 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Parto Natural: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 17 and (matriz2[i][c]=="")==False:
+                            if c == 17 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Metodo Anticonceptivo: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 18 and (matriz2[i][c]=="")==False:
+                            if c == 18 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Drogas: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                            if c == 19 and (matriz2[i][c]=="")==False:
+                            if c == 19 and (matriz2[i][c]==" ")==False:
                                 historiaMatriz.append(" /Orden Medica: ")
                                 historiaMatriz.append(str(matriz2[i][c]))
-                        historiaMatriz.append("---------------------")
+                        historiaMatriz.append("-------------------------------------------------")
                     historia = "  ".join(historiaMatriz)
                 else: mensaje='[ERROR]Documento de identidad no encontrado'
         return render_template("pacienteHistoriaClinica.html",historia=historia,mensaje=mensaje)
@@ -378,11 +402,12 @@ def medico():
                     matriz2 = cursor.fetchall()
                     for i in range(tamañoMatriz):
                         agendaHoras.append(matriz2[i][3]) 
+                        
                     for i in range(tamañoMatriz):
                         agendaId.append(str(matriz2[i][0]))
                     agendaHorasStr = " Hora : ".join(agendaHoras)
                     agendaIdStr = " Id cita: ".join(agendaId)
-                else:mensaje='[Error]Favor revise los datos ingresados, operacion abortada'
+                else:mensaje='No existen citas en la fecha indicada, operacion abortada'
         return render_template("medico.html",agendaHorasStr=agendaHorasStr,agendaIdStr=agendaIdStr,mensaje=mensaje)
     else:
         vSesion='Inicie sesion para poder ingresar a la plataforma' 
@@ -511,21 +536,22 @@ def consulta_medica():
             drogas = request.form["dogras"]
             examenesMedicos = request.form["autorizacionExamenes"]
             ordenMedicamentos = request.form["ordenesMedicamentos"]
+            idMedico=session["id"]
             estado = 'cumplida'
             # Consultar y mostrar
             with sqlite3.connect("hospital.db") as connection:
                 # Lugar donde almacenamos todo lo que vamos a ejecutar
                 cursor = connection.cursor()
-                cursor.execute("SELECT count(*) FROM citaMedica WHERE idAgendaMedica = ? and idPaciente = ?",
-                    [idCita,docPaciente])
+                cursor.execute("SELECT count(*) FROM citaMedica WHERE idAgendaMedica = ? and idPaciente = ? and idMedico = ? ",
+                    [idCita,docPaciente,idMedico])
                 validadorMatriz = cursor.fetchall()
                 validador=validadorMatriz[0][0]
-                if validador:
-                    if idCita == "" or docPaciente == "" or sintomas == "" or antecedentes == "" or cirugias == "" or diagnostico == "" or examenesMedicos == "" or peso == "" or altura == "" or precionArterial == "" or parejas == "" or ordenMedicamentos == "":
+                if validador>0:
+                    if idCita == " " or docPaciente == " " or sintomas == " " or antecedentes == " " or cirugias == " " or diagnostico == " " or examenesMedicos == " " or peso == " " or altura == " " or precionArterial == " " or parejas == " " or ordenMedicamentos == " ":
                         mensaje="[ERROR]Ingrese los datos obligatorios de la consulta medica (*), operacion abortada"
                     else:
                         cursor.execute(
-                        "UPDATE citaMedica  SET estado = (?) where idAgendaMedica = (?) ",
+                        "UPDATE citaMedica  SET estado = ? where idAgendaMedica = ? ",
                         [estado,idCita])
                         cursor.execute("INSERT INTO historiaClinica (idConsulta,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,presionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                                    [idCita,docPaciente,sintomas,antecedentes,cirugias,diagnostico,examenesMedicos,peso,altura,precionArterial,temperatura,farmacologia,parejas,embarazos,nacidosVivos,partoNatural,metodoAnticonceptivo,drogas,ordenMedicamentos])
@@ -565,37 +591,51 @@ def editarMedico():
                 # Lugar donde almacenamos todo lo que vamos a ejecutar
                 cursor = connection.cursor()
                 cursor.execute("SELECT count(*) FROM medico WHERE id = ? ",
-                    [docMedico])
+                    [docMedicoOriginal])
                 validadorMatriz = cursor.fetchall()
                 validador=validadorMatriz[0][0]
                 if validador>0:
-                    if (docMedico==""):
+                    if (docMedico==" "):
                         mensaje2="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE medico  SET id = (?) where id = (?) ",
+                        if (especialidad==" ")==False:
+                            cursor.execute("UPDATE medico SET especialidad = ? where id = ?",
+                                 [especialidad,docMedicoOriginal])
+                            connection.commit()
+                        if (estado==" ")==False:
+                            cursor.execute("UPDATE usuario  SET estado = ? where id = ? and rol='medico'",
+                                    [estado,docMedicoOriginal])
+                            connection.commit()
+                        cursor.execute("UPDATE medico  SET id = ? where id = ? ",
                                 [docMedico,docMedicoOriginal])
-                        cursor.execute("UPDATE usuario  SET id = (?) where id = (?) and rol='medico'",
+                        cursor.execute("UPDATE usuario  SET id = ? where id = ? and rol='medico'",
                                 [docMedico,docMedicoOriginal])
-                        cursor.execute("UPDATE agendaMedica  SET idMedico = (?) where idMedico = (?)",
+                        cursor.execute("UPDATE agendaMedica  SET idMedico = ? where idMedico = ?",
                                 [docMedico,docMedicoOriginal])
-                        cursor.execute("UPDATE citaMedica  SET idMedico = (?) where idMedico = (?)",
+                        cursor.execute("UPDATE citaMedica  SET idMedico = ? where idMedico = ?",
                                 [docMedico,docMedicoOriginal])
                         connection.commit()
                         mensajep='Medico actualizado'
-                    if (especialidad==""):
+                        
+                    if (especialidad==" "):
                         mensaje2="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE medico SET especialidad = (?) where id = (?)",
-                                [especialidad,docMedicoOriginal])
+                        
+                        cursor.execute("UPDATE medico SET especialidad = ? where id = ?",
+                            [especialidad,docMedicoOriginal])
                         connection.commit()
                         mensajep='Medico actualizado'
-                    if (estado==""):
+                        
+                    if (estado==" "):
                         mensaje2="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE usuario  SET estado = (?) where id = (?) and rol='medico'",
+                        
+                        cursor.execute("UPDATE usuario  SET estado = ? where id = ? and rol='medico'",
                                 [estado,docMedicoOriginal])
                         connection.commit()
                         mensajep='Medico actualizado'
+                        
+                    
                 else:mensaje='[ERROR]El documento de identidad es invalido, operacion abortada'        
         return render_template("editarMedico.html",mensajep=mensajep,mensaje=mensaje)
     else:
@@ -619,7 +659,7 @@ def superAdministradorDashboard():
             with sqlite3.connect("hospital.db") as connection:
                 connection.row_factory = sqlite3.Row
                 cursor = connection.cursor()
-                if (fecha=="")==False and (horaCita=="")==False  :
+                if (fecha==" ")==False and (horaCita==" ")==False  :
                     i=1
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? and hora = ? ",
                                    [fecha,horaCita])
@@ -645,7 +685,7 @@ def superAdministradorDashboard():
                                 agendaCitas.append(str(matriz2[i][c]))
                             if c == 4 and (matriz2[i][c]=="")==False:
                                 agendaCitas.append(" /Estado: ")
-                                agendaCitas.append(str(matriz2[i][c]))
+                                agendaCitas.append((matriz2[i][c]))
                         agendaCitas.append("---------------------")
                     citaConsulta = "  ".join(agendaCitas)
                 elif (fecha=="")==False and (idMedico=="")==False  :
@@ -707,7 +747,7 @@ def superAdministradorDashboard():
                                 agendaCitas.append(str(matriz2[i][c]))
                         agendaCitas.append("---------------------")
                     citaConsulta = "  ".join(agendaCitas)
-                elif (horaCita=="")==False  and i==0 :
+                elif (horaCita==" ")==False  and i==0 :
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE hora = ? ",
                                    [horaCita])
                     matriz = cursor.fetchall()
@@ -735,7 +775,7 @@ def superAdministradorDashboard():
                                 agendaCitas.append(str(matriz2[i][c]))
                         agendaCitas.append("---------------------")
                     citaConsulta = "  ".join(agendaCitas)
-                elif (idMedico=="")==False  and i==0:
+                elif (idMedico==" ")==False  and i==0:
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE idMedico = ? ",
                                    [idMedico])
                     matriz = cursor.fetchall()
@@ -761,7 +801,7 @@ def superAdministradorDashboard():
                                 agendaCitas.append(str(matriz2[i][c]))
                         agendaCitas.append("---------------------")
                     citaConsulta = "  ".join(agendaCitas)
-                elif (fecha=="")==False and i==0:
+                elif (fecha==" ")==False and i==0:
                     
                     cursor.execute("SELECT count(*) FROM agendaMedica WHERE fecha = ? ",
                                    [fecha])
@@ -804,7 +844,6 @@ def superAdministradorEditarPaciente():
     if 'id' in session and session["rol"] == 'superadministrador':
         if  request.method == 'POST':
             idOrigal = request.form["idOriginal"]
-            nombres = request.form["nombres"]
             id = request.form["id"]
             edad = request.form["edad"]
             profesion = request.form["profesion"]
@@ -821,66 +860,88 @@ def superAdministradorEditarPaciente():
                 validadorMatriz = cursor.fetchall()
                 validador=validadorMatriz[0][0]
                 if validador>0:
-                    if (id==""):
+                    if (id==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET id = (?) where id = (?)",
+                        if (edad==" ")==False:
+                            cursor.execute("UPDATE paciente SET edad = ? where id = ?",
+                                [edad,idOrigal])
+                            connection.commit()
+                        if (profesion==" ")==False:
+                            cursor.execute("UPDATE paciente SET profesion = ? where id = ?",
+                                [profesion,idOrigal])
+                            connection.commit()
+                        if (email==" ")==False:
+                            cursor.execute("UPDATE paciente SET email = ? where id = ?",
+                                [email,idOrigal])
+                            connection.commit()
+                        if (genero!="noValido"):
+                            cursor.execute("UPDATE paciente SET genero = ? where id = ?",
+                                [genero,idOrigal])
+                            connection.commit()
+                        if (rh!="noValido"):
+                            cursor.execute("UPDATE paciente SET tipoSangre = ? where id = ?",
+                                [rh,idOrigal])
+                            connection.commit() 
+                        if (estado=="")==False:
+                            cursor.execute("UPDATE usuario SET estado = ? where id = ?",
+                                [estado,idOrigal])
+                            connection.commit()   
+                        cursor.execute("UPDATE paciente SET id = ? where id = ?",
                                 [id,idOrigal])
-                        cursor.execute("UPDATE usuario SET id = (?) where id = (?)",
+                        cursor.execute("UPDATE usuario SET id = ? where id = ?",
                                 [id,idOrigal])
-                        cursor.execute("UPDATE historiaClinica SET docPaciente = (?) where docPaciente = (?)",
+                        cursor.execute("UPDATE historiaClinica SET docPaciente = ? where docPaciente = ?",
                                 [id,idOrigal])
-                        cursor.execute("UPDATE citaMedica SET idPaciente = (?) where idPaciente = (?)",
+                        cursor.execute("UPDATE citaMedica SET idPaciente = ? where idPaciente = ?",
                                 [id,idOrigal])
                         connection.commit()
                         mensajep='Paciente actualizado exitosamente' 
     
-                    if (edad==""):
+                    if (edad==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET edad = (?) where id = (?)",
+                        cursor.execute("UPDATE paciente SET edad = ? where id = ?",
                                 [edad,idOrigal])
                         connection.commit() 
-                        mensajep='Paciente actualizado exitosamente' 
-    
-                    if (profesion==""):
+                        mensajep='Paciente actualizado exitosamente'   
+                    if (profesion==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET profesion = (?) where id = (?)",
+                        cursor.execute("UPDATE paciente SET profesion = ? where id = ?",
                                 [profesion,idOrigal])
                         connection.commit()
-                        mensajep='Paciente actualizado exitosamente' 
-                    if (email==""):
+                        mensajep='Paciente actualizado exitosamente'
+
+                    if (email==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET email = (?) where id = (?)",
+                        cursor.execute("UPDATE paciente SET email = ? where id = ?",
                                 [email,idOrigal])
                         connection.commit()
-                        mensajep='Paciente actualizado exitosamente' 
+                        mensajep='Paciente actualizado exitosamente'
     
-                    if (genero==""):
+                    if (genero=="noValido"):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET genero = (?) where id = (?)",
+                        cursor.execute("UPDATE paciente SET genero = ? where id = ?",
                                 [genero,idOrigal])
                         connection.commit()
-                        mensajep='Paciente actualizado exitosamente' 
-        
-                    if (rh==""):
+                        mensajep='Paciente actualizado exitosamente'
+                    if (rh=="noValido"):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
-                        cursor.execute("UPDATE paciente SET tipoSangre = (?) where id = (?)",
+                        cursor.execute("UPDATE paciente SET tipoSangre = ? where id = ?",
                                 [rh,idOrigal])
                         connection.commit()
-                        mensajep='Paciente actualizado exitosamente' 
-        
-                    if (estado==""):
+                        mensajep='Paciente actualizado exitosamente'
+                    if (estado==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
-                    else:
-                        cursor.execute("UPDATE usuario SET estado = (?) where id = (?)",
+                    else: 
+                        cursor.execute("UPDATE usuario SET estado = ? where id = ?",
                                 [estado,idOrigal])
                         connection.commit()
-                        mensajep='Paciente actualizado exitosamente'                                
+                        mensajep='Paciente actualizado exitosamente'                               
                 else:mensaje2='[ERROR]Documento de identidad invalido, operacion abortada'
         
         return render_template("editarPaciente.html",mensaje2=mensaje2,mensajep=mensajep)
@@ -914,7 +975,7 @@ def superAdministradorAperturaAgenda():
                 validadorMatriz = cursor.fetchall()
                 validador=validadorMatriz[0][0]
                 if validador>0:
-                    if (docMedico=="" or fecha=="" or hora=="" or estado==""):
+                    if (docMedico==" " or fecha==" " or hora==" " or estado==" "):
                         mensaje="Ingrese los datos obligatorios de la consulta medica (*)"
                     else:
                         cursor.execute("INSERT INTO agendaMedica (idMedico,fecha,hora,estado) VALUES (?,?,?,?)",

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="franja"><b>Hospital Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
   
   <form action="" method="" >
     
@@ -26,16 +26,14 @@
     <div class="consultaFecha"><label for="" style="font-size: 18px;"> Ingrese fecha a consultar</label><input name="fechaAgenda" id="fecha" type="date" class="fechaAgenda"></div>
     <div><input type="button" value="Consultar agenda medica" onclick="validarDatos()" style="position: relative;border-radius: 5px;top: 40px;"></div>
     <p style="position: absolute;top: 150px;font-size: 18px;"><b> Sus citas agendadas para el dia solicitado son:</b></p>
-    <div style="position: absolute;top: 210px;left: 150px;"><textarea name="" id="" cols="12" rows="13" readonly>{{ agendaHorasStr }}</textarea>
-      <textarea name="" id="" cols="11" rows="13" readonly>{{ agendaIdStr }}</textarea>
+    <div style="position: absolute;top: 210px;left: 150px;"><textarea name="" id="" cols="12" rows="13" style="font-size: 16px;"  readonly>{{ agendaHorasStr }}</textarea>
+      <textarea name="" id="" cols="11" rows="13" style="font-size: 16px;" readonly>{{ agendaIdStr }}</textarea>
     </div>
   </form>
-  <p style="color: red;position: relative;left: 550px;top: 600px;">{{mensaje}}</p>
-  <div><img src="/static/images/footer.jfif" alt="" style="position: relative;top: 590px;line-height: 29px;width: 1460px;height: 150px;" ></div>
+  <p style="color: red;position: absolute;left: 550px;top: 500px;">{{mensaje}}</p>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;width: 1460px;height: 150px;" ></div>
   <div class="footer" style="top: 755px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
-  <form action="" name="formulario2" method="POST">
-
-  </form>
+  
 </body>
 <script>
   function reflogin() {

@@ -115,20 +115,7 @@
     background: #C4C4C4;
     }
 
-    .franja {
-        position: absolute;
-        background-color: #1E43C6;
-        color: #ffffff;
-        height: 30px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 29px;
-        text-align: center;
-        left: 0px;
-        right: 0px;
-        margin-bottom: 60px;
-    }
+    
     .container {
         display: grid;
         grid-template-columns: 200px 500px;

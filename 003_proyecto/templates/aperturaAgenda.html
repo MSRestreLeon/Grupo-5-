@@ -7,33 +7,30 @@
     <title>Edicion Medico</title>
 </head>
 <body>
-  <div class="franja">Hospital Mision TIC 2020 <input class="cerrarSesion" type="button" value="Cerrar sesion"  onclick="reflogin()"> </div>
-    
-  <form action="" method="">
-    <div><img src="/static/images/back.png" class="home" alt=""  onclick="refSuperAdmin()"></div>
-    <div><img src="/static/images/home.png" class="back" alt=""  onclick="refSuperAdmin()"></div>
-  </form>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>   
+  <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refSuperAdmin()"></div>
 
-    <div class="textoEncabezadoConsulta" >
-        <div><label>Apertura Agenda</label></div>
-    </div> 
-    <div >Favor ingrese el documento de identidad del medico </div>
-    <form action="" method="POST" name="formulario">
+  <div class="textoEncabezadoConsulta" >
+      <div><label style="font-size: 20px;"><b>Apertura agenda medica</b> </label></div>
+  </div> 
+  <div >Favor ingrese el documento de identidad del medico </div>
+  <form action="" method="POST" name="formulario">
     <div >
-    <div class="documento">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" >(*) </div>
-    <div class="nombre">               Fecha                      <input id="fecha" name="fecha" type="date"  class="perfilJ"> (*) </div>
-    <div class="cargo">                Hora                           <input id="hora" name="hora" type="time"  class="perfilJ">(*)  </div>
+    <div class="documento" style="font-size: 17px;">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" style="font-size: 17px;">(*) </div>
+    <div class="nombre" style="font-size: 17px;">               Fecha                      <input id="fecha" name="fecha" type="date"  class="perfilJ" style="font-size: 17px;"> (*) </div>
+    <div class="cargo" style="font-size: 17px;">                Hora                           <input id="hora" name="hora" type="time"  class="perfilJ" style="font-size: 17px;">(*)  </div>
     
     </div>
-
-    <div><button type="button" onclick="validarEdicion()" class="buttonApertura" formnovalidate>Abrir Agenda</button></div>
+    <div><input type="button" onclick="validarEdicion()" class="buttonApertura" value="Agendar cita" style="font-size: 17px;border-radius: 5px;"></div>
   </form>
-</div>
-<p style="color: red;position: relative;left: 550px;top: 500px;">{{mensaje}}</p>
-<p style="color: green;position: relative;left: 550px;top: 500px;">{{mensajep}}</p>
+  <p style="color: red;position: absolute;left: 550px;top: 500px;">{{mensaje}}</p>
+  <p style="color: green;position: absoute;left: 550px;top: 500px;">{{mensajep}}</p>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+  <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
 </body>
+
 <script>
-    function validarEdicion() {
+  function validarEdicion() {
     var docMedico = document.getElementById("docMedico").value;
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
@@ -48,7 +45,7 @@
       }else{alert('[ERROR]Favor llenar fecha')}
     }else{alert('[ERROR]Favor llenar documento de identidad de medico o revisar el dato ingresado')}
   }
-    function refSuperAdmin() {
+  function refSuperAdmin() {
     location.href="http://127.0.0.1:5000/superAdministrador"
   }
 
