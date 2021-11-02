@@ -1,0 +1,30 @@
+
+.containerBienvenida {
+    text-align: center;
+    color: #ff0000;
+    margin: 0.5rem;
+}
+
+.icon {
+    width: 150px;
+    height: 150px;
+}
+
+.containerDashboard {
+    position: absolute;
+    top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /*To keep items with their original size
+    so additional items wrap in a second line*/
+    flex-wrap: wrap;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

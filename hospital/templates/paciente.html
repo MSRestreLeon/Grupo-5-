@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paciente</title>
+</head>
+
+<body>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"></div>
+    <div class="containerDashboard">
+        <div class="box" style="left: 150px;position: absolute;">
+            <img class="icon" src="/static/images/citaMedica.png" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/citaMedica'" alt="">
+            <!--http://davidmayama.pythonanywhere.com/paciente/citaMedica-->
+            <button type="button" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/citaMedica'">Citas
+                Médicas</button>
+        </div>
+        <div class="box" style="left: 670px;position: absolute;">
+            <img class="icon" src="/static/images/examenMedico.png" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/examenMedico'" alt="">
+            <button type="button" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/examenMedico'">Exámenes
+                Médicos</button>
+        </div>
+        <div class="box" style="left: 1200px;position: absolute;">
+            <img class="icon" src="/static/images/historiaClinica.png" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/historiaClinica'" alt="">
+            <button type="button" onclick="location.href='http://davidmayama.pythonanywhere.com/paciente/historiaClinica'">Historia
+                Clínica</button>
+        </div>
+    </div>
+
+    </div>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;width: 1460px;height: 150px;" ></div>
+  <div class="footer" style="top: 755px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+<script>
+    function reflogin() {
+    location.href="http://davidmayama.pythonanywhere.com/"
+  }
+</script>
+</html>
+<link rel="stylesheet" href="/static/css/paciente.css">
+<link rel="stylesheet" href="/static/css/medico.css">
+<link rel="stylesheet" href="/static/css/estilos.css">

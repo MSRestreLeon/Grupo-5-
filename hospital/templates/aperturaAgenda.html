@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edicion Medico</title>
+</head>
+<body>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>   
+  <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refSuperAdmin()"></div>
+
+  <div class="textoEncabezadoConsulta" >
+      <div><label style="font-size: 20px;"><b>Apertura agenda medica</b> </label></div>
+  </div> 
+  <div >Favor ingrese el documento de identidad del medico </div>
+  <form action="" method="POST" name="formulario">
+    <div >
+    <div class="documento" style="font-size: 17px;">            Documento de identidad del medico <input id="docMedico" name="docMedico" type="number" class="perfilJ" style="font-size: 17px;">(*) </div>
+    <div class="nombre" style="font-size: 17px;">               Fecha                      <input id="fecha" name="fecha" type="date"  class="perfilJ" style="font-size: 17px;"> (*) </div>
+    <div class="cargo" style="font-size: 17px;">                Hora                           <input id="hora" name="hora" type="time"  class="perfilJ" style="font-size: 17px;">(*)  </div>
+    
+    </div>
+    <div><input type="button" onclick="validarEdicion()" class="buttonApertura" value="Agendar cita" style="font-size: 17px;border-radius: 5px;"></div>
+  </form>
+  <p style="color: red;position: absolute;left: 550px;top: 500px;">{{mensaje}}</p>
+  <p style="color: green;position: absoute;left: 550px;top: 500px;">{{mensajep}}</p>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+  <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+
+<script>
+  function validarEdicion() {
+    var docMedico = document.getElementById("docMedico").value;
+    var fecha = document.getElementById("fecha").value;
+    var hora = document.getElementById("hora").value;
+    var fechaValidar =/^\d{4}-\d{2}-\d{2}$/;
+    var horaValidar=/^\d{2}:\d{2}$/ ;
+    if (((docMedico=="")==false)&&(isNaN(docMedico)==false)) {
+      if ((fecha=="")==false && (docMedico=="")==false && fechaValidar.exec(fecha)) {
+        if ((hora=="")==false && (docMedico=="")==false && horaValidar.exec(hora)) {
+          alert('Agendando cita....')
+          document.formulario.submit()
+        }else{alert('[ERROR]Favor llenar hora')}
+      }else{alert('[ERROR]Favor llenar fecha')}
+    }else{alert('[ERROR]Favor llenar documento de identidad de medico o revisar el dato ingresado')}
+  }
+  function refSuperAdmin() {
+    location.href="http://davidmayama.pythonanywhere.com/superAdministrador"
+  }
+
+  function reflogin() {
+    location.href="http://davidmayama.pythonanywhere.com/"
+  }
+</script>
+</html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<link rel="stylesheet" href="/static/css/medico.css">

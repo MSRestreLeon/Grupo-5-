@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Administrador</title>
+
+<div class="franja">Hospital Mision TIC 2020</div>
+</head>
+
+
+<body>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <form>
+        <div style="position: absolute;top: 60px;background-color: lightblue;">
+            <div><label style="font-size: 20px;width: 60px;"><b>Menu</b> </label></div>
+            <p style="font-size: 18px;">Editar datos basicos de medicos</p>
+            <div><input style="font-size: 15px;border-radius: 5px;"  type="button" value="Datos Medicos"onclick="location.href='http://davidmayama.pythonanywhere.com/superAdministrador/editarMedico'"> </div>
+            <p style="font-size: 18px;">Editar datos basicos de pacientes</p>
+            <div><input style="font-size: 15px;border-radius: 5px;" type="button" value="Datos Pacientes"onclick="location.href='http://davidmayama.pythonanywhere.com/superAdministrador/editarPaciente'"> </div>
+            <p style="font-size: 18px;">Agendamiento de citas para medicos</p>
+            <div><input style="font-size: 15px;border-radius: 5px;" type="button" value="Apertura de Agenda"onclick="location.href='http://davidmayama.pythonanywhere.com/superAdministrador/aperturaAgenda'"> </div>
+            <p style="font-size: 18px;">Dashboard consulta citas</p>
+            <div><input style="font-size: 15px;border-radius: 5px;" type="button" value="Dashboard citas"onclick="location.href='http://davidmayama.pythonanywhere.com/superAdministrador/dashboard'"> </div></div>
+        </div>
+    </form>
+    <div><img src="/static/images/logo_medico.png" alt="" style="position: absolute;top: 70px;line-height: 29px;text-align: center;width: 200px;height: 300px;left: 1000px;" ></div>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+<script>
+    function refdashboard() {
+        location.href="http://davidmayama.pythonanywhere.com/superAdministrador/dashboard"
+    }
+    function reflogin() {
+    location.href="http://davidmayama.pythonanywhere.com/"
+  }
+</script>
+
+</html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+
+<link rel="stylesheet" href="/static/css/medico.css">

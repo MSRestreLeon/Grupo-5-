@@ -1,0 +1,24 @@
+.franja {
+    background-color: #1E43C6;
+    color: #ffffff;
+    height: 40px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.containerRegistroPaciente {
+    display: grid;
+    grid-template-columns: 200px 500px;
+    grid-template-rows: repeat(8, 20px);
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    row-gap: 10px;
+    column-gap: 1px;
+}
+
+button {
+    height: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

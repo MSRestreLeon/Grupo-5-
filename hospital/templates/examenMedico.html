@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Médico</title>
+</head>
+
+<body>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div><img src="/static/images/home.png" alt="" class="home" style="top:65px;" onclick="refPaciente()"></div>
+    <form action="" name="formulario" method="POST">
+        <div style="position: absolute;top: 60px;">
+            <p style="font-size: 20px;"><b>Examenes medicos</b></p>  
+            <p style="font-size: 18px;">En esta seccion usted podra consultar sus examenes medicos programados en las consultas realizadas con anterioridad</p> 
+            <div>
+                <form class="form-inline" action="" >
+                    <div ><input type="button" onclick="validarDatos()" value="Consutar examenes medicos" style="position: absolute;top:100px;border-radius: 5px;font-size: 17px;"></div>
+                </form>
+            </div>
+            <textarea name="" id="" cols="30" rows="10" class="textoHistoriaClinica" style="position: absolute;top: 120px;" readonly>{{ examenes }}</textarea>
+        
+            <p style="color: red;position: absolute;left: 600px;top: 500px;">{{mensaje}}</p>
+        </div>
+    </form>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+
+</html>
+<link rel="stylesheet" href="/static/css/examenMedico.css">
+<script>
+    function validarDatos(){
+       alert('Consultando examenes medicos...');
+       document.formulario.submit()
+    }
+
+    
+    function reflogin() {
+        location.href="http://davidmayama.pythonanywhere.com/"}
+    function refPaciente() {
+        location.href="http://davidmayama.pythonanywhere.com/paciente"
+    }
+</script>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">

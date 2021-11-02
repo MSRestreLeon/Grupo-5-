@@ -1,0 +1,180 @@
+
+.perfil {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 250px;    
+    background: #C4C4C4;
+}
+.his_cli{
+    width: 160px;
+    background: white;
+}
+.separacion{
+    position: absolute ;
+    left: 150px;
+    top: 126px;
+}
+.fotoperfil{
+    position: absolute;
+    left:1px;
+    top:150px;
+    height: 154px;
+}
+.cuerpoizquierdo{
+    color: #000000;
+    
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: right;
+    
+}
+.SearchDiv{
+    text-align:right;
+   }
+.btn-space {
+    margin-left: 30px;
+    margin-right: 50px;
+}
+.btn-center {
+    margin-left: 100px;
+    margin-right: 50px;
+
+}
+.btn-topspace{
+    margin-left: 30px;
+    margin-right: 50px;
+    position: absolute;
+    top: 300px;
+
+}
+#code {
+    background-color:white;
+    color:red;
+    border-style: groove none groove groove;
+    width:36px
+    }
+    #phone {
+    border-style: groove groove groove none;
+    }
+
+.footer{
+    position: absolute;
+    background-color: #1E43C6;
+    color: #ffffff;
+    text-align: center;
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    left: 0px;
+    right: 0px;
+}
+.textoConsulta {
+    text-align: left;
+    position: absolute;
+    width: 800px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.textoAutorizaciones {
+    text-align: left;
+    position: absolute;
+    width: 500px;
+    height: 70px;   
+    background: #C4C4C4;
+}
+.datosConsulta{
+    position: absolute;
+    width: 145px;
+    height: 23px;
+    left: 300px;    
+    background: #C4C4C4; 
+}
+
+.formatoparahome {
+    
+    height: 30px;
+    float: right;
+}
+.formatoparaback {
+    
+    height: 30px;
+    float: right;
+}
+
+.perfilj {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 250px;    
+    background: #C4C4C4;
+    }
+
+    
+    .container {
+        display: grid;
+        grid-template-columns: 200px 500px;
+        grid-template-rows: repeat(2, 2px);
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 1px;
+        row-gap: 20px;
+        column-gap: 1px;
+        padding-left:170px;
+    }   
+    /* grid para contenedores */
+    .container2 {
+        display: grid;
+        grid-template-columns: 320px 500px;
+        grid-template-rows: repeat(2,20px);
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        row-gap: 20px;
+        column-gap: 1px;
+        padding-left:170px;
+        }
+    .containerpaciente {
+            display: grid;
+            grid-template-columns: 320px 500px;
+            grid-template-rows: repeat(10,20px);
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            row-gap: 20px;
+            column-gap: 1px;
+            padding-left:170px;
+            
+    }   
+    .containerAperturaAgenda {
+        display: grid;
+        grid-template-columns: 320px 500px;
+        grid-template-rows: repeat(5,20px);
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        row-gap: 20px;
+        column-gap: 1px;
+        padding-left:170px;
+}   
+    .btn-space {
+        margin-left: 30px;
+        margin-right: 50px;
+    }
+    .btn-center {
+        margin-left: 100px;
+        margin-right: 50px;
+    
+    }
+    .btn-topspace{
+        margin-left: 30px;
+        margin-right: 50px;
+        position: absolute;
+        top: 300px;
+
+        }

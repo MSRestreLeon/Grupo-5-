@@ -1,0 +1,89 @@
+.franja {
+    position: absolute;
+    background-color: #1E43C6;
+    color: #ffffff;
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 29px;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+}
+.perfil {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 250px;    
+    background: #C4C4C4;
+    font-size: 17px;
+}
+.perfilJ {
+    position: absolute;
+    width: 345px;
+    height: 23px;
+    left: 500px;    
+    background: #C4C4C4;
+}
+.his_cli{
+    width: 160px;
+    background: white;
+}
+.separacion{
+    position: absolute ;
+    left: 150px;
+    top: 126px;
+}
+.fotoperfil{
+    position: absolute;
+    left:1px;
+    top:150px;
+    height: 154px;
+}
+.cuerpoizquierdo{
+    color: #000000;
+    
+    height: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: right;
+    
+}
+.SearchDiv{
+    text-align:right;
+   }
+.btn-space {
+    margin-left: 30px;
+    margin-right: 50px;
+}
+.btn-center {
+    margin-left: 100px;
+    margin-right: 50px;
+
+}
+.btn-topspace{
+    margin-left: 30px;
+    margin-right: 50px;
+    position: absolute;
+    top: 300px;
+
+}
+#code {
+    background-color:white;
+    color:red;
+    border-style: groove none groove groove;
+    width:36px
+    }
+    #phone {
+    border-style: groove groove groove none;
+}
+
+
+
+
+
+
+

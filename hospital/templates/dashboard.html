@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Administrador</title>
+</head>
+<body>
+    <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Cerrar sesion" onclick="reflogin()" class="cerrarSesion"> </div>
+    <div><img src="/static/images/home.png" onclick="refSuper()" alt="" class="home" style="top:65px;" ></div>
+    
+    <div>
+       <label style="font-size: 20px;position: absolute;top: 60px;"><b>Dashboard Citas</b> </label>
+    </div>
+    <form action="" style="top:80px;position: absolute;" method="POST" name="formulario">
+        <p style="padding-left:30px; font-size: 17px;">Fecha cita  <input type="date"  name="fechaCita" class="perfil" id="fecha"> </p>
+        <p style="padding-left:30px;font-size: 17px;">Hora cita  <input type="time"   name="horaCita" class="perfil" id="hora" min="06:00" max="18:00" step="900"> </p>
+        <p for="choose" style="padding-left:30px;font-size: 17px;">Id Medico<input class="perfil"  type="number" name ="idMedico" id="docMedico">           
+        <p><input onclick="validarEdicion()" style="top:120px;font-size: 17px;border-radius: 5px;"class="btn btn-topspace" type="button" value="Consultar"> </p>
+        <textarea style="width: 1100px;height: 300px;top: 50px;position: relative;font-size: 17px;" name="" id="" cols="9" rows="5" readonly>{{citaConsulta}}</textarea>
+    </form>
+    <p style="color: red;position: absolute;left: 550px;top: 600px;">{{mensaje}}</p>
+    <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+<script>
+    function validarEdicion() {
+        var docMedico = document.getElementById("docMedico").value;
+        var fecha = document.getElementById("fecha").value;
+        var hora = document.getElementById("hora").value;
+        var fechaValidar =/^\d{4}-\d{2}-\d{2}$/;
+        var horaValidar=/^\d{2}:\d{2}$/ ;
+        c=0
+        if (((docMedico=="")==false) && (hora=="")==false && (fecha=="")==false && c==0) {
+            if(fechaValidar.exec(fecha)){
+                if(horaValidar.exec(hora)){
+                    if((isNaN(docMedico)==false)){
+                        alert('Consultando agenda medica....')
+                        document.formulario.submit()
+                        c=1
+                    } else{alert('[ERROR]Favor llenar documento de identidad correctamente')}
+                } else{alert('[ERROR]Favor llenar hora correctamente')}
+            } else{alert('[ERROR]Favor llenar fecha correctamente')}        
+        }
+
+        if (((docMedico=="")==false) && (hora=="")==false && c==0) {
+            if(horaValidar.exec(hora)){
+                    if((isNaN(docMedico)==false)){
+                        alert('Consultando agenda medica....')
+                        document.formulario.submit()
+                        c=1
+                    } else{alert('[ERROR]Favor llenar documento de identidad correctamente')}
+                } else{alert('[ERROR]Favor llenar hora correctamente')}    
+        }
+
+        if ((hora=="")==false && (fecha=="")==false && c==0) {
+            if(fechaValidar.exec(fecha)){
+                if(horaValidar.exec(hora)){
+                    alert('Consultando agenda medica....')
+                    document.formulario.submit()
+                    c=1
+                } else{alert('[ERROR]Favor llenar hora correctamente')}
+            } else{alert('[ERROR]Favor llenar fecha correctamente')}
+        }
+
+        if (((docMedico=="")==false) && c==0) {
+            if((isNaN(docMedico)==false)){
+                alert('Consultando agenda medica.... ') 
+                document.formulario.submit()
+                c=1
+            }else{alert('[ERROR]Favor llenar documento de identidad de medico correctamente')}
+        }
+
+        if ((hora=="")==false && c==0) {
+            if(horaValidar.exec(hora)){
+                alert('Consultando agenda medica....')
+                document.formulario.submit()
+                c=1
+            } else{alert('[ERROR]Favor llenar hora correctamente')}
+        }
+
+        if ((fecha=="")==false && c==0) {
+            if(fechaValidar.exec(fecha)){
+                alert('Consultando agenda medica....')
+                document.formulario.submit()
+                c=1
+            } else{alert('[ERROR]Favor llenar fecha correctamente')}
+        }
+    }
+    function refSuper() {
+        location.href="http://davidmayama.pythonanywhere.com/superAdministrador"
+    }
+    function reflogin() {
+        location.href="http://davidmayama.pythonanywhere.com/"
+    }
+</script>
+</html>
+<link rel="stylesheet" href="/static/css/superAdmin.css">
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">
+
+

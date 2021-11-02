@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/franja.css">
+  <link rel="stylesheet" href="/static/css/login.css">
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="franja"><b>Hospital Universitario Santa Clara ESE</b>  <input type="button" value="Registrarse como paciente" onclick="refregistro()" style="position: absolute;left: 1250px;top: 10px;"> </div>
+  <form action="/" method="POST">
+    <div class="containerLogin" style="position: absolute;top: 60px;left: 550px;">
+      <div><label style="font-size: 17px;">Documento de Identidad</label></div>
+      <div><input type="number" name="id" id="id" style="font-size: 17px;"></div>
+      <div><label style="font-size: 17px;position: absolute;top: 50px;">Contraseña</label></div>
+      <div><input type="password" name="password" id="password" style="font-size: 17px;top: 50px;position: absolute;"></div>
+      <div></div>
+      <div><button style="font-size: 17px;position: absolute;top: 90px;border-radius: 5px;">Ingresar</button></div>
+    </div>
+  </form>
+  <div class="containerMensaje" style="position: absolute;left: 550px;top: 450px;">{{ mensaje }}</div>
+  <div class="containerMensaje" style="position: absolute;left: 550px;top: 450px;">{{ vSesion }}</div>
+  <div><img src="/static/images/footer.jfif" alt="" style="position: absolute;top: 605px;line-height: 29px;text-align: center;width: 1462px;height: 150px;" ></div>
+    <div class="footer" style="top: 750px;"><b>Esta plataforma cumple con la politica de privacidad y datos vigentes</b> </div>
+</body>
+<script>
+  function validarDatos(){
+    var id = document.getElementById("id").value
+    if((id=="")==false && isNaN(id)==false){
+      alert('Validando los datos ingresados...');
+    }else{alert('[ERROR]Favor revise los datos ingresados, operacion abortada');}
+  }
+  function refregistro(){
+    location.href="http://davidmayama.pythonanywhere.com/registroPaciente"
+  }
+</script>
+</html>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/medico.css">
